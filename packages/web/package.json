@@ -1,0 +1,8 @@
+{
+  "name": "@smallish/web",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "philipaw",
+  "license": "MIT",
+  "private": true
+}

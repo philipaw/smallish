@@ -1,0 +1,9 @@
+{
+  "name": "@smallish/prisma",
+  "version": "1.0.0",
+  "description": "prisma server",
+  "main": "index.js",
+  "author": "philipaw",
+  "license": "MIT",
+  "private": true
+}
