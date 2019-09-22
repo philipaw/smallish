@@ -8,12 +8,12 @@ import { Account } from './components/Account'
 import { Chat } from './components/Chat'
 import { Landing } from './components/Landing'
 import { NotFoundPage } from './components/NotFountPage'
-import { Post } from './components/Post'
+import { Posts } from './components/Post/PostComponents'
 
 const routes = {
   '/': () => <Landing />,
   '/account': () => <Account />,
-  '/post': () => <Post />,
+  '/posts': () => <Posts />,
   // '/chat': ({ id }) => <ProductDetails id={id} />,
   '/chat': () => <Chat />,
 }
