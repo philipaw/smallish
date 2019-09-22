@@ -9,7 +9,8 @@
     "dev:prisma": "yarn workspace @smallish/prisma dev",
     "add:prisma": "yarn workspace @smallish/prisma add",
     "start:prisma": "yarn workspace @smallish/prisma start",
-    "add:web": "yarn workspace @smallish/web add"
+    "add:web": "yarn workspace @smallish/web add",
+    "start:web": "yarn workspace @smallish/web start"
   },
   "workspaces": [
     "packages/*"
