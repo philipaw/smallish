@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { useRoutes } from 'hookrouter'
+
+import './App.css'
+
+import { Account } from './components/Account'
+import { Chat } from './components/Chat'
+import { Landing } from './components/Landing'
+import { NotFoundPage } from './components/NotFountPage'
+import { Post } from './components/Post'
+
+const routes = {
+  '/': () => <Landing />,
+  '/account': () => <Account />,
+  '/post': () => <Post />,
+  // '/chat': ({ id }) => <ProductDetails id={id} />,
+  '/chat': () => <Chat />,
 }
 
-export default App;
+const App: React.FC = () => {
+  const routeResult = useRoutes(routes)
+
+  return routeResult || <NotFoundPage />
+}
+
+export default App
