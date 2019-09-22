@@ -5,5 +5,11 @@
   "author": "philipaw",
   "license": "MIT",
   "private": true,
-  "scripts": {}
+  "scripts": {
+    "add:prisma": "yarn workspace @smallish/prisma add",
+    "add:web": "yarn workspace @smallish/web add"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }
