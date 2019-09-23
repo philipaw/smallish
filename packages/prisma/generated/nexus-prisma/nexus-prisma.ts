@@ -598,7 +598,8 @@ export interface UserFieldDetails {
 type PostObject =
   | PostFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'body', args?: [] | false, alias?: string  } 
+  | { name: 'title', args?: [] | false, alias?: string  } 
+  | { name: 'content', args?: [] | false, alias?: string  } 
   | { name: 'published', args?: [] | false, alias?: string  } 
   | { name: 'author', args?: [] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
@@ -606,7 +607,8 @@ type PostObject =
 
 type PostFields =
   | 'id'
-  | 'body'
+  | 'title'
+  | 'content'
   | 'published'
   | 'author'
   | 'createdAt'
@@ -625,7 +627,15 @@ export interface PostFieldDetails {
     nullable: false
     resolve: undefined
   }
-  body: {
+  title: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  content: {
     type: 'String'
     args: {}
     description: string
@@ -2213,14 +2223,16 @@ export interface PostSubscriptionPayloadFieldDetails {
 type PostPreviousValuesObject =
   | PostPreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'body', args?: [] | false, alias?: string  } 
+  | { name: 'title', args?: [] | false, alias?: string  } 
+  | { name: 'content', args?: [] | false, alias?: string  } 
   | { name: 'published', args?: [] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
 
 type PostPreviousValuesFields =
   | 'id'
-  | 'body'
+  | 'title'
+  | 'content'
   | 'published'
   | 'createdAt'
   | 'updatedAt'
@@ -2238,7 +2250,15 @@ export interface PostPreviousValuesFieldDetails {
     nullable: false
     resolve: undefined
   }
-  body: {
+  title: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  content: {
     type: 'String'
     args: {}
     description: string
@@ -2560,20 +2580,34 @@ export interface PostWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  body?: string | null
-  body_not?: string | null
-  body_in?: string[]
-  body_not_in?: string[]
-  body_lt?: string | null
-  body_lte?: string | null
-  body_gt?: string | null
-  body_gte?: string | null
-  body_contains?: string | null
-  body_not_contains?: string | null
-  body_starts_with?: string | null
-  body_not_starts_with?: string | null
-  body_ends_with?: string | null
-  body_not_ends_with?: string | null
+  title?: string | null
+  title_not?: string | null
+  title_in?: string[]
+  title_not_in?: string[]
+  title_lt?: string | null
+  title_lte?: string | null
+  title_gt?: string | null
+  title_gte?: string | null
+  title_contains?: string | null
+  title_not_contains?: string | null
+  title_starts_with?: string | null
+  title_not_starts_with?: string | null
+  title_ends_with?: string | null
+  title_not_ends_with?: string | null
+  content?: string | null
+  content_not?: string | null
+  content_in?: string[]
+  content_not_in?: string[]
+  content_lt?: string | null
+  content_lte?: string | null
+  content_gt?: string | null
+  content_gte?: string | null
+  content_contains?: string | null
+  content_not_contains?: string | null
+  content_starts_with?: string | null
+  content_not_starts_with?: string | null
+  content_ends_with?: string | null
+  content_not_ends_with?: string | null
   published?: boolean | null
   published_not?: boolean | null
   author?: UserWhereInput | null
@@ -2613,20 +2647,34 @@ export type PostWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'body', alias?: string  } 
-  | { name: 'body_not', alias?: string  } 
-  | { name: 'body_in', alias?: string  } 
-  | { name: 'body_not_in', alias?: string  } 
-  | { name: 'body_lt', alias?: string  } 
-  | { name: 'body_lte', alias?: string  } 
-  | { name: 'body_gt', alias?: string  } 
-  | { name: 'body_gte', alias?: string  } 
-  | { name: 'body_contains', alias?: string  } 
-  | { name: 'body_not_contains', alias?: string  } 
-  | { name: 'body_starts_with', alias?: string  } 
-  | { name: 'body_not_starts_with', alias?: string  } 
-  | { name: 'body_ends_with', alias?: string  } 
-  | { name: 'body_not_ends_with', alias?: string  } 
+  | { name: 'title', alias?: string  } 
+  | { name: 'title_not', alias?: string  } 
+  | { name: 'title_in', alias?: string  } 
+  | { name: 'title_not_in', alias?: string  } 
+  | { name: 'title_lt', alias?: string  } 
+  | { name: 'title_lte', alias?: string  } 
+  | { name: 'title_gt', alias?: string  } 
+  | { name: 'title_gte', alias?: string  } 
+  | { name: 'title_contains', alias?: string  } 
+  | { name: 'title_not_contains', alias?: string  } 
+  | { name: 'title_starts_with', alias?: string  } 
+  | { name: 'title_not_starts_with', alias?: string  } 
+  | { name: 'title_ends_with', alias?: string  } 
+  | { name: 'title_not_ends_with', alias?: string  } 
+  | { name: 'content', alias?: string  } 
+  | { name: 'content_not', alias?: string  } 
+  | { name: 'content_in', alias?: string  } 
+  | { name: 'content_not_in', alias?: string  } 
+  | { name: 'content_lt', alias?: string  } 
+  | { name: 'content_lte', alias?: string  } 
+  | { name: 'content_gt', alias?: string  } 
+  | { name: 'content_gte', alias?: string  } 
+  | { name: 'content_contains', alias?: string  } 
+  | { name: 'content_not_contains', alias?: string  } 
+  | { name: 'content_starts_with', alias?: string  } 
+  | { name: 'content_not_starts_with', alias?: string  } 
+  | { name: 'content_ends_with', alias?: string  } 
+  | { name: 'content_not_ends_with', alias?: string  } 
   | { name: 'published', alias?: string  } 
   | { name: 'published_not', alias?: string  } 
   | { name: 'author', alias?: string  } 
@@ -3148,13 +3196,15 @@ export type PostCreateManyWithoutAuthorInputInputObject =
   
 export interface PostCreateWithoutAuthorInput {
   id?: string | null
-  body?: string
+  title?: string | null
+  content?: string
   published?: boolean | null
 }
 export type PostCreateWithoutAuthorInputInputObject =
   | Extract<keyof PostCreateWithoutAuthorInput, string>
   | { name: 'id', alias?: string  } 
-  | { name: 'body', alias?: string  } 
+  | { name: 'title', alias?: string  } 
+  | { name: 'content', alias?: string  } 
   | { name: 'published', alias?: string  } 
   
 export interface ChatCreateManyWithoutMembersInput {
@@ -3342,12 +3392,14 @@ export type PostUpdateWithWhereUniqueWithoutAuthorInputInputObject =
   | { name: 'data', alias?: string  } 
   
 export interface PostUpdateWithoutAuthorDataInput {
-  body?: string | null
+  title?: string | null
+  content?: string | null
   published?: boolean | null
 }
 export type PostUpdateWithoutAuthorDataInputInputObject =
   | Extract<keyof PostUpdateWithoutAuthorDataInput, string>
-  | { name: 'body', alias?: string  } 
+  | { name: 'title', alias?: string  } 
+  | { name: 'content', alias?: string  } 
   | { name: 'published', alias?: string  } 
   
 export interface PostUpsertWithWhereUniqueWithoutAuthorInput {
@@ -3376,20 +3428,34 @@ export interface PostScalarWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  body?: string | null
-  body_not?: string | null
-  body_in?: string[]
-  body_not_in?: string[]
-  body_lt?: string | null
-  body_lte?: string | null
-  body_gt?: string | null
-  body_gte?: string | null
-  body_contains?: string | null
-  body_not_contains?: string | null
-  body_starts_with?: string | null
-  body_not_starts_with?: string | null
-  body_ends_with?: string | null
-  body_not_ends_with?: string | null
+  title?: string | null
+  title_not?: string | null
+  title_in?: string[]
+  title_not_in?: string[]
+  title_lt?: string | null
+  title_lte?: string | null
+  title_gt?: string | null
+  title_gte?: string | null
+  title_contains?: string | null
+  title_not_contains?: string | null
+  title_starts_with?: string | null
+  title_not_starts_with?: string | null
+  title_ends_with?: string | null
+  title_not_ends_with?: string | null
+  content?: string | null
+  content_not?: string | null
+  content_in?: string[]
+  content_not_in?: string[]
+  content_lt?: string | null
+  content_lte?: string | null
+  content_gt?: string | null
+  content_gte?: string | null
+  content_contains?: string | null
+  content_not_contains?: string | null
+  content_starts_with?: string | null
+  content_not_starts_with?: string | null
+  content_ends_with?: string | null
+  content_not_ends_with?: string | null
   published?: boolean | null
   published_not?: boolean | null
   createdAt?: string | null
@@ -3428,20 +3494,34 @@ export type PostScalarWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'body', alias?: string  } 
-  | { name: 'body_not', alias?: string  } 
-  | { name: 'body_in', alias?: string  } 
-  | { name: 'body_not_in', alias?: string  } 
-  | { name: 'body_lt', alias?: string  } 
-  | { name: 'body_lte', alias?: string  } 
-  | { name: 'body_gt', alias?: string  } 
-  | { name: 'body_gte', alias?: string  } 
-  | { name: 'body_contains', alias?: string  } 
-  | { name: 'body_not_contains', alias?: string  } 
-  | { name: 'body_starts_with', alias?: string  } 
-  | { name: 'body_not_starts_with', alias?: string  } 
-  | { name: 'body_ends_with', alias?: string  } 
-  | { name: 'body_not_ends_with', alias?: string  } 
+  | { name: 'title', alias?: string  } 
+  | { name: 'title_not', alias?: string  } 
+  | { name: 'title_in', alias?: string  } 
+  | { name: 'title_not_in', alias?: string  } 
+  | { name: 'title_lt', alias?: string  } 
+  | { name: 'title_lte', alias?: string  } 
+  | { name: 'title_gt', alias?: string  } 
+  | { name: 'title_gte', alias?: string  } 
+  | { name: 'title_contains', alias?: string  } 
+  | { name: 'title_not_contains', alias?: string  } 
+  | { name: 'title_starts_with', alias?: string  } 
+  | { name: 'title_not_starts_with', alias?: string  } 
+  | { name: 'title_ends_with', alias?: string  } 
+  | { name: 'title_not_ends_with', alias?: string  } 
+  | { name: 'content', alias?: string  } 
+  | { name: 'content_not', alias?: string  } 
+  | { name: 'content_in', alias?: string  } 
+  | { name: 'content_not_in', alias?: string  } 
+  | { name: 'content_lt', alias?: string  } 
+  | { name: 'content_lte', alias?: string  } 
+  | { name: 'content_gt', alias?: string  } 
+  | { name: 'content_gte', alias?: string  } 
+  | { name: 'content_contains', alias?: string  } 
+  | { name: 'content_not_contains', alias?: string  } 
+  | { name: 'content_starts_with', alias?: string  } 
+  | { name: 'content_not_starts_with', alias?: string  } 
+  | { name: 'content_ends_with', alias?: string  } 
+  | { name: 'content_not_ends_with', alias?: string  } 
   | { name: 'published', alias?: string  } 
   | { name: 'published_not', alias?: string  } 
   | { name: 'createdAt', alias?: string  } 
@@ -3474,12 +3554,14 @@ export type PostUpdateManyWithWhereNestedInputInputObject =
   | { name: 'data', alias?: string  } 
   
 export interface PostUpdateManyDataInput {
-  body?: string | null
+  title?: string | null
+  content?: string | null
   published?: boolean | null
 }
 export type PostUpdateManyDataInputInputObject =
   | Extract<keyof PostUpdateManyDataInput, string>
-  | { name: 'body', alias?: string  } 
+  | { name: 'title', alias?: string  } 
+  | { name: 'content', alias?: string  } 
   | { name: 'published', alias?: string  } 
   
 export interface ChatUpdateManyWithoutMembersInput {
@@ -4274,14 +4356,16 @@ export type UserUpdateManyMutationInputInputObject =
   
 export interface PostCreateInput {
   id?: string | null
-  body?: string
+  title?: string | null
+  content?: string
   published?: boolean | null
   author?: UserCreateOneWithoutPostsInput
 }
 export type PostCreateInputInputObject =
   | Extract<keyof PostCreateInput, string>
   | { name: 'id', alias?: string  } 
-  | { name: 'body', alias?: string  } 
+  | { name: 'title', alias?: string  } 
+  | { name: 'content', alias?: string  } 
   | { name: 'published', alias?: string  } 
   | { name: 'author', alias?: string  } 
   
@@ -4314,13 +4398,15 @@ export type UserCreateWithoutPostsInputInputObject =
   | { name: 'chatsOwned', alias?: string  } 
   
 export interface PostUpdateInput {
-  body?: string | null
+  title?: string | null
+  content?: string | null
   published?: boolean | null
   author?: UserUpdateOneRequiredWithoutPostsInput | null
 }
 export type PostUpdateInputInputObject =
   | Extract<keyof PostUpdateInput, string>
-  | { name: 'body', alias?: string  } 
+  | { name: 'title', alias?: string  } 
+  | { name: 'content', alias?: string  } 
   | { name: 'published', alias?: string  } 
   | { name: 'author', alias?: string  } 
   
@@ -4364,12 +4450,14 @@ export type UserUpsertWithoutPostsInputInputObject =
   | { name: 'create', alias?: string  } 
   
 export interface PostUpdateManyMutationInput {
-  body?: string | null
+  title?: string | null
+  content?: string | null
   published?: boolean | null
 }
 export type PostUpdateManyMutationInputInputObject =
   | Extract<keyof PostUpdateManyMutationInput, string>
-  | { name: 'body', alias?: string  } 
+  | { name: 'title', alias?: string  } 
+  | { name: 'content', alias?: string  } 
   | { name: 'published', alias?: string  } 
   
 export interface MessageCreateInput {
@@ -4591,8 +4679,10 @@ export type ChatSubscriptionWhereInputInputObject =
 export type PostOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
-  | 'body_ASC'
-  | 'body_DESC'
+  | 'title_ASC'
+  | 'title_DESC'
+  | 'content_ASC'
+  | 'content_DESC'
   | 'published_ASC'
   | 'published_DESC'
   | 'createdAt_ASC'

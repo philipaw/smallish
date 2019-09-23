@@ -13,7 +13,8 @@ type User {
 
 type Post {
   id: ID! @id
-  body: String!
+  title: String
+  content: String!
   published: Boolean! @default(value: false)
   author: User! @relation(link: INLINE)
   createdAt: DateTime! @createdAt

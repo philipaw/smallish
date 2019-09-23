@@ -1486,7 +1486,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body",
+            "name": "title",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -1496,7 +1496,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_not",
+            "name": "title_not",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -1506,7 +1506,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_in",
+            "name": "title_in",
             "description": null,
             "type": {
               "kind": "LIST",
@@ -1524,7 +1524,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_not_in",
+            "name": "title_not_in",
             "description": null,
             "type": {
               "kind": "LIST",
@@ -1542,7 +1542,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_lt",
+            "name": "title_lt",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -1552,7 +1552,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_lte",
+            "name": "title_lte",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -1562,7 +1562,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_gt",
+            "name": "title_gt",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -1572,7 +1572,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_gte",
+            "name": "title_gte",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -1582,7 +1582,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_contains",
+            "name": "title_contains",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -1592,7 +1592,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_not_contains",
+            "name": "title_not_contains",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -1602,7 +1602,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_starts_with",
+            "name": "title_starts_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -1612,7 +1612,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_not_starts_with",
+            "name": "title_not_starts_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -1622,7 +1622,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_ends_with",
+            "name": "title_ends_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -1632,7 +1632,163 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_not_ends_with",
+            "name": "title_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_not_ends_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -4474,13 +4630,25 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "body_ASC",
+            "name": "title_ASC",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "body_DESC",
+            "name": "title_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "content_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "content_DESC",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -4556,7 +4724,19 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "body",
+            "name": "title",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "content",
             "description": null,
             "args": [],
             "type": {
@@ -7009,7 +7189,17 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body",
+            "name": "title",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content",
             "description": null,
             "type": {
               "kind": "NON_NULL",
@@ -7924,7 +8114,17 @@ export default {
         "fields": null,
         "inputFields": [
           {
-            "name": "body",
+            "name": "title",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -8164,7 +8364,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body",
+            "name": "title",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -8174,7 +8374,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_not",
+            "name": "title_not",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -8184,7 +8384,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_in",
+            "name": "title_in",
             "description": null,
             "type": {
               "kind": "LIST",
@@ -8202,7 +8402,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_not_in",
+            "name": "title_not_in",
             "description": null,
             "type": {
               "kind": "LIST",
@@ -8220,7 +8420,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_lt",
+            "name": "title_lt",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -8230,7 +8430,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_lte",
+            "name": "title_lte",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -8240,7 +8440,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_gt",
+            "name": "title_gt",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -8250,7 +8450,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_gte",
+            "name": "title_gte",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -8260,7 +8460,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_contains",
+            "name": "title_contains",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -8270,7 +8470,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_not_contains",
+            "name": "title_not_contains",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -8280,7 +8480,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_starts_with",
+            "name": "title_starts_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -8290,7 +8490,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_not_starts_with",
+            "name": "title_not_starts_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -8300,7 +8500,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_ends_with",
+            "name": "title_ends_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -8310,7 +8510,163 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body_not_ends_with",
+            "name": "title_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content_not_ends_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -8636,7 +8992,17 @@ export default {
         "fields": null,
         "inputFields": [
           {
-            "name": "body",
+            "name": "title",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -12952,7 +13318,17 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "body",
+            "name": "title",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content",
             "description": null,
             "type": {
               "kind": "NON_NULL",
@@ -13113,7 +13489,17 @@ export default {
         "fields": null,
         "inputFields": [
           {
-            "name": "body",
+            "name": "title",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -13315,7 +13701,17 @@ export default {
         "fields": null,
         "inputFields": [
           {
-            "name": "body",
+            "name": "title",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -14545,7 +14941,19 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "body",
+            "name": "title",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "content",
             "description": null,
             "args": [],
             "type": {

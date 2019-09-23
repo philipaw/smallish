@@ -649,7 +649,8 @@ type PageInfo {
 
 type Post {
   id: ID!
-  body: String!
+  title: String
+  content: String!
   published: Boolean!
   author: User!
   createdAt: DateTime!
@@ -664,7 +665,8 @@ type PostConnection {
 
 input PostCreateInput {
   id: ID
-  body: String!
+  title: String
+  content: String!
   published: Boolean
   author: UserCreateOneWithoutPostsInput!
 }
@@ -676,7 +678,8 @@ input PostCreateManyWithoutAuthorInput {
 
 input PostCreateWithoutAuthorInput {
   id: ID
-  body: String!
+  title: String
+  content: String!
   published: Boolean
 }
 
@@ -688,8 +691,10 @@ type PostEdge {
 enum PostOrderByInput {
   id_ASC
   id_DESC
-  body_ASC
-  body_DESC
+  title_ASC
+  title_DESC
+  content_ASC
+  content_DESC
   published_ASC
   published_DESC
   createdAt_ASC
@@ -700,7 +705,8 @@ enum PostOrderByInput {
 
 type PostPreviousValues {
   id: ID!
-  body: String!
+  title: String
+  content: String!
   published: Boolean!
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -721,20 +727,34 @@ input PostScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  body: String
-  body_not: String
-  body_in: [String!]
-  body_not_in: [String!]
-  body_lt: String
-  body_lte: String
-  body_gt: String
-  body_gte: String
-  body_contains: String
-  body_not_contains: String
-  body_starts_with: String
-  body_not_starts_with: String
-  body_ends_with: String
-  body_not_ends_with: String
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  content: String
+  content_not: String
+  content_in: [String!]
+  content_not_in: [String!]
+  content_lt: String
+  content_lte: String
+  content_gt: String
+  content_gte: String
+  content_contains: String
+  content_not_contains: String
+  content_starts_with: String
+  content_not_starts_with: String
+  content_ends_with: String
+  content_not_ends_with: String
   published: Boolean
   published_not: Boolean
   createdAt: DateTime
@@ -777,18 +797,21 @@ input PostSubscriptionWhereInput {
 }
 
 input PostUpdateInput {
-  body: String
+  title: String
+  content: String
   published: Boolean
   author: UserUpdateOneRequiredWithoutPostsInput
 }
 
 input PostUpdateManyDataInput {
-  body: String
+  title: String
+  content: String
   published: Boolean
 }
 
 input PostUpdateManyMutationInput {
-  body: String
+  title: String
+  content: String
   published: Boolean
 }
 
@@ -810,7 +833,8 @@ input PostUpdateManyWithWhereNestedInput {
 }
 
 input PostUpdateWithoutAuthorDataInput {
-  body: String
+  title: String
+  content: String
   published: Boolean
 }
 
@@ -840,20 +864,34 @@ input PostWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  body: String
-  body_not: String
-  body_in: [String!]
-  body_not_in: [String!]
-  body_lt: String
-  body_lte: String
-  body_gt: String
-  body_gte: String
-  body_contains: String
-  body_not_contains: String
-  body_starts_with: String
-  body_not_starts_with: String
-  body_ends_with: String
-  body_not_ends_with: String
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  content: String
+  content_not: String
+  content_in: [String!]
+  content_not_in: [String!]
+  content_lt: String
+  content_lte: String
+  content_gt: String
+  content_gte: String
+  content_contains: String
+  content_not_contains: String
+  content_starts_with: String
+  content_not_starts_with: String
+  content_ends_with: String
+  content_not_ends_with: String
   published: Boolean
   published_not: Boolean
   author: UserWhereInput

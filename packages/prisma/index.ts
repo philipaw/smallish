@@ -1,26 +1,65 @@
 import { prisma } from './generated/prisma-client'
 import datamodelInfo from './generated/nexus-prisma'
 import * as path from 'path'
-import { stringArg, idArg } from 'nexus'
+import { idArg, queryType, stringArg } from 'nexus'
 import { prismaObjectType, makePrismaSchema } from 'nexus-prisma'
 import { GraphQLServer } from 'graphql-yoga'
 
-const Query = prismaObjectType({
-  name: 'Query',
+const Post = prismaObjectType({
+  name: 'Post',
   definition(t) {
-    t.prismaFields(['post'])
-    t.list.field('allPosts', {
-      type: 'Post',
-      resolve: (_, _args, ctx) => ctx.prisma.posts(),
-    })
+    t.prismaFields(['*'])
+  },
+})
+
+const User = prismaObjectType({
+  name: 'User',
+  definition(t) {
+    t.prismaFields([
+      'id',
+      'name',
+      'handle',
+      'email',
+      {
+        name: 'posts',
+        args: [], // remove the arguments from the `posts` field of the `User` type in the Prisma schema
+      },
+    ])
+  },
+})
+
+const Query = queryType({
+  definition(t) {
     t.list.field('feed', {
       type: 'Post',
-      resolve: (_, _args, ctx) => ctx.prisma.posts({ where: { published: true } }),
+      resolve: (_parent, _args, ctx) => {
+        return ctx.prisma.posts({
+          where: { published: true },
+        })
+      },
     })
-    t.list.field('postsByUser', {
+
+    t.list.field('filterPosts', {
       type: 'Post',
-      args: { email: stringArg() },
-      resolve: (_, { email }, ctx) => ctx.prisma.posts({ where: { author: { email } } }),
+      args: {
+        searchString: stringArg({ nullable: true }),
+      },
+      resolve: (_parent, { searchString }, ctx) => {
+        return ctx.prisma.posts({
+          where: {
+            OR: [{ title_contains: searchString }, { content_contains: searchString }],
+          },
+        })
+      },
+    })
+
+    t.field('post', {
+      type: 'Post',
+      nullable: true,
+      args: { id: idArg() },
+      resolve: (_parent, { id }, ctx) => {
+        return ctx.prisma.post({ id })
+      },
     })
   },
 })
@@ -28,34 +67,67 @@ const Query = prismaObjectType({
 const Mutation = prismaObjectType({
   name: 'Mutation',
   definition(t) {
-    t.prismaFields(['createUser', 'deletePost'])
+    t.field('signupUser', {
+      type: 'User',
+      args: {
+        name: stringArg({ nullable: true }),
+        email: stringArg(),
+      },
+      resolve: (_parent, { name, email }, ctx) => {
+        return ctx.prisma.createUser({
+          name,
+          email,
+        })
+      },
+    })
+
     t.field('createDraft', {
       type: 'Post',
       args: {
         title: stringArg(),
-        authorId: idArg({ nullable: true }),
+        content: stringArg({ nullable: true }),
+        authorEmail: stringArg(),
       },
-      resolve: (_, { title, authorId }, ctx) =>
-        ctx.prisma.createPost({
+      resolve: (_parent, { title, content, authorEmail }, ctx) => {
+        return ctx.prisma.createPost({
           title,
-          author: { connect: { id: authorId } },
-        }),
+          content,
+          author: {
+            connect: { email: authorEmail },
+          },
+        })
+      },
     })
+
+    t.field('deletePost', {
+      type: 'Post',
+      nullable: true,
+      args: {
+        id: idArg(),
+      },
+      resolve: (_parent, { id }, ctx) => {
+        return ctx.prisma.deletePost({ id })
+      },
+    })
+
     t.field('publish', {
       type: 'Post',
       nullable: true,
-      args: { id: idArg() },
-      resolve: (_, { id }, ctx) =>
-        ctx.prisma.updatePost({
+      args: {
+        id: idArg(),
+      },
+      resolve: (_parent, { id }, ctx) => {
+        return ctx.prisma.updatePost({
           where: { id },
           data: { published: true },
-        }),
+        })
+      },
     })
   },
 })
 
 const schema = makePrismaSchema({
-  types: [Query, Mutation],
+  types: [Query, Mutation, User, Post],
 
   prisma: {
     datamodelInfo,
@@ -66,6 +138,23 @@ const schema = makePrismaSchema({
     schema: path.join(__dirname, './generated/schema.graphql'),
     typegen: path.join(__dirname, './generated/nexus.ts'),
   },
+
+  // Configure nullability of input arguments: All arguments are non-nullable by default
+  nonNullDefaults: {
+    input: false,
+    output: false,
+  },
+
+  // Configure automatic type resolution for the TS representations of the associated types
+  typegenAutoConfig: {
+    sources: [
+      {
+        source: path.join(__dirname, './types.ts'),
+        alias: 'types',
+      },
+    ],
+    contextType: 'types.Context',
+  },
 })
 
 const server = new GraphQLServer({
@@ -73,7 +162,7 @@ const server = new GraphQLServer({
   context: { prisma },
 })
 
-server.start(() => console.log('Server is running on http://localhost:4000'))
+server.start(() => console.log('Server is running on http://localhost:4466'))
 
 // A `main` function so that we can use async/await
 async function main() {
