@@ -1,12 +1,12 @@
 type User {
   id: ID! @id
   email: String @unique
-  username: String! @unique
-  name: String!
+  handle: String @unique
+  name: String
   picture: String
   posts: [Post!]!
-  chats: [Chat!]!
-  chatsOwned: [Chat!]! @relation(name: ChatOwner)
+  chats: [Chat!]! @relation(name: "ChatMembers")
+  chatsOwned: [Chat!]! @relation(name: "ChatOwner")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
@@ -33,8 +33,8 @@ type Chat {
   id: ID! @id
   name: String!
   picture: String
-  owner: User @relation(name: ChatOwner)
-  members: [User!]! @relation(name: ChatMembers)
+  owner: User @relation(name: "ChatOwner")
+  members: [User!]! @relation(name: "ChatMembers")
   messages: [Message!]
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt

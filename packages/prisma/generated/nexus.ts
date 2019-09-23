@@ -11,18 +11,198 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  ChatCreateManyWithoutMembersInput: { // input type
+    connect?: NexusGenInputs['ChatWhereUniqueInput'][] | null; // [ChatWhereUniqueInput!]
+    create?: NexusGenInputs['ChatCreateWithoutMembersInput'][] | null; // [ChatCreateWithoutMembersInput!]
+  }
+  ChatCreateManyWithoutOwnerInput: { // input type
+    connect?: NexusGenInputs['ChatWhereUniqueInput'][] | null; // [ChatWhereUniqueInput!]
+    create?: NexusGenInputs['ChatCreateWithoutOwnerInput'][] | null; // [ChatCreateWithoutOwnerInput!]
+  }
+  ChatCreateWithoutMembersInput: { // input type
+    id?: string | null; // ID
+    messages?: NexusGenInputs['MessageCreateManyWithoutChatInput'] | null; // MessageCreateManyWithoutChatInput
+    name: string; // String!
+    owner?: NexusGenInputs['UserCreateOneWithoutChatsOwnedInput'] | null; // UserCreateOneWithoutChatsOwnedInput
+    picture?: string | null; // String
+  }
+  ChatCreateWithoutOwnerInput: { // input type
+    id?: string | null; // ID
+    members?: NexusGenInputs['UserCreateManyWithoutChatsInput'] | null; // UserCreateManyWithoutChatsInput
+    messages?: NexusGenInputs['MessageCreateManyWithoutChatInput'] | null; // MessageCreateManyWithoutChatInput
+    name: string; // String!
+    picture?: string | null; // String
+  }
+  ChatWhereInput: { // input type
+    AND?: NexusGenInputs['ChatWhereInput'][] | null; // [ChatWhereInput!]
+    createdAt?: any | null; // DateTime
+    createdAt_gt?: any | null; // DateTime
+    createdAt_gte?: any | null; // DateTime
+    createdAt_in?: any[] | null; // [DateTime!]
+    createdAt_lt?: any | null; // DateTime
+    createdAt_lte?: any | null; // DateTime
+    createdAt_not?: any | null; // DateTime
+    createdAt_not_in?: any[] | null; // [DateTime!]
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    members_every?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    members_none?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    members_some?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    messages_every?: NexusGenInputs['MessageWhereInput'] | null; // MessageWhereInput
+    messages_none?: NexusGenInputs['MessageWhereInput'] | null; // MessageWhereInput
+    messages_some?: NexusGenInputs['MessageWhereInput'] | null; // MessageWhereInput
+    name?: string | null; // String
+    name_contains?: string | null; // String
+    name_ends_with?: string | null; // String
+    name_gt?: string | null; // String
+    name_gte?: string | null; // String
+    name_in?: string[] | null; // [String!]
+    name_lt?: string | null; // String
+    name_lte?: string | null; // String
+    name_not?: string | null; // String
+    name_not_contains?: string | null; // String
+    name_not_ends_with?: string | null; // String
+    name_not_in?: string[] | null; // [String!]
+    name_not_starts_with?: string | null; // String
+    name_starts_with?: string | null; // String
+    NOT?: NexusGenInputs['ChatWhereInput'][] | null; // [ChatWhereInput!]
+    OR?: NexusGenInputs['ChatWhereInput'][] | null; // [ChatWhereInput!]
+    owner?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    picture?: string | null; // String
+    picture_contains?: string | null; // String
+    picture_ends_with?: string | null; // String
+    picture_gt?: string | null; // String
+    picture_gte?: string | null; // String
+    picture_in?: string[] | null; // [String!]
+    picture_lt?: string | null; // String
+    picture_lte?: string | null; // String
+    picture_not?: string | null; // String
+    picture_not_contains?: string | null; // String
+    picture_not_ends_with?: string | null; // String
+    picture_not_in?: string[] | null; // [String!]
+    picture_not_starts_with?: string | null; // String
+    picture_starts_with?: string | null; // String
+    updatedAt?: any | null; // DateTime
+    updatedAt_gt?: any | null; // DateTime
+    updatedAt_gte?: any | null; // DateTime
+    updatedAt_in?: any[] | null; // [DateTime!]
+    updatedAt_lt?: any | null; // DateTime
+    updatedAt_lte?: any | null; // DateTime
+    updatedAt_not?: any | null; // DateTime
+    updatedAt_not_in?: any[] | null; // [DateTime!]
+  }
+  ChatWhereUniqueInput: { // input type
+    id?: string | null; // ID
+  }
+  MessageCreateManyWithoutChatInput: { // input type
+    connect?: NexusGenInputs['MessageWhereUniqueInput'][] | null; // [MessageWhereUniqueInput!]
+    create?: NexusGenInputs['MessageCreateWithoutChatInput'][] | null; // [MessageCreateWithoutChatInput!]
+  }
+  MessageCreateWithoutChatInput: { // input type
+    id?: string | null; // ID
+    sender?: NexusGenInputs['UserCreateOneInput'] | null; // UserCreateOneInput
+    text: string; // String!
+  }
+  MessageWhereInput: { // input type
+    AND?: NexusGenInputs['MessageWhereInput'][] | null; // [MessageWhereInput!]
+    chat?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    createdAt?: any | null; // DateTime
+    createdAt_gt?: any | null; // DateTime
+    createdAt_gte?: any | null; // DateTime
+    createdAt_in?: any[] | null; // [DateTime!]
+    createdAt_lt?: any | null; // DateTime
+    createdAt_lte?: any | null; // DateTime
+    createdAt_not?: any | null; // DateTime
+    createdAt_not_in?: any[] | null; // [DateTime!]
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    NOT?: NexusGenInputs['MessageWhereInput'][] | null; // [MessageWhereInput!]
+    OR?: NexusGenInputs['MessageWhereInput'][] | null; // [MessageWhereInput!]
+    sender?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    text?: string | null; // String
+    text_contains?: string | null; // String
+    text_ends_with?: string | null; // String
+    text_gt?: string | null; // String
+    text_gte?: string | null; // String
+    text_in?: string[] | null; // [String!]
+    text_lt?: string | null; // String
+    text_lte?: string | null; // String
+    text_not?: string | null; // String
+    text_not_contains?: string | null; // String
+    text_not_ends_with?: string | null; // String
+    text_not_in?: string[] | null; // [String!]
+    text_not_starts_with?: string | null; // String
+    text_starts_with?: string | null; // String
+    updatedAt?: any | null; // DateTime
+    updatedAt_gt?: any | null; // DateTime
+    updatedAt_gte?: any | null; // DateTime
+    updatedAt_in?: any[] | null; // [DateTime!]
+    updatedAt_lt?: any | null; // DateTime
+    updatedAt_lte?: any | null; // DateTime
+    updatedAt_not?: any | null; // DateTime
+    updatedAt_not_in?: any[] | null; // [DateTime!]
+  }
+  MessageWhereUniqueInput: { // input type
+    id?: string | null; // ID
+  }
   PostCreateManyWithoutAuthorInput: { // input type
     connect?: NexusGenInputs['PostWhereUniqueInput'][] | null; // [PostWhereUniqueInput!]
     create?: NexusGenInputs['PostCreateWithoutAuthorInput'][] | null; // [PostCreateWithoutAuthorInput!]
   }
   PostCreateWithoutAuthorInput: { // input type
+    body: string; // String!
     id?: string | null; // ID
     published?: boolean | null; // Boolean
-    title: string; // String!
   }
   PostWhereInput: { // input type
     AND?: NexusGenInputs['PostWhereInput'][] | null; // [PostWhereInput!]
     author?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    body?: string | null; // String
+    body_contains?: string | null; // String
+    body_ends_with?: string | null; // String
+    body_gt?: string | null; // String
+    body_gte?: string | null; // String
+    body_in?: string[] | null; // [String!]
+    body_lt?: string | null; // String
+    body_lte?: string | null; // String
+    body_not?: string | null; // String
+    body_not_contains?: string | null; // String
+    body_not_ends_with?: string | null; // String
+    body_not_in?: string[] | null; // [String!]
+    body_not_starts_with?: string | null; // String
+    body_starts_with?: string | null; // String
+    createdAt?: any | null; // DateTime
+    createdAt_gt?: any | null; // DateTime
+    createdAt_gte?: any | null; // DateTime
+    createdAt_in?: any[] | null; // [DateTime!]
+    createdAt_lt?: any | null; // DateTime
+    createdAt_lte?: any | null; // DateTime
+    createdAt_not?: any | null; // DateTime
+    createdAt_not_in?: any[] | null; // [DateTime!]
     id?: string | null; // ID
     id_contains?: string | null; // ID
     id_ends_with?: string | null; // ID
@@ -41,32 +221,74 @@ export interface NexusGenInputs {
     OR?: NexusGenInputs['PostWhereInput'][] | null; // [PostWhereInput!]
     published?: boolean | null; // Boolean
     published_not?: boolean | null; // Boolean
-    title?: string | null; // String
-    title_contains?: string | null; // String
-    title_ends_with?: string | null; // String
-    title_gt?: string | null; // String
-    title_gte?: string | null; // String
-    title_in?: string[] | null; // [String!]
-    title_lt?: string | null; // String
-    title_lte?: string | null; // String
-    title_not?: string | null; // String
-    title_not_contains?: string | null; // String
-    title_not_ends_with?: string | null; // String
-    title_not_in?: string[] | null; // [String!]
-    title_not_starts_with?: string | null; // String
-    title_starts_with?: string | null; // String
+    updatedAt?: any | null; // DateTime
+    updatedAt_gt?: any | null; // DateTime
+    updatedAt_gte?: any | null; // DateTime
+    updatedAt_in?: any[] | null; // [DateTime!]
+    updatedAt_lt?: any | null; // DateTime
+    updatedAt_lte?: any | null; // DateTime
+    updatedAt_not?: any | null; // DateTime
+    updatedAt_not_in?: any[] | null; // [DateTime!]
   }
   PostWhereUniqueInput: { // input type
     id?: string | null; // ID
   }
   UserCreateInput: { // input type
+    chats?: NexusGenInputs['ChatCreateManyWithoutMembersInput'] | null; // ChatCreateManyWithoutMembersInput
+    chatsOwned?: NexusGenInputs['ChatCreateManyWithoutOwnerInput'] | null; // ChatCreateManyWithoutOwnerInput
     email?: string | null; // String
+    handle?: string | null; // String
     id?: string | null; // ID
-    name: string; // String!
+    name?: string | null; // String
+    picture?: string | null; // String
+    posts?: NexusGenInputs['PostCreateManyWithoutAuthorInput'] | null; // PostCreateManyWithoutAuthorInput
+  }
+  UserCreateManyWithoutChatsInput: { // input type
+    connect?: NexusGenInputs['UserWhereUniqueInput'][] | null; // [UserWhereUniqueInput!]
+    create?: NexusGenInputs['UserCreateWithoutChatsInput'][] | null; // [UserCreateWithoutChatsInput!]
+  }
+  UserCreateOneInput: { // input type
+    connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+    create?: NexusGenInputs['UserCreateInput'] | null; // UserCreateInput
+  }
+  UserCreateOneWithoutChatsOwnedInput: { // input type
+    connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+    create?: NexusGenInputs['UserCreateWithoutChatsOwnedInput'] | null; // UserCreateWithoutChatsOwnedInput
+  }
+  UserCreateWithoutChatsInput: { // input type
+    chatsOwned?: NexusGenInputs['ChatCreateManyWithoutOwnerInput'] | null; // ChatCreateManyWithoutOwnerInput
+    email?: string | null; // String
+    handle?: string | null; // String
+    id?: string | null; // ID
+    name?: string | null; // String
+    picture?: string | null; // String
+    posts?: NexusGenInputs['PostCreateManyWithoutAuthorInput'] | null; // PostCreateManyWithoutAuthorInput
+  }
+  UserCreateWithoutChatsOwnedInput: { // input type
+    chats?: NexusGenInputs['ChatCreateManyWithoutMembersInput'] | null; // ChatCreateManyWithoutMembersInput
+    email?: string | null; // String
+    handle?: string | null; // String
+    id?: string | null; // ID
+    name?: string | null; // String
+    picture?: string | null; // String
     posts?: NexusGenInputs['PostCreateManyWithoutAuthorInput'] | null; // PostCreateManyWithoutAuthorInput
   }
   UserWhereInput: { // input type
     AND?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
+    chats_every?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    chats_none?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    chats_some?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    chatsOwned_every?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    chatsOwned_none?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    chatsOwned_some?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    createdAt?: any | null; // DateTime
+    createdAt_gt?: any | null; // DateTime
+    createdAt_gte?: any | null; // DateTime
+    createdAt_in?: any[] | null; // [DateTime!]
+    createdAt_lt?: any | null; // DateTime
+    createdAt_lte?: any | null; // DateTime
+    createdAt_not?: any | null; // DateTime
+    createdAt_not_in?: any[] | null; // [DateTime!]
     email?: string | null; // String
     email_contains?: string | null; // String
     email_ends_with?: string | null; // String
@@ -81,6 +303,20 @@ export interface NexusGenInputs {
     email_not_in?: string[] | null; // [String!]
     email_not_starts_with?: string | null; // String
     email_starts_with?: string | null; // String
+    handle?: string | null; // String
+    handle_contains?: string | null; // String
+    handle_ends_with?: string | null; // String
+    handle_gt?: string | null; // String
+    handle_gte?: string | null; // String
+    handle_in?: string[] | null; // [String!]
+    handle_lt?: string | null; // String
+    handle_lte?: string | null; // String
+    handle_not?: string | null; // String
+    handle_not_contains?: string | null; // String
+    handle_not_ends_with?: string | null; // String
+    handle_not_in?: string[] | null; // [String!]
+    handle_not_starts_with?: string | null; // String
+    handle_starts_with?: string | null; // String
     id?: string | null; // ID
     id_contains?: string | null; // ID
     id_ends_with?: string | null; // ID
@@ -111,47 +347,134 @@ export interface NexusGenInputs {
     name_starts_with?: string | null; // String
     NOT?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
     OR?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
+    picture?: string | null; // String
+    picture_contains?: string | null; // String
+    picture_ends_with?: string | null; // String
+    picture_gt?: string | null; // String
+    picture_gte?: string | null; // String
+    picture_in?: string[] | null; // [String!]
+    picture_lt?: string | null; // String
+    picture_lte?: string | null; // String
+    picture_not?: string | null; // String
+    picture_not_contains?: string | null; // String
+    picture_not_ends_with?: string | null; // String
+    picture_not_in?: string[] | null; // [String!]
+    picture_not_starts_with?: string | null; // String
+    picture_starts_with?: string | null; // String
     posts_every?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
     posts_none?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
     posts_some?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
+    updatedAt?: any | null; // DateTime
+    updatedAt_gt?: any | null; // DateTime
+    updatedAt_gte?: any | null; // DateTime
+    updatedAt_in?: any[] | null; // [DateTime!]
+    updatedAt_lt?: any | null; // DateTime
+    updatedAt_lte?: any | null; // DateTime
+    updatedAt_not?: any | null; // DateTime
+    updatedAt_not_in?: any[] | null; // [DateTime!]
+  }
+  UserWhereUniqueInput: { // input type
+    email?: string | null; // String
+    handle?: string | null; // String
+    id?: string | null; // ID
   }
 }
 
 export interface NexusGenEnums {
-  PostOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "published_ASC" | "published_DESC" | "title_ASC" | "title_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  ChatOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "picture_ASC" | "picture_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  MessageOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "text_ASC" | "text_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  PostOrderByInput: "body_ASC" | "body_DESC" | "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "published_ASC" | "published_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  UserOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "email_ASC" | "email_DESC" | "handle_ASC" | "handle_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "picture_ASC" | "picture_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
 }
 
 export interface NexusGenRootTypes {
+  Chat: { // root type
+    createdAt: any; // DateTime!
+    id: string; // ID!
+    name: string; // String!
+    picture?: string | null; // String
+    updatedAt: any; // DateTime!
+  }
+  Message: { // root type
+    createdAt: any; // DateTime!
+    id: string; // ID!
+    text: string; // String!
+    updatedAt: any; // DateTime!
+  }
   Mutation: {};
   Post: { // root type
+    body: string; // String!
+    createdAt: any; // DateTime!
     id: string; // ID!
     published: boolean; // Boolean!
-    title: string; // String!
+    updatedAt: any; // DateTime!
   }
   Query: {};
   User: { // root type
+    createdAt: any; // DateTime!
     email?: string | null; // String
+    handle?: string | null; // String
     id: string; // ID!
-    name: string; // String!
+    name?: string | null; // String
+    picture?: string | null; // String
+    updatedAt: any; // DateTime!
   }
   String: string;
   Int: number;
   Float: number;
   Boolean: boolean;
   ID: string;
+  DateTime: any;
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
+  ChatCreateManyWithoutMembersInput: NexusGenInputs['ChatCreateManyWithoutMembersInput'];
+  ChatCreateManyWithoutOwnerInput: NexusGenInputs['ChatCreateManyWithoutOwnerInput'];
+  ChatCreateWithoutMembersInput: NexusGenInputs['ChatCreateWithoutMembersInput'];
+  ChatCreateWithoutOwnerInput: NexusGenInputs['ChatCreateWithoutOwnerInput'];
+  ChatWhereInput: NexusGenInputs['ChatWhereInput'];
+  ChatWhereUniqueInput: NexusGenInputs['ChatWhereUniqueInput'];
+  MessageCreateManyWithoutChatInput: NexusGenInputs['MessageCreateManyWithoutChatInput'];
+  MessageCreateWithoutChatInput: NexusGenInputs['MessageCreateWithoutChatInput'];
+  MessageWhereInput: NexusGenInputs['MessageWhereInput'];
+  MessageWhereUniqueInput: NexusGenInputs['MessageWhereUniqueInput'];
   PostCreateManyWithoutAuthorInput: NexusGenInputs['PostCreateManyWithoutAuthorInput'];
   PostCreateWithoutAuthorInput: NexusGenInputs['PostCreateWithoutAuthorInput'];
   PostWhereInput: NexusGenInputs['PostWhereInput'];
   PostWhereUniqueInput: NexusGenInputs['PostWhereUniqueInput'];
   UserCreateInput: NexusGenInputs['UserCreateInput'];
+  UserCreateManyWithoutChatsInput: NexusGenInputs['UserCreateManyWithoutChatsInput'];
+  UserCreateOneInput: NexusGenInputs['UserCreateOneInput'];
+  UserCreateOneWithoutChatsOwnedInput: NexusGenInputs['UserCreateOneWithoutChatsOwnedInput'];
+  UserCreateWithoutChatsInput: NexusGenInputs['UserCreateWithoutChatsInput'];
+  UserCreateWithoutChatsOwnedInput: NexusGenInputs['UserCreateWithoutChatsOwnedInput'];
   UserWhereInput: NexusGenInputs['UserWhereInput'];
+  UserWhereUniqueInput: NexusGenInputs['UserWhereUniqueInput'];
+  ChatOrderByInput: NexusGenEnums['ChatOrderByInput'];
+  MessageOrderByInput: NexusGenEnums['MessageOrderByInput'];
   PostOrderByInput: NexusGenEnums['PostOrderByInput'];
+  UserOrderByInput: NexusGenEnums['UserOrderByInput'];
 }
 
 export interface NexusGenFieldTypes {
+  Chat: { // field return type
+    createdAt: any; // DateTime!
+    id: string; // ID!
+    members: NexusGenRootTypes['User'][] | null; // [User!]
+    messages: NexusGenRootTypes['Message'][] | null; // [Message!]
+    name: string; // String!
+    owner: NexusGenRootTypes['User'] | null; // User
+    picture: string | null; // String
+    updatedAt: any; // DateTime!
+  }
+  Message: { // field return type
+    chat: NexusGenRootTypes['Chat']; // Chat!
+    createdAt: any; // DateTime!
+    id: string; // ID!
+    sender: NexusGenRootTypes['User'] | null; // User
+    text: string; // String!
+    updatedAt: any; // DateTime!
+  }
   Mutation: { // field return type
     createDraft: NexusGenRootTypes['Post']; // Post!
     createUser: NexusGenRootTypes['User']; // User!
@@ -159,10 +482,12 @@ export interface NexusGenFieldTypes {
     publish: NexusGenRootTypes['Post'] | null; // Post
   }
   Post: { // field return type
-    author: NexusGenRootTypes['User'] | null; // User
+    author: NexusGenRootTypes['User']; // User!
+    body: string; // String!
+    createdAt: any; // DateTime!
     id: string; // ID!
     published: boolean; // Boolean!
-    title: string; // String!
+    updatedAt: any; // DateTime!
   }
   Query: { // field return type
     allPosts: NexusGenRootTypes['Post'][]; // [Post!]!
@@ -171,14 +496,40 @@ export interface NexusGenFieldTypes {
     postsByUser: NexusGenRootTypes['Post'][]; // [Post!]!
   }
   User: { // field return type
+    chats: NexusGenRootTypes['Chat'][] | null; // [Chat!]
+    chatsOwned: NexusGenRootTypes['Chat'][] | null; // [Chat!]
+    createdAt: any; // DateTime!
     email: string | null; // String
+    handle: string | null; // String
     id: string; // ID!
-    name: string; // String!
+    name: string | null; // String
+    picture: string | null; // String
     posts: NexusGenRootTypes['Post'][] | null; // [Post!]
+    updatedAt: any; // DateTime!
   }
 }
 
 export interface NexusGenArgTypes {
+  Chat: {
+    members: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['UserOrderByInput'] | null; // UserOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    }
+    messages: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['MessageOrderByInput'] | null; // MessageOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['MessageWhereInput'] | null; // MessageWhereInput
+    }
+  }
   Mutation: {
     createDraft: { // args
       authorId?: string | null; // ID
@@ -203,6 +554,24 @@ export interface NexusGenArgTypes {
     }
   }
   User: {
+    chats: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['ChatOrderByInput'] | null; // ChatOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    }
+    chatsOwned: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['ChatOrderByInput'] | null; // ChatOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['ChatWhereInput'] | null; // ChatWhereInput
+    }
     posts: { // args
       after?: string | null; // String
       before?: string | null; // String
@@ -220,15 +589,15 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Mutation" | "Post" | "Query" | "User";
+export type NexusGenObjectNames = "Chat" | "Message" | "Mutation" | "Post" | "Query" | "User";
 
-export type NexusGenInputNames = "PostCreateManyWithoutAuthorInput" | "PostCreateWithoutAuthorInput" | "PostWhereInput" | "PostWhereUniqueInput" | "UserCreateInput" | "UserWhereInput";
+export type NexusGenInputNames = "ChatCreateManyWithoutMembersInput" | "ChatCreateManyWithoutOwnerInput" | "ChatCreateWithoutMembersInput" | "ChatCreateWithoutOwnerInput" | "ChatWhereInput" | "ChatWhereUniqueInput" | "MessageCreateManyWithoutChatInput" | "MessageCreateWithoutChatInput" | "MessageWhereInput" | "MessageWhereUniqueInput" | "PostCreateManyWithoutAuthorInput" | "PostCreateWithoutAuthorInput" | "PostWhereInput" | "PostWhereUniqueInput" | "UserCreateInput" | "UserCreateManyWithoutChatsInput" | "UserCreateOneInput" | "UserCreateOneWithoutChatsOwnedInput" | "UserCreateWithoutChatsInput" | "UserCreateWithoutChatsOwnedInput" | "UserWhereInput" | "UserWhereUniqueInput";
 
-export type NexusGenEnumNames = "PostOrderByInput";
+export type NexusGenEnumNames = "ChatOrderByInput" | "MessageOrderByInput" | "PostOrderByInput" | "UserOrderByInput";
 
 export type NexusGenInterfaceNames = never;
 
-export type NexusGenScalarNames = "Boolean" | "Float" | "ID" | "Int" | "String";
+export type NexusGenScalarNames = "Boolean" | "DateTime" | "Float" | "ID" | "Int" | "String";
 
 export type NexusGenUnionNames = never;
 

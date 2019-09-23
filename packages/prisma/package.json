@@ -16,7 +16,7 @@
     "typescript": "^3.6.3"
   },
   "scripts": {
-    "start": "ts-node index.ts",
-    "dev": "ts-node-dev --no-notify --respawn --transpileOnly ./"
+    "dev": "ts-node-dev --no-notify --respawn --transpileOnly ./",
+    "start": "ts-node index.ts"
   }
 }

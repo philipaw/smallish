@@ -17,6 +17,8 @@ export interface NexusPrismaTypes {
       Query: QueryObject
       User: UserObject
       Post: PostObject
+      Chat: ChatObject
+      Message: MessageObject
       UserConnection: UserConnectionObject
       PageInfo: PageInfoObject
       UserEdge: UserEdgeObject
@@ -24,6 +26,12 @@ export interface NexusPrismaTypes {
       PostConnection: PostConnectionObject
       PostEdge: PostEdgeObject
       AggregatePost: AggregatePostObject
+      MessageConnection: MessageConnectionObject
+      MessageEdge: MessageEdgeObject
+      AggregateMessage: AggregateMessageObject
+      ChatConnection: ChatConnectionObject
+      ChatEdge: ChatEdgeObject
+      AggregateChat: AggregateChatObject
       Mutation: MutationObject
       BatchPayload: BatchPayloadObject
       Subscription: SubscriptionObject
@@ -31,11 +39,17 @@ export interface NexusPrismaTypes {
       UserPreviousValues: UserPreviousValuesObject
       PostSubscriptionPayload: PostSubscriptionPayloadObject
       PostPreviousValues: PostPreviousValuesObject
+      MessageSubscriptionPayload: MessageSubscriptionPayloadObject
+      MessagePreviousValues: MessagePreviousValuesObject
+      ChatSubscriptionPayload: ChatSubscriptionPayloadObject
+      ChatPreviousValues: ChatPreviousValuesObject
     }
     fieldsDetails: {
       Query: QueryFieldDetails
       User: UserFieldDetails
       Post: PostFieldDetails
+      Chat: ChatFieldDetails
+      Message: MessageFieldDetails
       UserConnection: UserConnectionFieldDetails
       PageInfo: PageInfoFieldDetails
       UserEdge: UserEdgeFieldDetails
@@ -43,6 +57,12 @@ export interface NexusPrismaTypes {
       PostConnection: PostConnectionFieldDetails
       PostEdge: PostEdgeFieldDetails
       AggregatePost: AggregatePostFieldDetails
+      MessageConnection: MessageConnectionFieldDetails
+      MessageEdge: MessageEdgeFieldDetails
+      AggregateMessage: AggregateMessageFieldDetails
+      ChatConnection: ChatConnectionFieldDetails
+      ChatEdge: ChatEdgeFieldDetails
+      AggregateChat: AggregateChatFieldDetails
       Mutation: MutationFieldDetails
       BatchPayload: BatchPayloadFieldDetails
       Subscription: SubscriptionFieldDetails
@@ -50,6 +70,10 @@ export interface NexusPrismaTypes {
       UserPreviousValues: UserPreviousValuesFieldDetails
       PostSubscriptionPayload: PostSubscriptionPayloadFieldDetails
       PostPreviousValues: PostPreviousValuesFieldDetails
+      MessageSubscriptionPayload: MessageSubscriptionPayloadFieldDetails
+      MessagePreviousValues: MessagePreviousValuesFieldDetails
+      ChatSubscriptionPayload: ChatSubscriptionPayloadFieldDetails
+      ChatPreviousValues: ChatPreviousValuesFieldDetails
     }
   }
   inputTypes: {
@@ -57,10 +81,25 @@ export interface NexusPrismaTypes {
       UserWhereUniqueInput: UserWhereUniqueInputInputObject
       PostWhereInput: PostWhereInputInputObject
       UserWhereInput: UserWhereInputInputObject
+      ChatWhereInput: ChatWhereInputInputObject
+      MessageWhereInput: MessageWhereInputInputObject
       PostWhereUniqueInput: PostWhereUniqueInputInputObject
+      MessageWhereUniqueInput: MessageWhereUniqueInputInputObject
+      ChatWhereUniqueInput: ChatWhereUniqueInputInputObject
       UserCreateInput: UserCreateInputInputObject
       PostCreateManyWithoutAuthorInput: PostCreateManyWithoutAuthorInputInputObject
       PostCreateWithoutAuthorInput: PostCreateWithoutAuthorInputInputObject
+      ChatCreateManyWithoutMembersInput: ChatCreateManyWithoutMembersInputInputObject
+      ChatCreateWithoutMembersInput: ChatCreateWithoutMembersInputInputObject
+      UserCreateOneWithoutChatsOwnedInput: UserCreateOneWithoutChatsOwnedInputInputObject
+      UserCreateWithoutChatsOwnedInput: UserCreateWithoutChatsOwnedInputInputObject
+      MessageCreateManyWithoutChatInput: MessageCreateManyWithoutChatInputInputObject
+      MessageCreateWithoutChatInput: MessageCreateWithoutChatInputInputObject
+      UserCreateOneInput: UserCreateOneInputInputObject
+      ChatCreateManyWithoutOwnerInput: ChatCreateManyWithoutOwnerInputInputObject
+      ChatCreateWithoutOwnerInput: ChatCreateWithoutOwnerInputInputObject
+      UserCreateManyWithoutChatsInput: UserCreateManyWithoutChatsInputInputObject
+      UserCreateWithoutChatsInput: UserCreateWithoutChatsInputInputObject
       UserUpdateInput: UserUpdateInputInputObject
       PostUpdateManyWithoutAuthorInput: PostUpdateManyWithoutAuthorInputInputObject
       PostUpdateWithWhereUniqueWithoutAuthorInput: PostUpdateWithWhereUniqueWithoutAuthorInputInputObject
@@ -69,22 +108,68 @@ export interface NexusPrismaTypes {
       PostScalarWhereInput: PostScalarWhereInputInputObject
       PostUpdateManyWithWhereNestedInput: PostUpdateManyWithWhereNestedInputInputObject
       PostUpdateManyDataInput: PostUpdateManyDataInputInputObject
+      ChatUpdateManyWithoutMembersInput: ChatUpdateManyWithoutMembersInputInputObject
+      ChatUpdateWithWhereUniqueWithoutMembersInput: ChatUpdateWithWhereUniqueWithoutMembersInputInputObject
+      ChatUpdateWithoutMembersDataInput: ChatUpdateWithoutMembersDataInputInputObject
+      UserUpdateOneWithoutChatsOwnedInput: UserUpdateOneWithoutChatsOwnedInputInputObject
+      UserUpdateWithoutChatsOwnedDataInput: UserUpdateWithoutChatsOwnedDataInputInputObject
+      UserUpsertWithoutChatsOwnedInput: UserUpsertWithoutChatsOwnedInputInputObject
+      MessageUpdateManyWithoutChatInput: MessageUpdateManyWithoutChatInputInputObject
+      MessageUpdateWithWhereUniqueWithoutChatInput: MessageUpdateWithWhereUniqueWithoutChatInputInputObject
+      MessageUpdateWithoutChatDataInput: MessageUpdateWithoutChatDataInputInputObject
+      UserUpdateOneInput: UserUpdateOneInputInputObject
+      UserUpdateDataInput: UserUpdateDataInputInputObject
+      ChatUpdateManyWithoutOwnerInput: ChatUpdateManyWithoutOwnerInputInputObject
+      ChatUpdateWithWhereUniqueWithoutOwnerInput: ChatUpdateWithWhereUniqueWithoutOwnerInputInputObject
+      ChatUpdateWithoutOwnerDataInput: ChatUpdateWithoutOwnerDataInputInputObject
+      UserUpdateManyWithoutChatsInput: UserUpdateManyWithoutChatsInputInputObject
+      UserUpdateWithWhereUniqueWithoutChatsInput: UserUpdateWithWhereUniqueWithoutChatsInputInputObject
+      UserUpdateWithoutChatsDataInput: UserUpdateWithoutChatsDataInputInputObject
+      UserUpsertWithWhereUniqueWithoutChatsInput: UserUpsertWithWhereUniqueWithoutChatsInputInputObject
+      UserScalarWhereInput: UserScalarWhereInputInputObject
+      UserUpdateManyWithWhereNestedInput: UserUpdateManyWithWhereNestedInputInputObject
+      UserUpdateManyDataInput: UserUpdateManyDataInputInputObject
+      ChatUpsertWithWhereUniqueWithoutOwnerInput: ChatUpsertWithWhereUniqueWithoutOwnerInputInputObject
+      ChatScalarWhereInput: ChatScalarWhereInputInputObject
+      ChatUpdateManyWithWhereNestedInput: ChatUpdateManyWithWhereNestedInputInputObject
+      ChatUpdateManyDataInput: ChatUpdateManyDataInputInputObject
+      UserUpsertNestedInput: UserUpsertNestedInputInputObject
+      MessageUpsertWithWhereUniqueWithoutChatInput: MessageUpsertWithWhereUniqueWithoutChatInputInputObject
+      MessageScalarWhereInput: MessageScalarWhereInputInputObject
+      MessageUpdateManyWithWhereNestedInput: MessageUpdateManyWithWhereNestedInputInputObject
+      MessageUpdateManyDataInput: MessageUpdateManyDataInputInputObject
+      ChatUpsertWithWhereUniqueWithoutMembersInput: ChatUpsertWithWhereUniqueWithoutMembersInputInputObject
       UserUpdateManyMutationInput: UserUpdateManyMutationInputInputObject
       PostCreateInput: PostCreateInputInputObject
       UserCreateOneWithoutPostsInput: UserCreateOneWithoutPostsInputInputObject
       UserCreateWithoutPostsInput: UserCreateWithoutPostsInputInputObject
       PostUpdateInput: PostUpdateInputInputObject
-      UserUpdateOneWithoutPostsInput: UserUpdateOneWithoutPostsInputInputObject
+      UserUpdateOneRequiredWithoutPostsInput: UserUpdateOneRequiredWithoutPostsInputInputObject
       UserUpdateWithoutPostsDataInput: UserUpdateWithoutPostsDataInputInputObject
       UserUpsertWithoutPostsInput: UserUpsertWithoutPostsInputInputObject
       PostUpdateManyMutationInput: PostUpdateManyMutationInputInputObject
+      MessageCreateInput: MessageCreateInputInputObject
+      ChatCreateOneWithoutMessagesInput: ChatCreateOneWithoutMessagesInputInputObject
+      ChatCreateWithoutMessagesInput: ChatCreateWithoutMessagesInputInputObject
+      MessageUpdateInput: MessageUpdateInputInputObject
+      ChatUpdateOneRequiredWithoutMessagesInput: ChatUpdateOneRequiredWithoutMessagesInputInputObject
+      ChatUpdateWithoutMessagesDataInput: ChatUpdateWithoutMessagesDataInputInputObject
+      ChatUpsertWithoutMessagesInput: ChatUpsertWithoutMessagesInputInputObject
+      MessageUpdateManyMutationInput: MessageUpdateManyMutationInputInputObject
+      ChatCreateInput: ChatCreateInputInputObject
+      ChatUpdateInput: ChatUpdateInputInputObject
+      ChatUpdateManyMutationInput: ChatUpdateManyMutationInputInputObject
       UserSubscriptionWhereInput: UserSubscriptionWhereInputInputObject
       PostSubscriptionWhereInput: PostSubscriptionWhereInputInputObject
+      MessageSubscriptionWhereInput: MessageSubscriptionWhereInputInputObject
+      ChatSubscriptionWhereInput: ChatSubscriptionWhereInputInputObject
     }
   }
   enumTypes: {
     PostOrderByInput: PostOrderByInputValues,
+    ChatOrderByInput: ChatOrderByInputValues,
     UserOrderByInput: UserOrderByInputValues,
+    MessageOrderByInput: MessageOrderByInputValues,
     MutationType: MutationTypeValues,
   }
 }
@@ -99,6 +184,12 @@ type QueryObject =
   | { name: 'post', args?: QueryPostArgs[] | false, alias?: string  } 
   | { name: 'posts', args?: QueryPostsArgs[] | false, alias?: string  } 
   | { name: 'postsConnection', args?: QueryPostsConnectionArgs[] | false, alias?: string  } 
+  | { name: 'message', args?: QueryMessageArgs[] | false, alias?: string  } 
+  | { name: 'messages', args?: QueryMessagesArgs[] | false, alias?: string  } 
+  | { name: 'messagesConnection', args?: QueryMessagesConnectionArgs[] | false, alias?: string  } 
+  | { name: 'chat', args?: QueryChatArgs[] | false, alias?: string  } 
+  | { name: 'chats', args?: QueryChatsArgs[] | false, alias?: string  } 
+  | { name: 'chatsConnection', args?: QueryChatsConnectionArgs[] | false, alias?: string  } 
 
 type QueryFields =
   | 'user'
@@ -107,6 +198,12 @@ type QueryFields =
   | 'post'
   | 'posts'
   | 'postsConnection'
+  | 'message'
+  | 'messages'
+  | 'messagesConnection'
+  | 'chat'
+  | 'chats'
+  | 'chatsConnection'
 
 
 type QueryUserArgs =
@@ -138,6 +235,42 @@ type QueryPostsArgs =
   | 'first'
   | 'last'
 type QueryPostsConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryMessageArgs =
+  | 'where'
+type QueryMessagesArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryMessagesConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryChatArgs =
+  | 'where'
+type QueryChatsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryChatsConnectionArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -226,6 +359,84 @@ export interface QueryFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.PostConnection> | prisma.PostConnection
   }
+  message: {
+    type: 'Message'
+    args: Record<QueryMessageArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where: MessageWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Message | null> | prisma.Message | null
+  }
+  messages: {
+    type: 'Message'
+    args: Record<QueryMessagesArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: MessageWhereInput | null, orderBy?: prisma.MessageOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Message[]> | prisma.Message[]
+  }
+  messagesConnection: {
+    type: 'MessageConnection'
+    args: Record<QueryMessagesConnectionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: MessageWhereInput | null, orderBy?: prisma.MessageOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MessageConnection> | prisma.MessageConnection
+  }
+  chat: {
+    type: 'Chat'
+    args: Record<QueryChatArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where: ChatWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Chat | null> | prisma.Chat | null
+  }
+  chats: {
+    type: 'Chat'
+    args: Record<QueryChatsArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: ChatWhereInput | null, orderBy?: prisma.ChatOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Chat[]> | prisma.Chat[]
+  }
+  chatsConnection: {
+    type: 'ChatConnection'
+    args: Record<QueryChatsConnectionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: ChatWhereInput | null, orderBy?: prisma.ChatOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ChatConnection> | prisma.ChatConnection
+  }
 }
   
 
@@ -235,17 +446,45 @@ type UserObject =
   | UserFields
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'email', args?: [] | false, alias?: string  } 
+  | { name: 'handle', args?: [] | false, alias?: string  } 
   | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'picture', args?: [] | false, alias?: string  } 
   | { name: 'posts', args?: UserPostsArgs[] | false, alias?: string  } 
+  | { name: 'chats', args?: UserChatsArgs[] | false, alias?: string  } 
+  | { name: 'chatsOwned', args?: UserChatsOwnedArgs[] | false, alias?: string  } 
+  | { name: 'createdAt', args?: [] | false, alias?: string  } 
+  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
 
 type UserFields =
   | 'id'
   | 'email'
+  | 'handle'
   | 'name'
+  | 'picture'
   | 'posts'
+  | 'chats'
+  | 'chatsOwned'
+  | 'createdAt'
+  | 'updatedAt'
 
 
 type UserPostsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type UserChatsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type UserChatsOwnedArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -272,12 +511,28 @@ export interface UserFieldDetails {
     nullable: true
     resolve: undefined
   }
+  handle: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
   name: {
     type: 'String'
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
+    resolve: undefined
+  }
+  picture: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
     resolve: undefined
   }
   posts: {
@@ -293,6 +548,48 @@ export interface UserFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Post[]> | prisma.Post[]
   }
+  chats: {
+    type: 'Chat'
+    args: Record<UserChatsArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"User">,
+      args: { where?: ChatWhereInput | null, orderBy?: prisma.ChatOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Chat[]> | prisma.Chat[]
+  }
+  chatsOwned: {
+    type: 'Chat'
+    args: Record<UserChatsOwnedArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"User">,
+      args: { where?: ChatWhereInput | null, orderBy?: prisma.ChatOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Chat[]> | prisma.Chat[]
+  }
+  createdAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  updatedAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
 }
   
 
@@ -301,15 +598,19 @@ export interface UserFieldDetails {
 type PostObject =
   | PostFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'title', args?: [] | false, alias?: string  } 
+  | { name: 'body', args?: [] | false, alias?: string  } 
   | { name: 'published', args?: [] | false, alias?: string  } 
   | { name: 'author', args?: [] | false, alias?: string  } 
+  | { name: 'createdAt', args?: [] | false, alias?: string  } 
+  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
 
 type PostFields =
   | 'id'
-  | 'title'
+  | 'body'
   | 'published'
   | 'author'
+  | 'createdAt'
+  | 'updatedAt'
 
 
 
@@ -324,7 +625,7 @@ export interface PostFieldDetails {
     nullable: false
     resolve: undefined
   }
-  title: {
+  body: {
     type: 'String'
     args: {}
     description: string
@@ -345,13 +646,239 @@ export interface PostFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: true
+    nullable: false
     resolve: (
       root: core.RootValue<"Post">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
+    ) => Promise<prisma.User> | prisma.User
+  }
+  createdAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  updatedAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for Chat
+
+type ChatObject =
+  | ChatFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'picture', args?: [] | false, alias?: string  } 
+  | { name: 'owner', args?: [] | false, alias?: string  } 
+  | { name: 'members', args?: ChatMembersArgs[] | false, alias?: string  } 
+  | { name: 'messages', args?: ChatMessagesArgs[] | false, alias?: string  } 
+  | { name: 'createdAt', args?: [] | false, alias?: string  } 
+  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
+
+type ChatFields =
+  | 'id'
+  | 'name'
+  | 'picture'
+  | 'owner'
+  | 'members'
+  | 'messages'
+  | 'createdAt'
+  | 'updatedAt'
+
+
+type ChatMembersArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type ChatMessagesArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+  
+
+export interface ChatFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  name: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  picture: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  owner: {
+    type: 'User'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Chat">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
     ) => Promise<prisma.User | null> | prisma.User | null
+  }
+  members: {
+    type: 'User'
+    args: Record<ChatMembersArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Chat">,
+      args: { where?: UserWhereInput | null, orderBy?: prisma.UserOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.User[]> | prisma.User[]
+  }
+  messages: {
+    type: 'Message'
+    args: Record<ChatMessagesArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Chat">,
+      args: { where?: MessageWhereInput | null, orderBy?: prisma.MessageOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Message[]> | prisma.Message[]
+  }
+  createdAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  updatedAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for Message
+
+type MessageObject =
+  | MessageFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'chat', args?: [] | false, alias?: string  } 
+  | { name: 'text', args?: [] | false, alias?: string  } 
+  | { name: 'sender', args?: [] | false, alias?: string  } 
+  | { name: 'createdAt', args?: [] | false, alias?: string  } 
+  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
+
+type MessageFields =
+  | 'id'
+  | 'chat'
+  | 'text'
+  | 'sender'
+  | 'createdAt'
+  | 'updatedAt'
+
+
+
+  
+
+export interface MessageFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  chat: {
+    type: 'Chat'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Message">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Chat> | prisma.Chat
+  }
+  text: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  sender: {
+    type: 'User'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Message">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.User | null> | prisma.User | null
+  }
+  createdAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  updatedAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
   }
 }
   
@@ -661,6 +1188,256 @@ export interface AggregatePostFieldDetails {
 }
   
 
+// Types for MessageConnection
+
+type MessageConnectionObject =
+  | MessageConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type MessageConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface MessageConnectionFieldDetails {
+  pageInfo: {
+    type: 'PageInfo'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"MessageConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo
+  }
+  edges: {
+    type: 'MessageEdge'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"MessageConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MessageEdge[]> | prisma.MessageEdge[]
+  }
+  aggregate: {
+    type: 'AggregateMessage'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"MessageConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregateMessage> | prisma.AggregateMessage
+  }
+}
+  
+
+// Types for MessageEdge
+
+type MessageEdgeObject =
+  | MessageEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type MessageEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface MessageEdgeFieldDetails {
+  node: {
+    type: 'Message'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"MessageEdge">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Message> | prisma.Message
+  }
+  cursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for AggregateMessage
+
+type AggregateMessageObject =
+  | AggregateMessageFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregateMessageFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregateMessageFieldDetails {
+  count: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for ChatConnection
+
+type ChatConnectionObject =
+  | ChatConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type ChatConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface ChatConnectionFieldDetails {
+  pageInfo: {
+    type: 'PageInfo'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"ChatConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo
+  }
+  edges: {
+    type: 'ChatEdge'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"ChatConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ChatEdge[]> | prisma.ChatEdge[]
+  }
+  aggregate: {
+    type: 'AggregateChat'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"ChatConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregateChat> | prisma.AggregateChat
+  }
+}
+  
+
+// Types for ChatEdge
+
+type ChatEdgeObject =
+  | ChatEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type ChatEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface ChatEdgeFieldDetails {
+  node: {
+    type: 'Chat'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"ChatEdge">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Chat> | prisma.Chat
+  }
+  cursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for AggregateChat
+
+type AggregateChatObject =
+  | AggregateChatFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregateChatFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregateChatFieldDetails {
+  count: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
 // Types for Mutation
 
 type MutationObject =
@@ -677,6 +1454,18 @@ type MutationObject =
   | { name: 'upsertPost', args?: MutationUpsertPostArgs[] | false, alias?: string  } 
   | { name: 'deletePost', args?: MutationDeletePostArgs[] | false, alias?: string  } 
   | { name: 'deleteManyPosts', args?: MutationDeleteManyPostsArgs[] | false, alias?: string  } 
+  | { name: 'createMessage', args?: MutationCreateMessageArgs[] | false, alias?: string  } 
+  | { name: 'updateMessage', args?: MutationUpdateMessageArgs[] | false, alias?: string  } 
+  | { name: 'updateManyMessages', args?: MutationUpdateManyMessagesArgs[] | false, alias?: string  } 
+  | { name: 'upsertMessage', args?: MutationUpsertMessageArgs[] | false, alias?: string  } 
+  | { name: 'deleteMessage', args?: MutationDeleteMessageArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyMessages', args?: MutationDeleteManyMessagesArgs[] | false, alias?: string  } 
+  | { name: 'createChat', args?: MutationCreateChatArgs[] | false, alias?: string  } 
+  | { name: 'updateChat', args?: MutationUpdateChatArgs[] | false, alias?: string  } 
+  | { name: 'updateManyChats', args?: MutationUpdateManyChatsArgs[] | false, alias?: string  } 
+  | { name: 'upsertChat', args?: MutationUpsertChatArgs[] | false, alias?: string  } 
+  | { name: 'deleteChat', args?: MutationDeleteChatArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyChats', args?: MutationDeleteManyChatsArgs[] | false, alias?: string  } 
 
 type MutationFields =
   | 'createUser'
@@ -691,6 +1480,18 @@ type MutationFields =
   | 'upsertPost'
   | 'deletePost'
   | 'deleteManyPosts'
+  | 'createMessage'
+  | 'updateMessage'
+  | 'updateManyMessages'
+  | 'upsertMessage'
+  | 'deleteMessage'
+  | 'deleteManyMessages'
+  | 'createChat'
+  | 'updateChat'
+  | 'updateManyChats'
+  | 'upsertChat'
+  | 'deleteChat'
+  | 'deleteManyChats'
 
 
 type MutationCreateUserArgs =
@@ -724,6 +1525,38 @@ type MutationUpsertPostArgs =
 type MutationDeletePostArgs =
   | 'where'
 type MutationDeleteManyPostsArgs =
+  | 'where'
+type MutationCreateMessageArgs =
+  | 'data'
+type MutationUpdateMessageArgs =
+  | 'data'
+  | 'where'
+type MutationUpdateManyMessagesArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertMessageArgs =
+  | 'where'
+  | 'create'
+  | 'update'
+type MutationDeleteMessageArgs =
+  | 'where'
+type MutationDeleteManyMessagesArgs =
+  | 'where'
+type MutationCreateChatArgs =
+  | 'data'
+type MutationUpdateChatArgs =
+  | 'data'
+  | 'where'
+type MutationUpdateManyChatsArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertChatArgs =
+  | 'where'
+  | 'create'
+  | 'update'
+type MutationDeleteChatArgs =
+  | 'where'
+type MutationDeleteManyChatsArgs =
   | 'where'
   
 
@@ -884,6 +1717,162 @@ export interface MutationFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
+  createMessage: {
+    type: 'Message'
+    args: Record<MutationCreateMessageArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: MessageCreateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Message> | prisma.Message
+  }
+  updateMessage: {
+    type: 'Message'
+    args: Record<MutationUpdateMessageArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: MessageUpdateInput, where: MessageWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Message | null> | prisma.Message | null
+  }
+  updateManyMessages: {
+    type: 'BatchPayload'
+    args: Record<MutationUpdateManyMessagesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: MessageUpdateManyMutationInput, where?: MessageWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  upsertMessage: {
+    type: 'Message'
+    args: Record<MutationUpsertMessageArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: MessageWhereUniqueInput, create: MessageCreateInput, update: MessageUpdateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Message> | prisma.Message
+  }
+  deleteMessage: {
+    type: 'Message'
+    args: Record<MutationDeleteMessageArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: MessageWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Message | null> | prisma.Message | null
+  }
+  deleteManyMessages: {
+    type: 'BatchPayload'
+    args: Record<MutationDeleteManyMessagesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where?: MessageWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  createChat: {
+    type: 'Chat'
+    args: Record<MutationCreateChatArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: ChatCreateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Chat> | prisma.Chat
+  }
+  updateChat: {
+    type: 'Chat'
+    args: Record<MutationUpdateChatArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: ChatUpdateInput, where: ChatWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Chat | null> | prisma.Chat | null
+  }
+  updateManyChats: {
+    type: 'BatchPayload'
+    args: Record<MutationUpdateManyChatsArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: ChatUpdateManyMutationInput, where?: ChatWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  upsertChat: {
+    type: 'Chat'
+    args: Record<MutationUpsertChatArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: ChatWhereUniqueInput, create: ChatCreateInput, update: ChatUpdateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Chat> | prisma.Chat
+  }
+  deleteChat: {
+    type: 'Chat'
+    args: Record<MutationDeleteChatArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: ChatWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Chat | null> | prisma.Chat | null
+  }
+  deleteManyChats: {
+    type: 'BatchPayload'
+    args: Record<MutationDeleteManyChatsArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where?: ChatWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
 }
   
 
@@ -918,15 +1907,23 @@ type SubscriptionObject =
   | SubscriptionFields
   | { name: 'user', args?: SubscriptionUserArgs[] | false, alias?: string  } 
   | { name: 'post', args?: SubscriptionPostArgs[] | false, alias?: string  } 
+  | { name: 'message', args?: SubscriptionMessageArgs[] | false, alias?: string  } 
+  | { name: 'chat', args?: SubscriptionChatArgs[] | false, alias?: string  } 
 
 type SubscriptionFields =
   | 'user'
   | 'post'
+  | 'message'
+  | 'chat'
 
 
 type SubscriptionUserArgs =
   | 'where'
 type SubscriptionPostArgs =
+  | 'where'
+type SubscriptionMessageArgs =
+  | 'where'
+type SubscriptionChatArgs =
   | 'where'
   
 
@@ -956,6 +1953,32 @@ export interface SubscriptionFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.PostSubscriptionPayload | null> | prisma.PostSubscriptionPayload | null
+  }
+  message: {
+    type: 'MessageSubscriptionPayload'
+    args: Record<SubscriptionMessageArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Subscription">,
+      args: { where?: MessageSubscriptionWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MessageSubscriptionPayload | null> | prisma.MessageSubscriptionPayload | null
+  }
+  chat: {
+    type: 'ChatSubscriptionPayload'
+    args: Record<SubscriptionChatArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Subscription">,
+      args: { where?: ChatSubscriptionWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ChatSubscriptionPayload | null> | prisma.ChatSubscriptionPayload | null
   }
 }
   
@@ -1036,12 +2059,20 @@ type UserPreviousValuesObject =
   | UserPreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'email', args?: [] | false, alias?: string  } 
+  | { name: 'handle', args?: [] | false, alias?: string  } 
   | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'picture', args?: [] | false, alias?: string  } 
+  | { name: 'createdAt', args?: [] | false, alias?: string  } 
+  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
 
 type UserPreviousValuesFields =
   | 'id'
   | 'email'
+  | 'handle'
   | 'name'
+  | 'picture'
+  | 'createdAt'
+  | 'updatedAt'
 
 
 
@@ -1064,8 +2095,40 @@ export interface UserPreviousValuesFieldDetails {
     nullable: true
     resolve: undefined
   }
+  handle: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
   name: {
     type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  picture: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  createdAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  updatedAt: {
+    type: 'DateTime'
     args: {}
     description: string
     list: undefined
@@ -1150,13 +2213,17 @@ export interface PostSubscriptionPayloadFieldDetails {
 type PostPreviousValuesObject =
   | PostPreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'title', args?: [] | false, alias?: string  } 
+  | { name: 'body', args?: [] | false, alias?: string  } 
   | { name: 'published', args?: [] | false, alias?: string  } 
+  | { name: 'createdAt', args?: [] | false, alias?: string  } 
+  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
 
 type PostPreviousValuesFields =
   | 'id'
-  | 'title'
+  | 'body'
   | 'published'
+  | 'createdAt'
+  | 'updatedAt'
 
 
 
@@ -1171,7 +2238,7 @@ export interface PostPreviousValuesFieldDetails {
     nullable: false
     resolve: undefined
   }
-  title: {
+  body: {
     type: 'String'
     args: {}
     description: string
@@ -1187,6 +2254,282 @@ export interface PostPreviousValuesFieldDetails {
     nullable: false
     resolve: undefined
   }
+  createdAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  updatedAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for MessageSubscriptionPayload
+
+type MessageSubscriptionPayloadObject =
+  | MessageSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type MessageSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface MessageSubscriptionPayloadFieldDetails {
+  mutation: {
+    type: 'MutationType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"MessageSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType
+  }
+  node: {
+    type: 'Message'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"MessageSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Message | null> | prisma.Message | null
+  }
+  updatedFields: {
+    type: 'String'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: undefined
+  }
+  previousValues: {
+    type: 'MessagePreviousValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"MessageSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MessagePreviousValues | null> | prisma.MessagePreviousValues | null
+  }
+}
+  
+
+// Types for MessagePreviousValues
+
+type MessagePreviousValuesObject =
+  | MessagePreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'text', args?: [] | false, alias?: string  } 
+  | { name: 'createdAt', args?: [] | false, alias?: string  } 
+  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
+
+type MessagePreviousValuesFields =
+  | 'id'
+  | 'text'
+  | 'createdAt'
+  | 'updatedAt'
+
+
+
+  
+
+export interface MessagePreviousValuesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  text: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  createdAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  updatedAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for ChatSubscriptionPayload
+
+type ChatSubscriptionPayloadObject =
+  | ChatSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type ChatSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface ChatSubscriptionPayloadFieldDetails {
+  mutation: {
+    type: 'MutationType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"ChatSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType
+  }
+  node: {
+    type: 'Chat'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"ChatSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Chat | null> | prisma.Chat | null
+  }
+  updatedFields: {
+    type: 'String'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: undefined
+  }
+  previousValues: {
+    type: 'ChatPreviousValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"ChatSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ChatPreviousValues | null> | prisma.ChatPreviousValues | null
+  }
+}
+  
+
+// Types for ChatPreviousValues
+
+type ChatPreviousValuesObject =
+  | ChatPreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'picture', args?: [] | false, alias?: string  } 
+  | { name: 'createdAt', args?: [] | false, alias?: string  } 
+  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
+
+type ChatPreviousValuesFields =
+  | 'id'
+  | 'name'
+  | 'picture'
+  | 'createdAt'
+  | 'updatedAt'
+
+
+
+  
+
+export interface ChatPreviousValuesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  name: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  picture: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  createdAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  updatedAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
 }
   
 
@@ -1194,11 +2537,13 @@ export interface PostPreviousValuesFieldDetails {
 export interface UserWhereUniqueInput {
   id?: string | null
   email?: string | null
+  handle?: string | null
 }
 export type UserWhereUniqueInputInputObject =
   | Extract<keyof UserWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'email', alias?: string  } 
+  | { name: 'handle', alias?: string  } 
   
 export interface PostWhereInput {
   id?: string | null
@@ -1215,23 +2560,39 @@ export interface PostWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  title?: string | null
-  title_not?: string | null
-  title_in?: string[]
-  title_not_in?: string[]
-  title_lt?: string | null
-  title_lte?: string | null
-  title_gt?: string | null
-  title_gte?: string | null
-  title_contains?: string | null
-  title_not_contains?: string | null
-  title_starts_with?: string | null
-  title_not_starts_with?: string | null
-  title_ends_with?: string | null
-  title_not_ends_with?: string | null
+  body?: string | null
+  body_not?: string | null
+  body_in?: string[]
+  body_not_in?: string[]
+  body_lt?: string | null
+  body_lte?: string | null
+  body_gt?: string | null
+  body_gte?: string | null
+  body_contains?: string | null
+  body_not_contains?: string | null
+  body_starts_with?: string | null
+  body_not_starts_with?: string | null
+  body_ends_with?: string | null
+  body_not_ends_with?: string | null
   published?: boolean | null
   published_not?: boolean | null
   author?: UserWhereInput | null
+  createdAt?: string | null
+  createdAt_not?: string | null
+  createdAt_in?: string[]
+  createdAt_not_in?: string[]
+  createdAt_lt?: string | null
+  createdAt_lte?: string | null
+  createdAt_gt?: string | null
+  createdAt_gte?: string | null
+  updatedAt?: string | null
+  updatedAt_not?: string | null
+  updatedAt_in?: string[]
+  updatedAt_not_in?: string[]
+  updatedAt_lt?: string | null
+  updatedAt_lte?: string | null
+  updatedAt_gt?: string | null
+  updatedAt_gte?: string | null
   AND?: PostWhereInput[]
   OR?: PostWhereInput[]
   NOT?: PostWhereInput[]
@@ -1252,23 +2613,39 @@ export type PostWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'title', alias?: string  } 
-  | { name: 'title_not', alias?: string  } 
-  | { name: 'title_in', alias?: string  } 
-  | { name: 'title_not_in', alias?: string  } 
-  | { name: 'title_lt', alias?: string  } 
-  | { name: 'title_lte', alias?: string  } 
-  | { name: 'title_gt', alias?: string  } 
-  | { name: 'title_gte', alias?: string  } 
-  | { name: 'title_contains', alias?: string  } 
-  | { name: 'title_not_contains', alias?: string  } 
-  | { name: 'title_starts_with', alias?: string  } 
-  | { name: 'title_not_starts_with', alias?: string  } 
-  | { name: 'title_ends_with', alias?: string  } 
-  | { name: 'title_not_ends_with', alias?: string  } 
+  | { name: 'body', alias?: string  } 
+  | { name: 'body_not', alias?: string  } 
+  | { name: 'body_in', alias?: string  } 
+  | { name: 'body_not_in', alias?: string  } 
+  | { name: 'body_lt', alias?: string  } 
+  | { name: 'body_lte', alias?: string  } 
+  | { name: 'body_gt', alias?: string  } 
+  | { name: 'body_gte', alias?: string  } 
+  | { name: 'body_contains', alias?: string  } 
+  | { name: 'body_not_contains', alias?: string  } 
+  | { name: 'body_starts_with', alias?: string  } 
+  | { name: 'body_not_starts_with', alias?: string  } 
+  | { name: 'body_ends_with', alias?: string  } 
+  | { name: 'body_not_ends_with', alias?: string  } 
   | { name: 'published', alias?: string  } 
   | { name: 'published_not', alias?: string  } 
   | { name: 'author', alias?: string  } 
+  | { name: 'createdAt', alias?: string  } 
+  | { name: 'createdAt_not', alias?: string  } 
+  | { name: 'createdAt_in', alias?: string  } 
+  | { name: 'createdAt_not_in', alias?: string  } 
+  | { name: 'createdAt_lt', alias?: string  } 
+  | { name: 'createdAt_lte', alias?: string  } 
+  | { name: 'createdAt_gt', alias?: string  } 
+  | { name: 'createdAt_gte', alias?: string  } 
+  | { name: 'updatedAt', alias?: string  } 
+  | { name: 'updatedAt_not', alias?: string  } 
+  | { name: 'updatedAt_in', alias?: string  } 
+  | { name: 'updatedAt_not_in', alias?: string  } 
+  | { name: 'updatedAt_lt', alias?: string  } 
+  | { name: 'updatedAt_lte', alias?: string  } 
+  | { name: 'updatedAt_gt', alias?: string  } 
+  | { name: 'updatedAt_gte', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -1302,6 +2679,20 @@ export interface UserWhereInput {
   email_not_starts_with?: string | null
   email_ends_with?: string | null
   email_not_ends_with?: string | null
+  handle?: string | null
+  handle_not?: string | null
+  handle_in?: string[]
+  handle_not_in?: string[]
+  handle_lt?: string | null
+  handle_lte?: string | null
+  handle_gt?: string | null
+  handle_gte?: string | null
+  handle_contains?: string | null
+  handle_not_contains?: string | null
+  handle_starts_with?: string | null
+  handle_not_starts_with?: string | null
+  handle_ends_with?: string | null
+  handle_not_ends_with?: string | null
   name?: string | null
   name_not?: string | null
   name_in?: string[]
@@ -1316,9 +2707,45 @@ export interface UserWhereInput {
   name_not_starts_with?: string | null
   name_ends_with?: string | null
   name_not_ends_with?: string | null
+  picture?: string | null
+  picture_not?: string | null
+  picture_in?: string[]
+  picture_not_in?: string[]
+  picture_lt?: string | null
+  picture_lte?: string | null
+  picture_gt?: string | null
+  picture_gte?: string | null
+  picture_contains?: string | null
+  picture_not_contains?: string | null
+  picture_starts_with?: string | null
+  picture_not_starts_with?: string | null
+  picture_ends_with?: string | null
+  picture_not_ends_with?: string | null
   posts_every?: PostWhereInput | null
   posts_some?: PostWhereInput | null
   posts_none?: PostWhereInput | null
+  chats_every?: ChatWhereInput | null
+  chats_some?: ChatWhereInput | null
+  chats_none?: ChatWhereInput | null
+  chatsOwned_every?: ChatWhereInput | null
+  chatsOwned_some?: ChatWhereInput | null
+  chatsOwned_none?: ChatWhereInput | null
+  createdAt?: string | null
+  createdAt_not?: string | null
+  createdAt_in?: string[]
+  createdAt_not_in?: string[]
+  createdAt_lt?: string | null
+  createdAt_lte?: string | null
+  createdAt_gt?: string | null
+  createdAt_gte?: string | null
+  updatedAt?: string | null
+  updatedAt_not?: string | null
+  updatedAt_in?: string[]
+  updatedAt_not_in?: string[]
+  updatedAt_lt?: string | null
+  updatedAt_lte?: string | null
+  updatedAt_gt?: string | null
+  updatedAt_gte?: string | null
   AND?: UserWhereInput[]
   OR?: UserWhereInput[]
   NOT?: UserWhereInput[]
@@ -1353,6 +2780,20 @@ export type UserWhereInputInputObject =
   | { name: 'email_not_starts_with', alias?: string  } 
   | { name: 'email_ends_with', alias?: string  } 
   | { name: 'email_not_ends_with', alias?: string  } 
+  | { name: 'handle', alias?: string  } 
+  | { name: 'handle_not', alias?: string  } 
+  | { name: 'handle_in', alias?: string  } 
+  | { name: 'handle_not_in', alias?: string  } 
+  | { name: 'handle_lt', alias?: string  } 
+  | { name: 'handle_lte', alias?: string  } 
+  | { name: 'handle_gt', alias?: string  } 
+  | { name: 'handle_gte', alias?: string  } 
+  | { name: 'handle_contains', alias?: string  } 
+  | { name: 'handle_not_contains', alias?: string  } 
+  | { name: 'handle_starts_with', alias?: string  } 
+  | { name: 'handle_not_starts_with', alias?: string  } 
+  | { name: 'handle_ends_with', alias?: string  } 
+  | { name: 'handle_not_ends_with', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'name_not', alias?: string  } 
   | { name: 'name_in', alias?: string  } 
@@ -1367,9 +2808,289 @@ export type UserWhereInputInputObject =
   | { name: 'name_not_starts_with', alias?: string  } 
   | { name: 'name_ends_with', alias?: string  } 
   | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
+  | { name: 'picture_not', alias?: string  } 
+  | { name: 'picture_in', alias?: string  } 
+  | { name: 'picture_not_in', alias?: string  } 
+  | { name: 'picture_lt', alias?: string  } 
+  | { name: 'picture_lte', alias?: string  } 
+  | { name: 'picture_gt', alias?: string  } 
+  | { name: 'picture_gte', alias?: string  } 
+  | { name: 'picture_contains', alias?: string  } 
+  | { name: 'picture_not_contains', alias?: string  } 
+  | { name: 'picture_starts_with', alias?: string  } 
+  | { name: 'picture_not_starts_with', alias?: string  } 
+  | { name: 'picture_ends_with', alias?: string  } 
+  | { name: 'picture_not_ends_with', alias?: string  } 
   | { name: 'posts_every', alias?: string  } 
   | { name: 'posts_some', alias?: string  } 
   | { name: 'posts_none', alias?: string  } 
+  | { name: 'chats_every', alias?: string  } 
+  | { name: 'chats_some', alias?: string  } 
+  | { name: 'chats_none', alias?: string  } 
+  | { name: 'chatsOwned_every', alias?: string  } 
+  | { name: 'chatsOwned_some', alias?: string  } 
+  | { name: 'chatsOwned_none', alias?: string  } 
+  | { name: 'createdAt', alias?: string  } 
+  | { name: 'createdAt_not', alias?: string  } 
+  | { name: 'createdAt_in', alias?: string  } 
+  | { name: 'createdAt_not_in', alias?: string  } 
+  | { name: 'createdAt_lt', alias?: string  } 
+  | { name: 'createdAt_lte', alias?: string  } 
+  | { name: 'createdAt_gt', alias?: string  } 
+  | { name: 'createdAt_gte', alias?: string  } 
+  | { name: 'updatedAt', alias?: string  } 
+  | { name: 'updatedAt_not', alias?: string  } 
+  | { name: 'updatedAt_in', alias?: string  } 
+  | { name: 'updatedAt_not_in', alias?: string  } 
+  | { name: 'updatedAt_lt', alias?: string  } 
+  | { name: 'updatedAt_lte', alias?: string  } 
+  | { name: 'updatedAt_gt', alias?: string  } 
+  | { name: 'updatedAt_gte', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface ChatWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in?: string[]
+  name_not_in?: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  picture?: string | null
+  picture_not?: string | null
+  picture_in?: string[]
+  picture_not_in?: string[]
+  picture_lt?: string | null
+  picture_lte?: string | null
+  picture_gt?: string | null
+  picture_gte?: string | null
+  picture_contains?: string | null
+  picture_not_contains?: string | null
+  picture_starts_with?: string | null
+  picture_not_starts_with?: string | null
+  picture_ends_with?: string | null
+  picture_not_ends_with?: string | null
+  owner?: UserWhereInput | null
+  members_every?: UserWhereInput | null
+  members_some?: UserWhereInput | null
+  members_none?: UserWhereInput | null
+  messages_every?: MessageWhereInput | null
+  messages_some?: MessageWhereInput | null
+  messages_none?: MessageWhereInput | null
+  createdAt?: string | null
+  createdAt_not?: string | null
+  createdAt_in?: string[]
+  createdAt_not_in?: string[]
+  createdAt_lt?: string | null
+  createdAt_lte?: string | null
+  createdAt_gt?: string | null
+  createdAt_gte?: string | null
+  updatedAt?: string | null
+  updatedAt_not?: string | null
+  updatedAt_in?: string[]
+  updatedAt_not_in?: string[]
+  updatedAt_lt?: string | null
+  updatedAt_lte?: string | null
+  updatedAt_gt?: string | null
+  updatedAt_gte?: string | null
+  AND?: ChatWhereInput[]
+  OR?: ChatWhereInput[]
+  NOT?: ChatWhereInput[]
+}
+export type ChatWhereInputInputObject =
+  | Extract<keyof ChatWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'name_not', alias?: string  } 
+  | { name: 'name_in', alias?: string  } 
+  | { name: 'name_not_in', alias?: string  } 
+  | { name: 'name_lt', alias?: string  } 
+  | { name: 'name_lte', alias?: string  } 
+  | { name: 'name_gt', alias?: string  } 
+  | { name: 'name_gte', alias?: string  } 
+  | { name: 'name_contains', alias?: string  } 
+  | { name: 'name_not_contains', alias?: string  } 
+  | { name: 'name_starts_with', alias?: string  } 
+  | { name: 'name_not_starts_with', alias?: string  } 
+  | { name: 'name_ends_with', alias?: string  } 
+  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
+  | { name: 'picture_not', alias?: string  } 
+  | { name: 'picture_in', alias?: string  } 
+  | { name: 'picture_not_in', alias?: string  } 
+  | { name: 'picture_lt', alias?: string  } 
+  | { name: 'picture_lte', alias?: string  } 
+  | { name: 'picture_gt', alias?: string  } 
+  | { name: 'picture_gte', alias?: string  } 
+  | { name: 'picture_contains', alias?: string  } 
+  | { name: 'picture_not_contains', alias?: string  } 
+  | { name: 'picture_starts_with', alias?: string  } 
+  | { name: 'picture_not_starts_with', alias?: string  } 
+  | { name: 'picture_ends_with', alias?: string  } 
+  | { name: 'picture_not_ends_with', alias?: string  } 
+  | { name: 'owner', alias?: string  } 
+  | { name: 'members_every', alias?: string  } 
+  | { name: 'members_some', alias?: string  } 
+  | { name: 'members_none', alias?: string  } 
+  | { name: 'messages_every', alias?: string  } 
+  | { name: 'messages_some', alias?: string  } 
+  | { name: 'messages_none', alias?: string  } 
+  | { name: 'createdAt', alias?: string  } 
+  | { name: 'createdAt_not', alias?: string  } 
+  | { name: 'createdAt_in', alias?: string  } 
+  | { name: 'createdAt_not_in', alias?: string  } 
+  | { name: 'createdAt_lt', alias?: string  } 
+  | { name: 'createdAt_lte', alias?: string  } 
+  | { name: 'createdAt_gt', alias?: string  } 
+  | { name: 'createdAt_gte', alias?: string  } 
+  | { name: 'updatedAt', alias?: string  } 
+  | { name: 'updatedAt_not', alias?: string  } 
+  | { name: 'updatedAt_in', alias?: string  } 
+  | { name: 'updatedAt_not_in', alias?: string  } 
+  | { name: 'updatedAt_lt', alias?: string  } 
+  | { name: 'updatedAt_lte', alias?: string  } 
+  | { name: 'updatedAt_gt', alias?: string  } 
+  | { name: 'updatedAt_gte', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface MessageWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  chat?: ChatWhereInput | null
+  text?: string | null
+  text_not?: string | null
+  text_in?: string[]
+  text_not_in?: string[]
+  text_lt?: string | null
+  text_lte?: string | null
+  text_gt?: string | null
+  text_gte?: string | null
+  text_contains?: string | null
+  text_not_contains?: string | null
+  text_starts_with?: string | null
+  text_not_starts_with?: string | null
+  text_ends_with?: string | null
+  text_not_ends_with?: string | null
+  sender?: UserWhereInput | null
+  createdAt?: string | null
+  createdAt_not?: string | null
+  createdAt_in?: string[]
+  createdAt_not_in?: string[]
+  createdAt_lt?: string | null
+  createdAt_lte?: string | null
+  createdAt_gt?: string | null
+  createdAt_gte?: string | null
+  updatedAt?: string | null
+  updatedAt_not?: string | null
+  updatedAt_in?: string[]
+  updatedAt_not_in?: string[]
+  updatedAt_lt?: string | null
+  updatedAt_lte?: string | null
+  updatedAt_gt?: string | null
+  updatedAt_gte?: string | null
+  AND?: MessageWhereInput[]
+  OR?: MessageWhereInput[]
+  NOT?: MessageWhereInput[]
+}
+export type MessageWhereInputInputObject =
+  | Extract<keyof MessageWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'chat', alias?: string  } 
+  | { name: 'text', alias?: string  } 
+  | { name: 'text_not', alias?: string  } 
+  | { name: 'text_in', alias?: string  } 
+  | { name: 'text_not_in', alias?: string  } 
+  | { name: 'text_lt', alias?: string  } 
+  | { name: 'text_lte', alias?: string  } 
+  | { name: 'text_gt', alias?: string  } 
+  | { name: 'text_gte', alias?: string  } 
+  | { name: 'text_contains', alias?: string  } 
+  | { name: 'text_not_contains', alias?: string  } 
+  | { name: 'text_starts_with', alias?: string  } 
+  | { name: 'text_not_starts_with', alias?: string  } 
+  | { name: 'text_ends_with', alias?: string  } 
+  | { name: 'text_not_ends_with', alias?: string  } 
+  | { name: 'sender', alias?: string  } 
+  | { name: 'createdAt', alias?: string  } 
+  | { name: 'createdAt_not', alias?: string  } 
+  | { name: 'createdAt_in', alias?: string  } 
+  | { name: 'createdAt_not_in', alias?: string  } 
+  | { name: 'createdAt_lt', alias?: string  } 
+  | { name: 'createdAt_lte', alias?: string  } 
+  | { name: 'createdAt_gt', alias?: string  } 
+  | { name: 'createdAt_gte', alias?: string  } 
+  | { name: 'updatedAt', alias?: string  } 
+  | { name: 'updatedAt_not', alias?: string  } 
+  | { name: 'updatedAt_in', alias?: string  } 
+  | { name: 'updatedAt_not_in', alias?: string  } 
+  | { name: 'updatedAt_lt', alias?: string  } 
+  | { name: 'updatedAt_lte', alias?: string  } 
+  | { name: 'updatedAt_gt', alias?: string  } 
+  | { name: 'updatedAt_gte', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -1381,18 +3102,40 @@ export type PostWhereUniqueInputInputObject =
   | Extract<keyof PostWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
   
+export interface MessageWhereUniqueInput {
+  id?: string | null
+}
+export type MessageWhereUniqueInputInputObject =
+  | Extract<keyof MessageWhereUniqueInput, string>
+  | { name: 'id', alias?: string  } 
+  
+export interface ChatWhereUniqueInput {
+  id?: string | null
+}
+export type ChatWhereUniqueInputInputObject =
+  | Extract<keyof ChatWhereUniqueInput, string>
+  | { name: 'id', alias?: string  } 
+  
 export interface UserCreateInput {
   id?: string | null
   email?: string | null
-  name?: string
+  handle?: string | null
+  name?: string | null
+  picture?: string | null
   posts?: PostCreateManyWithoutAuthorInput | null
+  chats?: ChatCreateManyWithoutMembersInput | null
+  chatsOwned?: ChatCreateManyWithoutOwnerInput | null
 }
 export type UserCreateInputInputObject =
   | Extract<keyof UserCreateInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'email', alias?: string  } 
+  | { name: 'handle', alias?: string  } 
   | { name: 'name', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
   | { name: 'posts', alias?: string  } 
+  | { name: 'chats', alias?: string  } 
+  | { name: 'chatsOwned', alias?: string  } 
   
 export interface PostCreateManyWithoutAuthorInput {
   create?: PostCreateWithoutAuthorInput[]
@@ -1405,25 +3148,166 @@ export type PostCreateManyWithoutAuthorInputInputObject =
   
 export interface PostCreateWithoutAuthorInput {
   id?: string | null
-  title?: string
+  body?: string
   published?: boolean | null
 }
 export type PostCreateWithoutAuthorInputInputObject =
   | Extract<keyof PostCreateWithoutAuthorInput, string>
   | { name: 'id', alias?: string  } 
-  | { name: 'title', alias?: string  } 
+  | { name: 'body', alias?: string  } 
   | { name: 'published', alias?: string  } 
+  
+export interface ChatCreateManyWithoutMembersInput {
+  create?: ChatCreateWithoutMembersInput[]
+  connect?: ChatWhereUniqueInput[]
+}
+export type ChatCreateManyWithoutMembersInputInputObject =
+  | Extract<keyof ChatCreateManyWithoutMembersInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface ChatCreateWithoutMembersInput {
+  id?: string | null
+  name?: string
+  picture?: string | null
+  owner?: UserCreateOneWithoutChatsOwnedInput | null
+  messages?: MessageCreateManyWithoutChatInput | null
+}
+export type ChatCreateWithoutMembersInputInputObject =
+  | Extract<keyof ChatCreateWithoutMembersInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
+  | { name: 'owner', alias?: string  } 
+  | { name: 'messages', alias?: string  } 
+  
+export interface UserCreateOneWithoutChatsOwnedInput {
+  create?: UserCreateWithoutChatsOwnedInput | null
+  connect?: UserWhereUniqueInput | null
+}
+export type UserCreateOneWithoutChatsOwnedInputInputObject =
+  | Extract<keyof UserCreateOneWithoutChatsOwnedInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface UserCreateWithoutChatsOwnedInput {
+  id?: string | null
+  email?: string | null
+  handle?: string | null
+  name?: string | null
+  picture?: string | null
+  posts?: PostCreateManyWithoutAuthorInput | null
+  chats?: ChatCreateManyWithoutMembersInput | null
+}
+export type UserCreateWithoutChatsOwnedInputInputObject =
+  | Extract<keyof UserCreateWithoutChatsOwnedInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'email', alias?: string  } 
+  | { name: 'handle', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
+  | { name: 'posts', alias?: string  } 
+  | { name: 'chats', alias?: string  } 
+  
+export interface MessageCreateManyWithoutChatInput {
+  create?: MessageCreateWithoutChatInput[]
+  connect?: MessageWhereUniqueInput[]
+}
+export type MessageCreateManyWithoutChatInputInputObject =
+  | Extract<keyof MessageCreateManyWithoutChatInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface MessageCreateWithoutChatInput {
+  id?: string | null
+  text?: string
+  sender?: UserCreateOneInput | null
+}
+export type MessageCreateWithoutChatInputInputObject =
+  | Extract<keyof MessageCreateWithoutChatInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'text', alias?: string  } 
+  | { name: 'sender', alias?: string  } 
+  
+export interface UserCreateOneInput {
+  create?: UserCreateInput | null
+  connect?: UserWhereUniqueInput | null
+}
+export type UserCreateOneInputInputObject =
+  | Extract<keyof UserCreateOneInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface ChatCreateManyWithoutOwnerInput {
+  create?: ChatCreateWithoutOwnerInput[]
+  connect?: ChatWhereUniqueInput[]
+}
+export type ChatCreateManyWithoutOwnerInputInputObject =
+  | Extract<keyof ChatCreateManyWithoutOwnerInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface ChatCreateWithoutOwnerInput {
+  id?: string | null
+  name?: string
+  picture?: string | null
+  members?: UserCreateManyWithoutChatsInput | null
+  messages?: MessageCreateManyWithoutChatInput | null
+}
+export type ChatCreateWithoutOwnerInputInputObject =
+  | Extract<keyof ChatCreateWithoutOwnerInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
+  | { name: 'members', alias?: string  } 
+  | { name: 'messages', alias?: string  } 
+  
+export interface UserCreateManyWithoutChatsInput {
+  create?: UserCreateWithoutChatsInput[]
+  connect?: UserWhereUniqueInput[]
+}
+export type UserCreateManyWithoutChatsInputInputObject =
+  | Extract<keyof UserCreateManyWithoutChatsInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface UserCreateWithoutChatsInput {
+  id?: string | null
+  email?: string | null
+  handle?: string | null
+  name?: string | null
+  picture?: string | null
+  posts?: PostCreateManyWithoutAuthorInput | null
+  chatsOwned?: ChatCreateManyWithoutOwnerInput | null
+}
+export type UserCreateWithoutChatsInputInputObject =
+  | Extract<keyof UserCreateWithoutChatsInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'email', alias?: string  } 
+  | { name: 'handle', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
+  | { name: 'posts', alias?: string  } 
+  | { name: 'chatsOwned', alias?: string  } 
   
 export interface UserUpdateInput {
   email?: string | null
+  handle?: string | null
   name?: string | null
+  picture?: string | null
   posts?: PostUpdateManyWithoutAuthorInput | null
+  chats?: ChatUpdateManyWithoutMembersInput | null
+  chatsOwned?: ChatUpdateManyWithoutOwnerInput | null
 }
 export type UserUpdateInputInputObject =
   | Extract<keyof UserUpdateInput, string>
   | { name: 'email', alias?: string  } 
+  | { name: 'handle', alias?: string  } 
   | { name: 'name', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
   | { name: 'posts', alias?: string  } 
+  | { name: 'chats', alias?: string  } 
+  | { name: 'chatsOwned', alias?: string  } 
   
 export interface PostUpdateManyWithoutAuthorInput {
   create?: PostCreateWithoutAuthorInput[]
@@ -1458,12 +3342,12 @@ export type PostUpdateWithWhereUniqueWithoutAuthorInputInputObject =
   | { name: 'data', alias?: string  } 
   
 export interface PostUpdateWithoutAuthorDataInput {
-  title?: string | null
+  body?: string | null
   published?: boolean | null
 }
 export type PostUpdateWithoutAuthorDataInputInputObject =
   | Extract<keyof PostUpdateWithoutAuthorDataInput, string>
-  | { name: 'title', alias?: string  } 
+  | { name: 'body', alias?: string  } 
   | { name: 'published', alias?: string  } 
   
 export interface PostUpsertWithWhereUniqueWithoutAuthorInput {
@@ -1492,22 +3376,38 @@ export interface PostScalarWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  title?: string | null
-  title_not?: string | null
-  title_in?: string[]
-  title_not_in?: string[]
-  title_lt?: string | null
-  title_lte?: string | null
-  title_gt?: string | null
-  title_gte?: string | null
-  title_contains?: string | null
-  title_not_contains?: string | null
-  title_starts_with?: string | null
-  title_not_starts_with?: string | null
-  title_ends_with?: string | null
-  title_not_ends_with?: string | null
+  body?: string | null
+  body_not?: string | null
+  body_in?: string[]
+  body_not_in?: string[]
+  body_lt?: string | null
+  body_lte?: string | null
+  body_gt?: string | null
+  body_gte?: string | null
+  body_contains?: string | null
+  body_not_contains?: string | null
+  body_starts_with?: string | null
+  body_not_starts_with?: string | null
+  body_ends_with?: string | null
+  body_not_ends_with?: string | null
   published?: boolean | null
   published_not?: boolean | null
+  createdAt?: string | null
+  createdAt_not?: string | null
+  createdAt_in?: string[]
+  createdAt_not_in?: string[]
+  createdAt_lt?: string | null
+  createdAt_lte?: string | null
+  createdAt_gt?: string | null
+  createdAt_gte?: string | null
+  updatedAt?: string | null
+  updatedAt_not?: string | null
+  updatedAt_in?: string[]
+  updatedAt_not_in?: string[]
+  updatedAt_lt?: string | null
+  updatedAt_lte?: string | null
+  updatedAt_gt?: string | null
+  updatedAt_gte?: string | null
   AND?: PostScalarWhereInput[]
   OR?: PostScalarWhereInput[]
   NOT?: PostScalarWhereInput[]
@@ -1528,22 +3428,38 @@ export type PostScalarWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'title', alias?: string  } 
-  | { name: 'title_not', alias?: string  } 
-  | { name: 'title_in', alias?: string  } 
-  | { name: 'title_not_in', alias?: string  } 
-  | { name: 'title_lt', alias?: string  } 
-  | { name: 'title_lte', alias?: string  } 
-  | { name: 'title_gt', alias?: string  } 
-  | { name: 'title_gte', alias?: string  } 
-  | { name: 'title_contains', alias?: string  } 
-  | { name: 'title_not_contains', alias?: string  } 
-  | { name: 'title_starts_with', alias?: string  } 
-  | { name: 'title_not_starts_with', alias?: string  } 
-  | { name: 'title_ends_with', alias?: string  } 
-  | { name: 'title_not_ends_with', alias?: string  } 
+  | { name: 'body', alias?: string  } 
+  | { name: 'body_not', alias?: string  } 
+  | { name: 'body_in', alias?: string  } 
+  | { name: 'body_not_in', alias?: string  } 
+  | { name: 'body_lt', alias?: string  } 
+  | { name: 'body_lte', alias?: string  } 
+  | { name: 'body_gt', alias?: string  } 
+  | { name: 'body_gte', alias?: string  } 
+  | { name: 'body_contains', alias?: string  } 
+  | { name: 'body_not_contains', alias?: string  } 
+  | { name: 'body_starts_with', alias?: string  } 
+  | { name: 'body_not_starts_with', alias?: string  } 
+  | { name: 'body_ends_with', alias?: string  } 
+  | { name: 'body_not_ends_with', alias?: string  } 
   | { name: 'published', alias?: string  } 
   | { name: 'published_not', alias?: string  } 
+  | { name: 'createdAt', alias?: string  } 
+  | { name: 'createdAt_not', alias?: string  } 
+  | { name: 'createdAt_in', alias?: string  } 
+  | { name: 'createdAt_not_in', alias?: string  } 
+  | { name: 'createdAt_lt', alias?: string  } 
+  | { name: 'createdAt_lte', alias?: string  } 
+  | { name: 'createdAt_gt', alias?: string  } 
+  | { name: 'createdAt_gte', alias?: string  } 
+  | { name: 'updatedAt', alias?: string  } 
+  | { name: 'updatedAt_not', alias?: string  } 
+  | { name: 'updatedAt_in', alias?: string  } 
+  | { name: 'updatedAt_not_in', alias?: string  } 
+  | { name: 'updatedAt_lt', alias?: string  } 
+  | { name: 'updatedAt_lte', alias?: string  } 
+  | { name: 'updatedAt_gt', alias?: string  } 
+  | { name: 'updatedAt_gte', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -1558,33 +3474,814 @@ export type PostUpdateManyWithWhereNestedInputInputObject =
   | { name: 'data', alias?: string  } 
   
 export interface PostUpdateManyDataInput {
-  title?: string | null
+  body?: string | null
   published?: boolean | null
 }
 export type PostUpdateManyDataInputInputObject =
   | Extract<keyof PostUpdateManyDataInput, string>
-  | { name: 'title', alias?: string  } 
+  | { name: 'body', alias?: string  } 
   | { name: 'published', alias?: string  } 
+  
+export interface ChatUpdateManyWithoutMembersInput {
+  create?: ChatCreateWithoutMembersInput[]
+  delete?: ChatWhereUniqueInput[]
+  connect?: ChatWhereUniqueInput[]
+  set?: ChatWhereUniqueInput[]
+  disconnect?: ChatWhereUniqueInput[]
+  update?: ChatUpdateWithWhereUniqueWithoutMembersInput[]
+  upsert?: ChatUpsertWithWhereUniqueWithoutMembersInput[]
+  deleteMany?: ChatScalarWhereInput[]
+  updateMany?: ChatUpdateManyWithWhereNestedInput[]
+}
+export type ChatUpdateManyWithoutMembersInputInputObject =
+  | Extract<keyof ChatUpdateManyWithoutMembersInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  | { name: 'set', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'deleteMany', alias?: string  } 
+  | { name: 'updateMany', alias?: string  } 
+  
+export interface ChatUpdateWithWhereUniqueWithoutMembersInput {
+  where?: ChatWhereUniqueInput
+  data?: ChatUpdateWithoutMembersDataInput
+}
+export type ChatUpdateWithWhereUniqueWithoutMembersInputInputObject =
+  | Extract<keyof ChatUpdateWithWhereUniqueWithoutMembersInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface ChatUpdateWithoutMembersDataInput {
+  name?: string | null
+  picture?: string | null
+  owner?: UserUpdateOneWithoutChatsOwnedInput | null
+  messages?: MessageUpdateManyWithoutChatInput | null
+}
+export type ChatUpdateWithoutMembersDataInputInputObject =
+  | Extract<keyof ChatUpdateWithoutMembersDataInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
+  | { name: 'owner', alias?: string  } 
+  | { name: 'messages', alias?: string  } 
+  
+export interface UserUpdateOneWithoutChatsOwnedInput {
+  create?: UserCreateWithoutChatsOwnedInput | null
+  update?: UserUpdateWithoutChatsOwnedDataInput | null
+  upsert?: UserUpsertWithoutChatsOwnedInput | null
+  delete?: boolean | null
+  disconnect?: boolean | null
+  connect?: UserWhereUniqueInput | null
+}
+export type UserUpdateOneWithoutChatsOwnedInputInputObject =
+  | Extract<keyof UserUpdateOneWithoutChatsOwnedInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface UserUpdateWithoutChatsOwnedDataInput {
+  email?: string | null
+  handle?: string | null
+  name?: string | null
+  picture?: string | null
+  posts?: PostUpdateManyWithoutAuthorInput | null
+  chats?: ChatUpdateManyWithoutMembersInput | null
+}
+export type UserUpdateWithoutChatsOwnedDataInputInputObject =
+  | Extract<keyof UserUpdateWithoutChatsOwnedDataInput, string>
+  | { name: 'email', alias?: string  } 
+  | { name: 'handle', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
+  | { name: 'posts', alias?: string  } 
+  | { name: 'chats', alias?: string  } 
+  
+export interface UserUpsertWithoutChatsOwnedInput {
+  update?: UserUpdateWithoutChatsOwnedDataInput
+  create?: UserCreateWithoutChatsOwnedInput
+}
+export type UserUpsertWithoutChatsOwnedInputInputObject =
+  | Extract<keyof UserUpsertWithoutChatsOwnedInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface MessageUpdateManyWithoutChatInput {
+  create?: MessageCreateWithoutChatInput[]
+  delete?: MessageWhereUniqueInput[]
+  connect?: MessageWhereUniqueInput[]
+  set?: MessageWhereUniqueInput[]
+  disconnect?: MessageWhereUniqueInput[]
+  update?: MessageUpdateWithWhereUniqueWithoutChatInput[]
+  upsert?: MessageUpsertWithWhereUniqueWithoutChatInput[]
+  deleteMany?: MessageScalarWhereInput[]
+  updateMany?: MessageUpdateManyWithWhereNestedInput[]
+}
+export type MessageUpdateManyWithoutChatInputInputObject =
+  | Extract<keyof MessageUpdateManyWithoutChatInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  | { name: 'set', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'deleteMany', alias?: string  } 
+  | { name: 'updateMany', alias?: string  } 
+  
+export interface MessageUpdateWithWhereUniqueWithoutChatInput {
+  where?: MessageWhereUniqueInput
+  data?: MessageUpdateWithoutChatDataInput
+}
+export type MessageUpdateWithWhereUniqueWithoutChatInputInputObject =
+  | Extract<keyof MessageUpdateWithWhereUniqueWithoutChatInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface MessageUpdateWithoutChatDataInput {
+  text?: string | null
+  sender?: UserUpdateOneInput | null
+}
+export type MessageUpdateWithoutChatDataInputInputObject =
+  | Extract<keyof MessageUpdateWithoutChatDataInput, string>
+  | { name: 'text', alias?: string  } 
+  | { name: 'sender', alias?: string  } 
+  
+export interface UserUpdateOneInput {
+  create?: UserCreateInput | null
+  update?: UserUpdateDataInput | null
+  upsert?: UserUpsertNestedInput | null
+  delete?: boolean | null
+  disconnect?: boolean | null
+  connect?: UserWhereUniqueInput | null
+}
+export type UserUpdateOneInputInputObject =
+  | Extract<keyof UserUpdateOneInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface UserUpdateDataInput {
+  email?: string | null
+  handle?: string | null
+  name?: string | null
+  picture?: string | null
+  posts?: PostUpdateManyWithoutAuthorInput | null
+  chats?: ChatUpdateManyWithoutMembersInput | null
+  chatsOwned?: ChatUpdateManyWithoutOwnerInput | null
+}
+export type UserUpdateDataInputInputObject =
+  | Extract<keyof UserUpdateDataInput, string>
+  | { name: 'email', alias?: string  } 
+  | { name: 'handle', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
+  | { name: 'posts', alias?: string  } 
+  | { name: 'chats', alias?: string  } 
+  | { name: 'chatsOwned', alias?: string  } 
+  
+export interface ChatUpdateManyWithoutOwnerInput {
+  create?: ChatCreateWithoutOwnerInput[]
+  delete?: ChatWhereUniqueInput[]
+  connect?: ChatWhereUniqueInput[]
+  set?: ChatWhereUniqueInput[]
+  disconnect?: ChatWhereUniqueInput[]
+  update?: ChatUpdateWithWhereUniqueWithoutOwnerInput[]
+  upsert?: ChatUpsertWithWhereUniqueWithoutOwnerInput[]
+  deleteMany?: ChatScalarWhereInput[]
+  updateMany?: ChatUpdateManyWithWhereNestedInput[]
+}
+export type ChatUpdateManyWithoutOwnerInputInputObject =
+  | Extract<keyof ChatUpdateManyWithoutOwnerInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  | { name: 'set', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'deleteMany', alias?: string  } 
+  | { name: 'updateMany', alias?: string  } 
+  
+export interface ChatUpdateWithWhereUniqueWithoutOwnerInput {
+  where?: ChatWhereUniqueInput
+  data?: ChatUpdateWithoutOwnerDataInput
+}
+export type ChatUpdateWithWhereUniqueWithoutOwnerInputInputObject =
+  | Extract<keyof ChatUpdateWithWhereUniqueWithoutOwnerInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface ChatUpdateWithoutOwnerDataInput {
+  name?: string | null
+  picture?: string | null
+  members?: UserUpdateManyWithoutChatsInput | null
+  messages?: MessageUpdateManyWithoutChatInput | null
+}
+export type ChatUpdateWithoutOwnerDataInputInputObject =
+  | Extract<keyof ChatUpdateWithoutOwnerDataInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
+  | { name: 'members', alias?: string  } 
+  | { name: 'messages', alias?: string  } 
+  
+export interface UserUpdateManyWithoutChatsInput {
+  create?: UserCreateWithoutChatsInput[]
+  delete?: UserWhereUniqueInput[]
+  connect?: UserWhereUniqueInput[]
+  set?: UserWhereUniqueInput[]
+  disconnect?: UserWhereUniqueInput[]
+  update?: UserUpdateWithWhereUniqueWithoutChatsInput[]
+  upsert?: UserUpsertWithWhereUniqueWithoutChatsInput[]
+  deleteMany?: UserScalarWhereInput[]
+  updateMany?: UserUpdateManyWithWhereNestedInput[]
+}
+export type UserUpdateManyWithoutChatsInputInputObject =
+  | Extract<keyof UserUpdateManyWithoutChatsInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  | { name: 'set', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'deleteMany', alias?: string  } 
+  | { name: 'updateMany', alias?: string  } 
+  
+export interface UserUpdateWithWhereUniqueWithoutChatsInput {
+  where?: UserWhereUniqueInput
+  data?: UserUpdateWithoutChatsDataInput
+}
+export type UserUpdateWithWhereUniqueWithoutChatsInputInputObject =
+  | Extract<keyof UserUpdateWithWhereUniqueWithoutChatsInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface UserUpdateWithoutChatsDataInput {
+  email?: string | null
+  handle?: string | null
+  name?: string | null
+  picture?: string | null
+  posts?: PostUpdateManyWithoutAuthorInput | null
+  chatsOwned?: ChatUpdateManyWithoutOwnerInput | null
+}
+export type UserUpdateWithoutChatsDataInputInputObject =
+  | Extract<keyof UserUpdateWithoutChatsDataInput, string>
+  | { name: 'email', alias?: string  } 
+  | { name: 'handle', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
+  | { name: 'posts', alias?: string  } 
+  | { name: 'chatsOwned', alias?: string  } 
+  
+export interface UserUpsertWithWhereUniqueWithoutChatsInput {
+  where?: UserWhereUniqueInput
+  update?: UserUpdateWithoutChatsDataInput
+  create?: UserCreateWithoutChatsInput
+}
+export type UserUpsertWithWhereUniqueWithoutChatsInputInputObject =
+  | Extract<keyof UserUpsertWithWhereUniqueWithoutChatsInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface UserScalarWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  email?: string | null
+  email_not?: string | null
+  email_in?: string[]
+  email_not_in?: string[]
+  email_lt?: string | null
+  email_lte?: string | null
+  email_gt?: string | null
+  email_gte?: string | null
+  email_contains?: string | null
+  email_not_contains?: string | null
+  email_starts_with?: string | null
+  email_not_starts_with?: string | null
+  email_ends_with?: string | null
+  email_not_ends_with?: string | null
+  handle?: string | null
+  handle_not?: string | null
+  handle_in?: string[]
+  handle_not_in?: string[]
+  handle_lt?: string | null
+  handle_lte?: string | null
+  handle_gt?: string | null
+  handle_gte?: string | null
+  handle_contains?: string | null
+  handle_not_contains?: string | null
+  handle_starts_with?: string | null
+  handle_not_starts_with?: string | null
+  handle_ends_with?: string | null
+  handle_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in?: string[]
+  name_not_in?: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  picture?: string | null
+  picture_not?: string | null
+  picture_in?: string[]
+  picture_not_in?: string[]
+  picture_lt?: string | null
+  picture_lte?: string | null
+  picture_gt?: string | null
+  picture_gte?: string | null
+  picture_contains?: string | null
+  picture_not_contains?: string | null
+  picture_starts_with?: string | null
+  picture_not_starts_with?: string | null
+  picture_ends_with?: string | null
+  picture_not_ends_with?: string | null
+  createdAt?: string | null
+  createdAt_not?: string | null
+  createdAt_in?: string[]
+  createdAt_not_in?: string[]
+  createdAt_lt?: string | null
+  createdAt_lte?: string | null
+  createdAt_gt?: string | null
+  createdAt_gte?: string | null
+  updatedAt?: string | null
+  updatedAt_not?: string | null
+  updatedAt_in?: string[]
+  updatedAt_not_in?: string[]
+  updatedAt_lt?: string | null
+  updatedAt_lte?: string | null
+  updatedAt_gt?: string | null
+  updatedAt_gte?: string | null
+  AND?: UserScalarWhereInput[]
+  OR?: UserScalarWhereInput[]
+  NOT?: UserScalarWhereInput[]
+}
+export type UserScalarWhereInputInputObject =
+  | Extract<keyof UserScalarWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'email', alias?: string  } 
+  | { name: 'email_not', alias?: string  } 
+  | { name: 'email_in', alias?: string  } 
+  | { name: 'email_not_in', alias?: string  } 
+  | { name: 'email_lt', alias?: string  } 
+  | { name: 'email_lte', alias?: string  } 
+  | { name: 'email_gt', alias?: string  } 
+  | { name: 'email_gte', alias?: string  } 
+  | { name: 'email_contains', alias?: string  } 
+  | { name: 'email_not_contains', alias?: string  } 
+  | { name: 'email_starts_with', alias?: string  } 
+  | { name: 'email_not_starts_with', alias?: string  } 
+  | { name: 'email_ends_with', alias?: string  } 
+  | { name: 'email_not_ends_with', alias?: string  } 
+  | { name: 'handle', alias?: string  } 
+  | { name: 'handle_not', alias?: string  } 
+  | { name: 'handle_in', alias?: string  } 
+  | { name: 'handle_not_in', alias?: string  } 
+  | { name: 'handle_lt', alias?: string  } 
+  | { name: 'handle_lte', alias?: string  } 
+  | { name: 'handle_gt', alias?: string  } 
+  | { name: 'handle_gte', alias?: string  } 
+  | { name: 'handle_contains', alias?: string  } 
+  | { name: 'handle_not_contains', alias?: string  } 
+  | { name: 'handle_starts_with', alias?: string  } 
+  | { name: 'handle_not_starts_with', alias?: string  } 
+  | { name: 'handle_ends_with', alias?: string  } 
+  | { name: 'handle_not_ends_with', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'name_not', alias?: string  } 
+  | { name: 'name_in', alias?: string  } 
+  | { name: 'name_not_in', alias?: string  } 
+  | { name: 'name_lt', alias?: string  } 
+  | { name: 'name_lte', alias?: string  } 
+  | { name: 'name_gt', alias?: string  } 
+  | { name: 'name_gte', alias?: string  } 
+  | { name: 'name_contains', alias?: string  } 
+  | { name: 'name_not_contains', alias?: string  } 
+  | { name: 'name_starts_with', alias?: string  } 
+  | { name: 'name_not_starts_with', alias?: string  } 
+  | { name: 'name_ends_with', alias?: string  } 
+  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
+  | { name: 'picture_not', alias?: string  } 
+  | { name: 'picture_in', alias?: string  } 
+  | { name: 'picture_not_in', alias?: string  } 
+  | { name: 'picture_lt', alias?: string  } 
+  | { name: 'picture_lte', alias?: string  } 
+  | { name: 'picture_gt', alias?: string  } 
+  | { name: 'picture_gte', alias?: string  } 
+  | { name: 'picture_contains', alias?: string  } 
+  | { name: 'picture_not_contains', alias?: string  } 
+  | { name: 'picture_starts_with', alias?: string  } 
+  | { name: 'picture_not_starts_with', alias?: string  } 
+  | { name: 'picture_ends_with', alias?: string  } 
+  | { name: 'picture_not_ends_with', alias?: string  } 
+  | { name: 'createdAt', alias?: string  } 
+  | { name: 'createdAt_not', alias?: string  } 
+  | { name: 'createdAt_in', alias?: string  } 
+  | { name: 'createdAt_not_in', alias?: string  } 
+  | { name: 'createdAt_lt', alias?: string  } 
+  | { name: 'createdAt_lte', alias?: string  } 
+  | { name: 'createdAt_gt', alias?: string  } 
+  | { name: 'createdAt_gte', alias?: string  } 
+  | { name: 'updatedAt', alias?: string  } 
+  | { name: 'updatedAt_not', alias?: string  } 
+  | { name: 'updatedAt_in', alias?: string  } 
+  | { name: 'updatedAt_not_in', alias?: string  } 
+  | { name: 'updatedAt_lt', alias?: string  } 
+  | { name: 'updatedAt_lte', alias?: string  } 
+  | { name: 'updatedAt_gt', alias?: string  } 
+  | { name: 'updatedAt_gte', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface UserUpdateManyWithWhereNestedInput {
+  where?: UserScalarWhereInput
+  data?: UserUpdateManyDataInput
+}
+export type UserUpdateManyWithWhereNestedInputInputObject =
+  | Extract<keyof UserUpdateManyWithWhereNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface UserUpdateManyDataInput {
+  email?: string | null
+  handle?: string | null
+  name?: string | null
+  picture?: string | null
+}
+export type UserUpdateManyDataInputInputObject =
+  | Extract<keyof UserUpdateManyDataInput, string>
+  | { name: 'email', alias?: string  } 
+  | { name: 'handle', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
+  
+export interface ChatUpsertWithWhereUniqueWithoutOwnerInput {
+  where?: ChatWhereUniqueInput
+  update?: ChatUpdateWithoutOwnerDataInput
+  create?: ChatCreateWithoutOwnerInput
+}
+export type ChatUpsertWithWhereUniqueWithoutOwnerInputInputObject =
+  | Extract<keyof ChatUpsertWithWhereUniqueWithoutOwnerInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface ChatScalarWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in?: string[]
+  name_not_in?: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  picture?: string | null
+  picture_not?: string | null
+  picture_in?: string[]
+  picture_not_in?: string[]
+  picture_lt?: string | null
+  picture_lte?: string | null
+  picture_gt?: string | null
+  picture_gte?: string | null
+  picture_contains?: string | null
+  picture_not_contains?: string | null
+  picture_starts_with?: string | null
+  picture_not_starts_with?: string | null
+  picture_ends_with?: string | null
+  picture_not_ends_with?: string | null
+  createdAt?: string | null
+  createdAt_not?: string | null
+  createdAt_in?: string[]
+  createdAt_not_in?: string[]
+  createdAt_lt?: string | null
+  createdAt_lte?: string | null
+  createdAt_gt?: string | null
+  createdAt_gte?: string | null
+  updatedAt?: string | null
+  updatedAt_not?: string | null
+  updatedAt_in?: string[]
+  updatedAt_not_in?: string[]
+  updatedAt_lt?: string | null
+  updatedAt_lte?: string | null
+  updatedAt_gt?: string | null
+  updatedAt_gte?: string | null
+  AND?: ChatScalarWhereInput[]
+  OR?: ChatScalarWhereInput[]
+  NOT?: ChatScalarWhereInput[]
+}
+export type ChatScalarWhereInputInputObject =
+  | Extract<keyof ChatScalarWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'name_not', alias?: string  } 
+  | { name: 'name_in', alias?: string  } 
+  | { name: 'name_not_in', alias?: string  } 
+  | { name: 'name_lt', alias?: string  } 
+  | { name: 'name_lte', alias?: string  } 
+  | { name: 'name_gt', alias?: string  } 
+  | { name: 'name_gte', alias?: string  } 
+  | { name: 'name_contains', alias?: string  } 
+  | { name: 'name_not_contains', alias?: string  } 
+  | { name: 'name_starts_with', alias?: string  } 
+  | { name: 'name_not_starts_with', alias?: string  } 
+  | { name: 'name_ends_with', alias?: string  } 
+  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
+  | { name: 'picture_not', alias?: string  } 
+  | { name: 'picture_in', alias?: string  } 
+  | { name: 'picture_not_in', alias?: string  } 
+  | { name: 'picture_lt', alias?: string  } 
+  | { name: 'picture_lte', alias?: string  } 
+  | { name: 'picture_gt', alias?: string  } 
+  | { name: 'picture_gte', alias?: string  } 
+  | { name: 'picture_contains', alias?: string  } 
+  | { name: 'picture_not_contains', alias?: string  } 
+  | { name: 'picture_starts_with', alias?: string  } 
+  | { name: 'picture_not_starts_with', alias?: string  } 
+  | { name: 'picture_ends_with', alias?: string  } 
+  | { name: 'picture_not_ends_with', alias?: string  } 
+  | { name: 'createdAt', alias?: string  } 
+  | { name: 'createdAt_not', alias?: string  } 
+  | { name: 'createdAt_in', alias?: string  } 
+  | { name: 'createdAt_not_in', alias?: string  } 
+  | { name: 'createdAt_lt', alias?: string  } 
+  | { name: 'createdAt_lte', alias?: string  } 
+  | { name: 'createdAt_gt', alias?: string  } 
+  | { name: 'createdAt_gte', alias?: string  } 
+  | { name: 'updatedAt', alias?: string  } 
+  | { name: 'updatedAt_not', alias?: string  } 
+  | { name: 'updatedAt_in', alias?: string  } 
+  | { name: 'updatedAt_not_in', alias?: string  } 
+  | { name: 'updatedAt_lt', alias?: string  } 
+  | { name: 'updatedAt_lte', alias?: string  } 
+  | { name: 'updatedAt_gt', alias?: string  } 
+  | { name: 'updatedAt_gte', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface ChatUpdateManyWithWhereNestedInput {
+  where?: ChatScalarWhereInput
+  data?: ChatUpdateManyDataInput
+}
+export type ChatUpdateManyWithWhereNestedInputInputObject =
+  | Extract<keyof ChatUpdateManyWithWhereNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface ChatUpdateManyDataInput {
+  name?: string | null
+  picture?: string | null
+}
+export type ChatUpdateManyDataInputInputObject =
+  | Extract<keyof ChatUpdateManyDataInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
+  
+export interface UserUpsertNestedInput {
+  update?: UserUpdateDataInput
+  create?: UserCreateInput
+}
+export type UserUpsertNestedInputInputObject =
+  | Extract<keyof UserUpsertNestedInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface MessageUpsertWithWhereUniqueWithoutChatInput {
+  where?: MessageWhereUniqueInput
+  update?: MessageUpdateWithoutChatDataInput
+  create?: MessageCreateWithoutChatInput
+}
+export type MessageUpsertWithWhereUniqueWithoutChatInputInputObject =
+  | Extract<keyof MessageUpsertWithWhereUniqueWithoutChatInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface MessageScalarWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  text?: string | null
+  text_not?: string | null
+  text_in?: string[]
+  text_not_in?: string[]
+  text_lt?: string | null
+  text_lte?: string | null
+  text_gt?: string | null
+  text_gte?: string | null
+  text_contains?: string | null
+  text_not_contains?: string | null
+  text_starts_with?: string | null
+  text_not_starts_with?: string | null
+  text_ends_with?: string | null
+  text_not_ends_with?: string | null
+  createdAt?: string | null
+  createdAt_not?: string | null
+  createdAt_in?: string[]
+  createdAt_not_in?: string[]
+  createdAt_lt?: string | null
+  createdAt_lte?: string | null
+  createdAt_gt?: string | null
+  createdAt_gte?: string | null
+  updatedAt?: string | null
+  updatedAt_not?: string | null
+  updatedAt_in?: string[]
+  updatedAt_not_in?: string[]
+  updatedAt_lt?: string | null
+  updatedAt_lte?: string | null
+  updatedAt_gt?: string | null
+  updatedAt_gte?: string | null
+  AND?: MessageScalarWhereInput[]
+  OR?: MessageScalarWhereInput[]
+  NOT?: MessageScalarWhereInput[]
+}
+export type MessageScalarWhereInputInputObject =
+  | Extract<keyof MessageScalarWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'text', alias?: string  } 
+  | { name: 'text_not', alias?: string  } 
+  | { name: 'text_in', alias?: string  } 
+  | { name: 'text_not_in', alias?: string  } 
+  | { name: 'text_lt', alias?: string  } 
+  | { name: 'text_lte', alias?: string  } 
+  | { name: 'text_gt', alias?: string  } 
+  | { name: 'text_gte', alias?: string  } 
+  | { name: 'text_contains', alias?: string  } 
+  | { name: 'text_not_contains', alias?: string  } 
+  | { name: 'text_starts_with', alias?: string  } 
+  | { name: 'text_not_starts_with', alias?: string  } 
+  | { name: 'text_ends_with', alias?: string  } 
+  | { name: 'text_not_ends_with', alias?: string  } 
+  | { name: 'createdAt', alias?: string  } 
+  | { name: 'createdAt_not', alias?: string  } 
+  | { name: 'createdAt_in', alias?: string  } 
+  | { name: 'createdAt_not_in', alias?: string  } 
+  | { name: 'createdAt_lt', alias?: string  } 
+  | { name: 'createdAt_lte', alias?: string  } 
+  | { name: 'createdAt_gt', alias?: string  } 
+  | { name: 'createdAt_gte', alias?: string  } 
+  | { name: 'updatedAt', alias?: string  } 
+  | { name: 'updatedAt_not', alias?: string  } 
+  | { name: 'updatedAt_in', alias?: string  } 
+  | { name: 'updatedAt_not_in', alias?: string  } 
+  | { name: 'updatedAt_lt', alias?: string  } 
+  | { name: 'updatedAt_lte', alias?: string  } 
+  | { name: 'updatedAt_gt', alias?: string  } 
+  | { name: 'updatedAt_gte', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface MessageUpdateManyWithWhereNestedInput {
+  where?: MessageScalarWhereInput
+  data?: MessageUpdateManyDataInput
+}
+export type MessageUpdateManyWithWhereNestedInputInputObject =
+  | Extract<keyof MessageUpdateManyWithWhereNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface MessageUpdateManyDataInput {
+  text?: string | null
+}
+export type MessageUpdateManyDataInputInputObject =
+  | Extract<keyof MessageUpdateManyDataInput, string>
+  | { name: 'text', alias?: string  } 
+  
+export interface ChatUpsertWithWhereUniqueWithoutMembersInput {
+  where?: ChatWhereUniqueInput
+  update?: ChatUpdateWithoutMembersDataInput
+  create?: ChatCreateWithoutMembersInput
+}
+export type ChatUpsertWithWhereUniqueWithoutMembersInputInputObject =
+  | Extract<keyof ChatUpsertWithWhereUniqueWithoutMembersInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
   
 export interface UserUpdateManyMutationInput {
   email?: string | null
+  handle?: string | null
   name?: string | null
+  picture?: string | null
 }
 export type UserUpdateManyMutationInputInputObject =
   | Extract<keyof UserUpdateManyMutationInput, string>
   | { name: 'email', alias?: string  } 
+  | { name: 'handle', alias?: string  } 
   | { name: 'name', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
   
 export interface PostCreateInput {
   id?: string | null
-  title?: string
+  body?: string
   published?: boolean | null
-  author?: UserCreateOneWithoutPostsInput | null
+  author?: UserCreateOneWithoutPostsInput
 }
 export type PostCreateInputInputObject =
   | Extract<keyof PostCreateInput, string>
   | { name: 'id', alias?: string  } 
-  | { name: 'title', alias?: string  } 
+  | { name: 'body', alias?: string  } 
   | { name: 'published', alias?: string  } 
   | { name: 'author', alias?: string  } 
   
@@ -1600,50 +4297,62 @@ export type UserCreateOneWithoutPostsInputInputObject =
 export interface UserCreateWithoutPostsInput {
   id?: string | null
   email?: string | null
-  name?: string
+  handle?: string | null
+  name?: string | null
+  picture?: string | null
+  chats?: ChatCreateManyWithoutMembersInput | null
+  chatsOwned?: ChatCreateManyWithoutOwnerInput | null
 }
 export type UserCreateWithoutPostsInputInputObject =
   | Extract<keyof UserCreateWithoutPostsInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'email', alias?: string  } 
+  | { name: 'handle', alias?: string  } 
   | { name: 'name', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
+  | { name: 'chats', alias?: string  } 
+  | { name: 'chatsOwned', alias?: string  } 
   
 export interface PostUpdateInput {
-  title?: string | null
+  body?: string | null
   published?: boolean | null
-  author?: UserUpdateOneWithoutPostsInput | null
+  author?: UserUpdateOneRequiredWithoutPostsInput | null
 }
 export type PostUpdateInputInputObject =
   | Extract<keyof PostUpdateInput, string>
-  | { name: 'title', alias?: string  } 
+  | { name: 'body', alias?: string  } 
   | { name: 'published', alias?: string  } 
   | { name: 'author', alias?: string  } 
   
-export interface UserUpdateOneWithoutPostsInput {
+export interface UserUpdateOneRequiredWithoutPostsInput {
   create?: UserCreateWithoutPostsInput | null
   update?: UserUpdateWithoutPostsDataInput | null
   upsert?: UserUpsertWithoutPostsInput | null
-  delete?: boolean | null
-  disconnect?: boolean | null
   connect?: UserWhereUniqueInput | null
 }
-export type UserUpdateOneWithoutPostsInputInputObject =
-  | Extract<keyof UserUpdateOneWithoutPostsInput, string>
+export type UserUpdateOneRequiredWithoutPostsInputInputObject =
+  | Extract<keyof UserUpdateOneRequiredWithoutPostsInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'update', alias?: string  } 
   | { name: 'upsert', alias?: string  } 
-  | { name: 'delete', alias?: string  } 
-  | { name: 'disconnect', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
 export interface UserUpdateWithoutPostsDataInput {
   email?: string | null
+  handle?: string | null
   name?: string | null
+  picture?: string | null
+  chats?: ChatUpdateManyWithoutMembersInput | null
+  chatsOwned?: ChatUpdateManyWithoutOwnerInput | null
 }
 export type UserUpdateWithoutPostsDataInputInputObject =
   | Extract<keyof UserUpdateWithoutPostsDataInput, string>
   | { name: 'email', alias?: string  } 
+  | { name: 'handle', alias?: string  } 
   | { name: 'name', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
+  | { name: 'chats', alias?: string  } 
+  | { name: 'chatsOwned', alias?: string  } 
   
 export interface UserUpsertWithoutPostsInput {
   update?: UserUpdateWithoutPostsDataInput
@@ -1655,13 +4364,144 @@ export type UserUpsertWithoutPostsInputInputObject =
   | { name: 'create', alias?: string  } 
   
 export interface PostUpdateManyMutationInput {
-  title?: string | null
+  body?: string | null
   published?: boolean | null
 }
 export type PostUpdateManyMutationInputInputObject =
   | Extract<keyof PostUpdateManyMutationInput, string>
-  | { name: 'title', alias?: string  } 
+  | { name: 'body', alias?: string  } 
   | { name: 'published', alias?: string  } 
+  
+export interface MessageCreateInput {
+  id?: string | null
+  chat?: ChatCreateOneWithoutMessagesInput
+  text?: string
+  sender?: UserCreateOneInput | null
+}
+export type MessageCreateInputInputObject =
+  | Extract<keyof MessageCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'chat', alias?: string  } 
+  | { name: 'text', alias?: string  } 
+  | { name: 'sender', alias?: string  } 
+  
+export interface ChatCreateOneWithoutMessagesInput {
+  create?: ChatCreateWithoutMessagesInput | null
+  connect?: ChatWhereUniqueInput | null
+}
+export type ChatCreateOneWithoutMessagesInputInputObject =
+  | Extract<keyof ChatCreateOneWithoutMessagesInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface ChatCreateWithoutMessagesInput {
+  id?: string | null
+  name?: string
+  picture?: string | null
+  owner?: UserCreateOneWithoutChatsOwnedInput | null
+  members?: UserCreateManyWithoutChatsInput | null
+}
+export type ChatCreateWithoutMessagesInputInputObject =
+  | Extract<keyof ChatCreateWithoutMessagesInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
+  | { name: 'owner', alias?: string  } 
+  | { name: 'members', alias?: string  } 
+  
+export interface MessageUpdateInput {
+  chat?: ChatUpdateOneRequiredWithoutMessagesInput | null
+  text?: string | null
+  sender?: UserUpdateOneInput | null
+}
+export type MessageUpdateInputInputObject =
+  | Extract<keyof MessageUpdateInput, string>
+  | { name: 'chat', alias?: string  } 
+  | { name: 'text', alias?: string  } 
+  | { name: 'sender', alias?: string  } 
+  
+export interface ChatUpdateOneRequiredWithoutMessagesInput {
+  create?: ChatCreateWithoutMessagesInput | null
+  update?: ChatUpdateWithoutMessagesDataInput | null
+  upsert?: ChatUpsertWithoutMessagesInput | null
+  connect?: ChatWhereUniqueInput | null
+}
+export type ChatUpdateOneRequiredWithoutMessagesInputInputObject =
+  | Extract<keyof ChatUpdateOneRequiredWithoutMessagesInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface ChatUpdateWithoutMessagesDataInput {
+  name?: string | null
+  picture?: string | null
+  owner?: UserUpdateOneWithoutChatsOwnedInput | null
+  members?: UserUpdateManyWithoutChatsInput | null
+}
+export type ChatUpdateWithoutMessagesDataInputInputObject =
+  | Extract<keyof ChatUpdateWithoutMessagesDataInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
+  | { name: 'owner', alias?: string  } 
+  | { name: 'members', alias?: string  } 
+  
+export interface ChatUpsertWithoutMessagesInput {
+  update?: ChatUpdateWithoutMessagesDataInput
+  create?: ChatCreateWithoutMessagesInput
+}
+export type ChatUpsertWithoutMessagesInputInputObject =
+  | Extract<keyof ChatUpsertWithoutMessagesInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface MessageUpdateManyMutationInput {
+  text?: string | null
+}
+export type MessageUpdateManyMutationInputInputObject =
+  | Extract<keyof MessageUpdateManyMutationInput, string>
+  | { name: 'text', alias?: string  } 
+  
+export interface ChatCreateInput {
+  id?: string | null
+  name?: string
+  picture?: string | null
+  owner?: UserCreateOneWithoutChatsOwnedInput | null
+  members?: UserCreateManyWithoutChatsInput | null
+  messages?: MessageCreateManyWithoutChatInput | null
+}
+export type ChatCreateInputInputObject =
+  | Extract<keyof ChatCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
+  | { name: 'owner', alias?: string  } 
+  | { name: 'members', alias?: string  } 
+  | { name: 'messages', alias?: string  } 
+  
+export interface ChatUpdateInput {
+  name?: string | null
+  picture?: string | null
+  owner?: UserUpdateOneWithoutChatsOwnedInput | null
+  members?: UserUpdateManyWithoutChatsInput | null
+  messages?: MessageUpdateManyWithoutChatInput | null
+}
+export type ChatUpdateInputInputObject =
+  | Extract<keyof ChatUpdateInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
+  | { name: 'owner', alias?: string  } 
+  | { name: 'members', alias?: string  } 
+  | { name: 'messages', alias?: string  } 
+  
+export interface ChatUpdateManyMutationInput {
+  name?: string | null
+  picture?: string | null
+}
+export type ChatUpdateManyMutationInputInputObject =
+  | Extract<keyof ChatUpdateManyMutationInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'picture', alias?: string  } 
   
 export interface UserSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
@@ -1705,14 +4545,68 @@ export type PostSubscriptionWhereInputInputObject =
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
+export interface MessageSubscriptionWhereInput {
+  mutation_in?: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every?: string[]
+  updatedFields_contains_some?: string[]
+  node?: MessageWhereInput | null
+  AND?: MessageSubscriptionWhereInput[]
+  OR?: MessageSubscriptionWhereInput[]
+  NOT?: MessageSubscriptionWhereInput[]
+}
+export type MessageSubscriptionWhereInputInputObject =
+  | Extract<keyof MessageSubscriptionWhereInput, string>
+  | { name: 'mutation_in', alias?: string  } 
+  | { name: 'updatedFields_contains', alias?: string  } 
+  | { name: 'updatedFields_contains_every', alias?: string  } 
+  | { name: 'updatedFields_contains_some', alias?: string  } 
+  | { name: 'node', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface ChatSubscriptionWhereInput {
+  mutation_in?: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every?: string[]
+  updatedFields_contains_some?: string[]
+  node?: ChatWhereInput | null
+  AND?: ChatSubscriptionWhereInput[]
+  OR?: ChatSubscriptionWhereInput[]
+  NOT?: ChatSubscriptionWhereInput[]
+}
+export type ChatSubscriptionWhereInputInputObject =
+  | Extract<keyof ChatSubscriptionWhereInput, string>
+  | { name: 'mutation_in', alias?: string  } 
+  | { name: 'updatedFields_contains', alias?: string  } 
+  | { name: 'updatedFields_contains_every', alias?: string  } 
+  | { name: 'updatedFields_contains_some', alias?: string  } 
+  | { name: 'node', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
 
 export type PostOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
-  | 'title_ASC'
-  | 'title_DESC'
+  | 'body_ASC'
+  | 'body_DESC'
   | 'published_ASC'
   | 'published_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
+  
+export type ChatOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'name_ASC'
+  | 'name_DESC'
+  | 'picture_ASC'
+  | 'picture_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'
@@ -1723,8 +4617,22 @@ export type UserOrderByInputValues =
   | 'id_DESC'
   | 'email_ASC'
   | 'email_DESC'
+  | 'handle_ASC'
+  | 'handle_DESC'
   | 'name_ASC'
   | 'name_DESC'
+  | 'picture_ASC'
+  | 'picture_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
+  
+export type MessageOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'text_ASC'
+  | 'text_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'
