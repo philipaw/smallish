@@ -5,10 +5,7 @@ import { USER_FRAGMENT } from '../../common/fragment'
 export const GETME = gql`
   query GetMe {
     me {
-      user {
-        ...userFields
-      }
-      token
+      ...userFields
     }
   }
   ${USER_FRAGMENT}

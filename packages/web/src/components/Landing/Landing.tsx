@@ -1,19 +1,19 @@
 import React from 'react'
+
+import { useQuery } from '@apollo/react-hooks'
 import { A } from 'hookrouter'
 
-import logo from '../../logo.svg'
+import { GETME, Login } from '../Account'
 
-export const Landing = () => (
-  <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>
-        Edit <code>src/App.tsx</code> and save to reload.
-      </p>
-      <A href="/login">Login</A>
-      <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-        Learn React
-      </a>
-    </header>
-  </div>
-)
+export const Landing: React.FC = () => {
+  const resp = useQuery(GETME)
+  const { loading, error, data } = resp
+  console.log({ resp })
+  if (loading) return <p>Loading ...</p>
+  if (error) return <Login />
+  return (
+    <div className="Landing">
+      <header className="App-header">Welcome</header>
+    </div>
+  )
+}
