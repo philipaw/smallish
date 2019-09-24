@@ -2,17 +2,27 @@
 
 A social media riff
 
-```
-# start the prisma server
+1. Start the prisma server
+
+```bash
 cd packages/prisma
 docker-compose up -d
+```
 
-# go back to the root
+2. go back to the root
+
+```
 cd ../../
+```
 
-# start the graphql server
+3. start the graphql server
+
+```
 yarn dev:prisma
+```
 
-# start the web server
+4. start the web server
+
+```
 yarn start:web
 ```
