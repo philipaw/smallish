@@ -162,7 +162,7 @@ const server = new GraphQLServer({
   context: { prisma },
 })
 
-server.start(() => console.log('Server is running on http://localhost:4466'))
+server.start(() => console.log('Server is running on http://localhost:4000'))
 
 // A `main` function so that we can use async/await
 async function main() {
