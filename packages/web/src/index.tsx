@@ -8,7 +8,7 @@ import './index.css'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 
-const client = new ApolloClient({ uri: 'http://localhost:4466' })
+const client = new ApolloClient({ uri: 'http://localhost:4000' })
 
 const ApolloApp = (AppComponent: any) => (
   <ApolloProvider client={client}>

@@ -1,3 +1,2 @@
-export * from './Account'
-export * from './Login'
-export * from './SignUp'
+export * from './AccountComponents'
+export * from './AccountActions'

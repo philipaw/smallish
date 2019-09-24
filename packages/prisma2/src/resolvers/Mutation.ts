@@ -12,7 +12,7 @@ export const Mutation = mutationType({
         email: stringArg(),
         password: stringArg(),
       },
-      resolve: async (parent, { name, email, password }, ctx) => {
+      resolve: async (_parent, { name, email, password }, ctx) => {
         const hashedPassword = await hash(password, 10)
         const user = await ctx.photon.users.create({
           data: {
@@ -34,7 +34,7 @@ export const Mutation = mutationType({
         email: stringArg(),
         password: stringArg(),
       },
-      resolve: async (parent, { email, password }, context) => {
+      resolve: async (_parent, { email, password }, context) => {
         const user = await context.photon.users.findOne({
           where: {
             email,
@@ -60,7 +60,7 @@ export const Mutation = mutationType({
         title: stringArg(),
         content: stringArg({ nullable: true }),
       },
-      resolve: (parent, { title, content }, ctx) => {
+      resolve: (_parent, { title, content }, ctx) => {
         const userId = getUserId(ctx)
         return ctx.photon.posts.create({
           data: {
@@ -77,7 +77,7 @@ export const Mutation = mutationType({
       type: 'Post',
       nullable: true,
       args: { id: idArg() },
-      resolve: (parent, { id }, ctx) => {
+      resolve: (_parent, { id }, ctx) => {
         return ctx.photon.posts.delete({
           where: {
             id,
@@ -90,7 +90,7 @@ export const Mutation = mutationType({
       type: 'Post',
       nullable: true,
       args: { id: idArg() },
-      resolve: (parent, { id }, ctx) => {
+      resolve: (_parent, { id }, ctx) => {
         return ctx.photon.posts.update({
           where: { id },
           data: { published: true },
