@@ -15,7 +15,7 @@ docker-compose up -d
 yarn dev:prisma
 ```
 
-3. start the web server
+3. Start the web server
 
 ```
 yarn start:web
