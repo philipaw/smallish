@@ -165,10 +165,10 @@ const server = new GraphQLServer({
 server.start(() => console.log('Server is running on http://localhost:4000'))
 
 // A `main` function so that we can use async/await
-async function main() {
-  // Read all users from the database and print them to the console
-  const allUsers = await prisma.users()
-  console.log(allUsers)
-}
+// async function main() {
+// Read all users from the database and print them to the console
+//   const allUsers = await prisma.users()
+//   console.log(allUsers)
+// }
 
-main().catch((e) => console.error(e))
+// main().catch((e) => console.error(e))
