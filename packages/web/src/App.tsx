@@ -23,7 +23,7 @@ const routes = {
 
 const App: React.FC = () => {
   const { loading, error } = useQuery(GETME)
-  const isNotAuthorizedError = error && error.toString().includes('Not Auth')
+  const isNotAuthorizedError = error && error.toString().includes('Not Authorised!')
 
   const routeResult = useRoutes(routes)
 
