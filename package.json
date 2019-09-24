@@ -8,6 +8,7 @@
   "scripts": {
     "add:prisma": "yarn workspace @smallish/prisma add",
     "dev:prisma": "yarn workspace @smallish/prisma dev",
+    "dev:prisma2": "yarn workspace @smallish/prisma2 dev",
     "start:prisma": "yarn workspace @smallish/prisma start",
     "add:web": "yarn workspace @smallish/web add",
     "start:web": "yarn workspace @smallish/web start"

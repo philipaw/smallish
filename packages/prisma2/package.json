@@ -1,10 +1,12 @@
 {
   "name": "graphql-auth",
   "license": "MIT",
+  "version": "1.0.0",
   "scripts": {
     "start": "ts-node-dev --no-notify --respawn --transpileOnly ./src",
     "seed": "ts-node prisma/seed.ts",
-    "postinstall": "prisma2 generate"
+    "postinstall": "prisma2 generate",
+    "dev": "prisma2 dev"
   },
   "dependencies": {
     "bcrypt": "3.0.6",
