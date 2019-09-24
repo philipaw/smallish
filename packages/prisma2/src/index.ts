@@ -6,6 +6,7 @@ import { join } from 'path'
 import { permissions } from './permissions'
 import * as allTypes from './resolvers'
 import { Context } from './types'
+require('dotenv').config
 
 const photon = new Photon()
 
@@ -37,7 +38,7 @@ const schema = makeSchema({
 const server = new GraphQLServer({
   schema,
   middlewares: [permissions],
-  context: request => {
+  context: (request) => {
     return {
       ...request,
       photon,
@@ -45,4 +46,10 @@ const server = new GraphQLServer({
   },
 })
 
-server.start(() => console.log(`🚀 Server ready at: http://localhost:4000\n⭐️ See sample queries: http://pris.ly/e/ts/graphql-auth#6-using-the-graphql-api`))
+server.express.set('trust proxy', true)
+
+server.start({ port: 8080 }, () =>
+  console.log(
+    `🚀 Server ready at: http://localhost:8080\n⭐️ See sample queries: http://pris.ly/e/ts/graphql-auth#6-using-the-graphql-api`,
+  ),
+)

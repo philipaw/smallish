@@ -8,7 +8,7 @@ generator nexus_prisma {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://prisma2@localhost:5432/prisma2?schema=smallish"
+  url      = env("POSTGRESQL_URL")
 }
 
 model Post {
