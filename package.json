@@ -8,8 +8,11 @@
   "scripts": {
     "add:prisma2": "yarn workspace @smallish/prisma2 add",
     "dev:prisma2": "yarn workspace @smallish/prisma2 dev",
+    "generate:prisma2": "yarn workspace @smallish/prisma2 postinstall",
+    "migrate": "yarn workspace @smallish/prisma2 migrate",
     "add:web": "yarn workspace @smallish/web add",
-    "dev:web": "yarn workspace @smallish/web start"
+    "dev:web": "yarn workspace @smallish/web start",
+    "generate:web": "yarn workspace @smallish/web generate"
   },
   "workspaces": [
     "packages/*"

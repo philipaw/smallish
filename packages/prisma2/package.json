@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "ts-node-dev --no-notify --respawn --transpileOnly ./src",
     "seed": "ts-node prisma/seed.ts",
+    "migrate": "prisma2 lift up",
     "postinstall": "prisma2 generate"
   },
   "dependencies": {
