@@ -2,8 +2,6 @@
 
 A social media riff
 
-need to:
-
 ```
 # start the prisma server
 cd packages/prisma
