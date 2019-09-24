@@ -4,11 +4,12 @@ import { useRoutes } from 'hookrouter'
 
 import './App.css'
 
-import { Account, Login, SignUp } from './components/Account'
+import { Account, Login, SignUp, GETME } from './components/Account'
 import { Chat } from './components/Chat'
 import { Landing } from './components/Landing'
 import { NotFoundPage } from './components/NotFountPage'
 import { Posts } from './components/Post/PostComponents'
+import { useQuery } from 'react-apollo'
 
 const routes = {
   '/': () => <Landing />,
@@ -21,9 +22,14 @@ const routes = {
 }
 
 const App: React.FC = () => {
+  const { loading, error } = useQuery(GETME)
+  const isNotAuthorizedError = error && error.toString().includes('Not Auth')
+
   const routeResult = useRoutes(routes)
 
-  return routeResult || <NotFoundPage />
+  if (loading) return <p>Loading ...</p>
+
+  return routeResult ? isNotAuthorizedError ? <Login /> : routeResult : <NotFoundPage />
 }
 
 export default App
