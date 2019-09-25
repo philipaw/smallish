@@ -37,7 +37,7 @@ const schema = makeSchema({
 const server = new GraphQLServer({
   schema,
   middlewares: [permissions],
-  context: request => {
+  context: (request) => {
     return {
       ...request,
       photon,
@@ -45,4 +45,15 @@ const server = new GraphQLServer({
   },
 })
 
-server.start(() => console.log(`🚀 Server ready at: http://localhost:4000\n⭐️ See sample queries: http://pris.ly/e/ts/graphql-auth#6-using-the-graphql-api`))
+server.start(() =>
+  console.log(
+    `🚀 Server ready at: http://localhost:4000\n⭐️ See sample queries: http://pris.ly/e/ts/graphql-auth#6-using-the-graphql-api`,
+  ),
+)
+
+async function main() {
+  const allUsers = await photon.users()
+  console.log(allUsers)
+}
+
+main().catch((e) => console.error(e))

@@ -12,8 +12,8 @@ export const GETME = gql`
 `
 
 export const LOGIN = gql`
-  mutation SignUp($email: string, $password: string) {
-    signup(email: $email, password: $password) {
+  mutation Login($email: String, $password: String) {
+    login(email: $email, password: $password) {
       user {
         ...userFields
       }
@@ -24,7 +24,7 @@ export const LOGIN = gql`
 `
 
 export const SIGNUP = gql`
-  mutation SignUp($email: string, $name: string, $password: string) {
+  mutation SignUp($email: String, $name: String, $password: String) {
     signup(email: $email, name: $name, password: $password) {
       user {
         ...userFields

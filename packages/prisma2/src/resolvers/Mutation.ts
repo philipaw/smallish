@@ -35,6 +35,9 @@ export const Mutation = mutationType({
         password: stringArg(),
       },
       resolve: async (_parent, { email, password }, context) => {
+        console.log('=====================================')
+        console.log({ email, password })
+        console.log('=====================================')
         const user = await context.photon.users.findOne({
           where: {
             email,
