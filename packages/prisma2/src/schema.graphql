@@ -28,6 +28,11 @@ input ChatCreateInput {
   updatedAt: DateTime
 }
 
+input ChatCreateManyWithoutChatsInput {
+  connect: [ChatWhereUniqueInput!]
+  create: [ChatCreateWithoutGroupInput!]
+}
+
 input ChatCreateOneWithoutChatInput {
   connect: ChatWhereUniqueInput
   create: ChatCreateWithoutSenderInput
@@ -52,19 +57,34 @@ input ChatCreateWithoutSenderInput {
 input ChatUpdateInput {
   content: String
   createdAt: DateTime
-  group: GroupUpdateOneRequiredWithoutChatInput
+  group: GroupUpdateOneRequiredWithoutChatsInput
   id: ID
   sender: UserUpdateOneRequiredWithoutChatInput
   updatedAt: DateTime
 }
 
-input ChatUpdateOneWithoutGroupInput {
-  connect: ChatWhereUniqueInput
-  create: ChatCreateWithoutGroupInput
-  delete: Boolean
-  disconnect: Boolean
-  update: ChatUpdateWithoutGroupDataInput
-  upsert: ChatUpsertWithoutGroupInput
+input ChatUpdateManyDataInput {
+  content: String
+  createdAt: DateTime
+  id: ID
+  updatedAt: DateTime
+}
+
+input ChatUpdateManyWithoutGroupInput {
+  connect: [ChatWhereUniqueInput!]
+  create: [ChatCreateWithoutGroupInput!]
+  delete: [ChatWhereUniqueInput!]
+  deleteMany: [MutationUpdateOneGroupWhereInput!]
+  disconnect: [ChatWhereUniqueInput!]
+  set: [ChatWhereUniqueInput!]
+  update: [ChatUpdateWithWhereUniqueWithoutGroupInput!]
+  updateMany: [ChatUpdateManyWithWhereNestedInput!]
+  upsert: [ChatUpsertWithWhereUniqueWithoutGroupInput!]
+}
+
+input ChatUpdateManyWithWhereNestedInput {
+  data: ChatUpdateManyDataInput!
+  where: MutationUpdateOneGroupWhereInput!
 }
 
 input ChatUpdateOneWithoutSenderInput {
@@ -87,19 +107,25 @@ input ChatUpdateWithoutGroupDataInput {
 input ChatUpdateWithoutSenderDataInput {
   content: String
   createdAt: DateTime
-  group: GroupUpdateOneRequiredWithoutChatInput
+  group: GroupUpdateOneRequiredWithoutChatsInput
   id: ID
   updatedAt: DateTime
 }
 
-input ChatUpsertWithoutGroupInput {
-  create: ChatCreateWithoutGroupInput!
-  update: ChatUpdateWithoutGroupDataInput!
+input ChatUpdateWithWhereUniqueWithoutGroupInput {
+  data: ChatUpdateWithoutGroupDataInput!
+  where: ChatWhereUniqueInput!
 }
 
 input ChatUpsertWithoutSenderInput {
   create: ChatCreateWithoutSenderInput!
   update: ChatUpdateWithoutSenderDataInput!
+}
+
+input ChatUpsertWithWhereUniqueWithoutGroupInput {
+  create: ChatCreateWithoutGroupInput!
+  update: ChatUpdateWithoutGroupDataInput!
+  where: ChatWhereUniqueInput!
 }
 
 input ChatWhereUniqueInput {
@@ -111,6 +137,7 @@ scalar DateTime
 
 type Group {
   admins(after: String, before: String, first: Int, last: Int, skip: Int): [User!]
+  chats(after: String, before: String, first: Int, last: Int, skip: Int): [Chat!]
   id: ID!
   members(after: String, before: String, first: Int, last: Int, skip: Int): [User!]
   name: String!
@@ -118,7 +145,7 @@ type Group {
 
 input GroupCreateInput {
   admins: UserCreateManyWithoutAdminsInput
-  chat: ChatCreateOneWithoutChatInput
+  chats: ChatCreateManyWithoutChatsInput
   id: ID
   members: UserCreateManyWithoutMembersInput
   name: String!
@@ -136,17 +163,17 @@ input GroupCreateManyWithoutGroupsInput {
 
 input GroupCreateOneWithoutGroupInput {
   connect: GroupWhereUniqueInput
-  create: GroupCreateWithoutChatInput
+  create: GroupCreateWithoutChatsInput
 }
 
 input GroupCreateWithoutAdminsInput {
-  chat: ChatCreateOneWithoutChatInput
+  chats: ChatCreateManyWithoutChatsInput
   id: ID
   members: UserCreateManyWithoutMembersInput
   name: String!
 }
 
-input GroupCreateWithoutChatInput {
+input GroupCreateWithoutChatsInput {
   admins: UserCreateManyWithoutAdminsInput
   id: ID
   members: UserCreateManyWithoutMembersInput
@@ -155,14 +182,14 @@ input GroupCreateWithoutChatInput {
 
 input GroupCreateWithoutMembersInput {
   admins: UserCreateManyWithoutAdminsInput
-  chat: ChatCreateOneWithoutChatInput
+  chats: ChatCreateManyWithoutChatsInput
   id: ID
   name: String!
 }
 
 input GroupUpdateInput {
   admins: UserUpdateManyWithoutGroupsAdminForInput
-  chat: ChatUpdateOneWithoutGroupInput
+  chats: ChatUpdateManyWithoutGroupInput
   id: ID
   members: UserUpdateManyWithoutGroupsInput
   name: String
@@ -202,21 +229,21 @@ input GroupUpdateManyWithWhereNestedInput {
   where: MutationUpdateOnePostWhereInput!
 }
 
-input GroupUpdateOneRequiredWithoutChatInput {
+input GroupUpdateOneRequiredWithoutChatsInput {
   connect: GroupWhereUniqueInput
-  create: GroupCreateWithoutChatInput
-  update: GroupUpdateWithoutChatDataInput
-  upsert: GroupUpsertWithoutChatInput
+  create: GroupCreateWithoutChatsInput
+  update: GroupUpdateWithoutChatsDataInput
+  upsert: GroupUpsertWithoutChatsInput
 }
 
 input GroupUpdateWithoutAdminsDataInput {
-  chat: ChatUpdateOneWithoutGroupInput
+  chats: ChatUpdateManyWithoutGroupInput
   id: ID
   members: UserUpdateManyWithoutGroupsInput
   name: String
 }
 
-input GroupUpdateWithoutChatDataInput {
+input GroupUpdateWithoutChatsDataInput {
   admins: UserUpdateManyWithoutGroupsAdminForInput
   id: ID
   members: UserUpdateManyWithoutGroupsInput
@@ -225,7 +252,7 @@ input GroupUpdateWithoutChatDataInput {
 
 input GroupUpdateWithoutMembersDataInput {
   admins: UserUpdateManyWithoutGroupsAdminForInput
-  chat: ChatUpdateOneWithoutGroupInput
+  chats: ChatUpdateManyWithoutGroupInput
   id: ID
   name: String
 }
@@ -240,9 +267,9 @@ input GroupUpdateWithWhereUniqueWithoutMembersInput {
   where: GroupWhereUniqueInput!
 }
 
-input GroupUpsertWithoutChatInput {
-  create: GroupCreateWithoutChatInput!
-  update: GroupUpdateWithoutChatDataInput!
+input GroupUpsertWithoutChatsInput {
+  create: GroupCreateWithoutChatsInput!
+  update: GroupUpdateWithoutChatsDataInput!
 }
 
 input GroupUpsertWithWhereUniqueWithoutAdminsInput {
@@ -328,6 +355,7 @@ input MutationUpdateOnePostFilter {
 input MutationUpdateOnePostWhereInput {
   admins: MutationUpdateOnePostFilter
   AND: [MutationUpdateOnePostWhereInput!]
+  chats: MutationUpdateOnePostFilter
   id: StringFilter
   members: MutationUpdateOnePostFilter
   name: StringFilter
@@ -449,6 +477,7 @@ type Query {
   group(where: GroupWhereUniqueInput!): Group
   groups(after: String, before: String, first: Int, last: Int, skip: Int): [Group!]
   me: User!
+  myGroups: Group!
   otherUsers: User
   post(id: ID): Post
   user(where: UserWhereUniqueInput!): User

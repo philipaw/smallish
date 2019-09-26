@@ -7,5 +7,6 @@ export const Group = objectType({
     t.model.name()
     t.model.admins()
     t.model.members()
+    t.model.chats()
   },
 })

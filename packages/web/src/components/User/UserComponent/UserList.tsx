@@ -8,8 +8,9 @@ interface UserListProps {
 
 export const UserList: React.FC<UserListProps> = ({ users }) => (
   <div>
+    <header>Users</header>
     {users.map((user) => (
-      <User {...user} />
+      <User {...user} key={user.id} />
     ))}
   </div>
 )

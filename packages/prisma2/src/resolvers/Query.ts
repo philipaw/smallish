@@ -34,6 +34,17 @@ export const Query = queryType({
       },
     })
 
+    t.field('myGroups', {
+      type: 'Group',
+      resolve: async (_parent, _args, ctx) => {
+        const userId = getUserId(ctx)
+        const groups = await ctx.photon.users.findOne({ where: { id: userId } }).groups()
+        console.log({ groups })
+        console.log('done')
+        return groups
+      },
+    })
+
     t.list.field('feed', {
       type: 'Post',
       resolve: (_parent, _args, ctx) => {
