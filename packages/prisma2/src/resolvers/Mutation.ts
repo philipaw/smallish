@@ -142,22 +142,11 @@ export const Mutation = mutationType({
         id: idArg(),
         memberIds: idArg({ list: true }),
       },
-      resolve: async (_parent, { id, memberIds }, ctx) => {
-        const { admins } = await ctx.photon.groups.findOne({
+      resolve: (_parent, { id, memberIds }, ctx) =>
+        ctx.photon.groups.update({
           where: { id },
-          include: { admins: true },
-        })
-        const adminIds = admins.map((a) => a.id)
-        const currentUserId = getUserId(ctx)
-        if (adminIds.includes(currentUserId)) {
-          return ctx.photon.groups.update({
-            where: { id },
-            data: { members: { connect: [...memberIds.map((mid: string) => ({ id: mid }))] } },
-          })
-        } else {
-          throw new Error('User must be an admin of group to add other users')
-        }
-      },
+          data: { members: { connect: [...memberIds.map((mid: string) => ({ id: mid }))] } },
+        }),
     })
   },
 })

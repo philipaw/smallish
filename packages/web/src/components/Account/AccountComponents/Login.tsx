@@ -12,15 +12,19 @@ export const Login: React.FC = () => {
   const [login, { error: loginError }] = useMutation(LOGIN)
   const [signup, { error: signupError }] = useMutation(SIGNUP)
 
-  const handleSubmit = () => {
-    if (isSignup) {
-      signup({ variables: { name, email, password } })
-    } else {
-      login({ variables: { email, password } })
-    }
+  const handleSubmit = async () => {
+    const {
+      data: {
+        login: { token },
+      },
+    } = isSignup
+      ? await signup({ variables: { name, email, password } })
+      : await login({ variables: { email, password } })
+    localStorage.setItem('token', token)
+    console.log({ token: localStorage.getItem('token') })
   }
 
-  const handleSignupToggle = (e: React.MouseEvent<HTMLButtonElement>): void => {
+  const handleSignupToggle = (e: React.MouseEvent<HTMLAnchorElement>): void => {
     e.preventDefault()
     setIsSignup(!isSignup)
   }
@@ -29,12 +33,16 @@ export const Login: React.FC = () => {
     isSignup ? (
       <header>
         <p>Signup or </p>
-        <button onClick={(e) => handleSignupToggle(e)}>Login</button>
+        <a href="/#" onClick={(e) => handleSignupToggle(e)}>
+          Login
+        </a>
       </header>
     ) : (
       <header>
         <p>Login or </p>
-        <button onClick={(e) => handleSignupToggle(e)}>Login</button>
+        <a href="/#" onClick={(e) => handleSignupToggle(e)}>
+          Signup
+        </a>
       </header>
     )
 
@@ -57,7 +65,7 @@ export const Login: React.FC = () => {
         <label>password</label>
         <input value={password} onChange={({ target: { value } }) => setPassword(value)} type="password" />
       </div>
-      <button onClick={() => handleSubmit}>{isSignup ? 'Signup' : 'Login'}</button>
+      <button onClick={() => handleSubmit()}>{isSignup ? 'Signup' : 'Login'}</button>
     </div>
   )
 }

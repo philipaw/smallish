@@ -6,6 +6,7 @@ import { join } from 'path'
 import { permissions } from './permissions'
 import * as allTypes from './resolvers'
 import { Context } from './types'
+const cors = require('cors')
 
 const photon = new Photon()
 
@@ -44,6 +45,12 @@ const server = new GraphQLServer({
     }
   },
 })
+
+var corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true, // <-- REQUIRED backend setting
+}
+server.use(cors(corsOptions))
 
 server.start(() =>
   console.log(

@@ -20,7 +20,9 @@ export const Query = queryType({
       resolve: async (_parent, _args, ctx) => {
         const userId = getUserId(ctx)
         const allUsers = await ctx.photon.users()
-        return allUsers.filter(({ id }) => id !== userId)
+        const otherUsers = allUsers.filter(({ id }) => id !== userId)
+        console.log({ otherUsers })
+        return otherUsers
       },
     })
 
