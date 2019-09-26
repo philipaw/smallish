@@ -22,9 +22,27 @@ model Post {
 }
 
 model User {
-  id       String  @default(cuid()) @id
-  email    String  @unique
-  password String
-  name     String?
-  posts    Post[]
+  id              String  @default(cuid()) @id
+  email           String  @unique
+  password        String
+  name            String?
+  posts           Post[]
+  groupsAdminFor  Group[] @relation(name:"UserGroupAdmin")
+  groups          Group[] @relation(name:"UserGroupMember")
+}
+
+model Group {
+  id      String @default(cuid()) @id
+  name    String
+  admins  User[] @relation(name:"UserGroupAdmin")
+  members User[] @relation(name:"UserGroupMember")
+}
+
+model Chat {
+  id        String @default(cuid()) @id
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  content   String
+  sender    User
+  group     Group
 }

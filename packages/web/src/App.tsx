@@ -4,7 +4,7 @@ import { useRoutes } from 'hookrouter'
 
 import './App.css'
 
-import { Account, Login, SignUp, GETME } from './components/Account'
+import { Account, Login, GETME, Signup } from './components/Account'
 import { Chat } from './components/Chat'
 import { Landing } from './components/Landing'
 import { NotFoundPage } from './components/NotFountPage'
@@ -15,9 +15,8 @@ const routes = {
   '/': () => <Landing />,
   '/account': () => <Account />,
   '/chat': () => <Chat />,
-  '/login': () => <Login />,
   '/posts': () => <Posts />,
-  '/signup': () => <SignUp />,
+  '/signup': () => <Signup />,
   // '/chat': ({ id }) => <ProductDetails id={id} />,
 }
 
