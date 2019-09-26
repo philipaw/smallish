@@ -23,6 +23,7 @@ export const Query = queryType({
       },
     })
 
+    // TODO: this bugs out
     t.field('otherUsers', {
       type: 'User',
       nullable: true,
@@ -34,6 +35,7 @@ export const Query = queryType({
       },
     })
 
+    // TODO: this bugs out
     t.field('myGroups', {
       type: 'Group',
       resolve: async (_parent, _args, ctx) => {
