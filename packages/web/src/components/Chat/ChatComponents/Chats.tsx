@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useQuery } from 'react-apollo'
 
+import { Box } from '../../../common/styled'
+
 import { ALL_GROUPS } from '../ChatActions'
 import { ALL_USERS, UserList } from '../../User'
 import { GroupList } from '../../Group/GroupComponents/GroupList'
@@ -24,27 +26,24 @@ export const Chats: React.FC = () => {
   const groups = groupData && groupData.groups
 
   return (
-    <div>
+    <Box>
       <h1>Messenger</h1>
-      <UserList users={users} />
       <h2>Chats</h2>
       {groups && groups.length > 0 ? <GroupList groups={groups} /> : <p>Looks like you dont have any open chats</p>}
 
-      <div>
+      <Box>
         {showAddGroup && (
-          <div>
-            <div>
-              <label>Send to:</label>
+          <Box>
+            <Box>
+              <label>To:</label>
               <input
                 type="text"
                 value={emailsToSendTo}
                 onChange={({ target: { value } }) => setEmailsToSendTo(value)}
               />
-            </div>
-            <div>
-              <label>Message</label>
-              <input type="text" value={message} onChange={({ target: { value } }) => setMessage(value)} />
-            </div>
+            </Box>
+            <br />
+            <UserList users={users} />
             <button
               onClick={() => {
                 console.log({ emailsToSendTo, message })
@@ -52,9 +51,9 @@ export const Chats: React.FC = () => {
             >
               Send
             </button>
-          </div>
+          </Box>
         )}
-      </div>
+      </Box>
       <a
         href="#/"
         onClick={() => {
@@ -67,6 +66,6 @@ export const Chats: React.FC = () => {
       >
         {!showAddGroup ? 'Send a message' : 'Cancel'}
       </a>
-    </div>
+    </Box>
   )
 }

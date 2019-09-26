@@ -4,7 +4,9 @@ import ReactDOM from 'react-dom'
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
 
-import './index.css'
+import { ThemeProvider } from 'styled-components'
+import { Root, Style, theme } from './common/styled'
+
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 
@@ -20,13 +22,18 @@ const client = new ApolloClient({
   },
 })
 
-const ApolloApp = (AppComponent: any) => (
+const WrapApp = (AppComponent: any) => (
   <ApolloProvider client={client}>
-    <AppComponent />
+    <ThemeProvider theme={theme}>
+      <Root>
+        <Style />
+        <AppComponent />
+      </Root>
+    </ThemeProvider>
   </ApolloProvider>
 )
 
-ReactDOM.render(ApolloApp(App), document.getElementById('root'))
+ReactDOM.render(WrapApp(App), document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

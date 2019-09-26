@@ -1,14 +1,14 @@
 import gql from 'graphql-tag'
-import { USER_FRAGMENT } from '../../common/fragment'
+import { USER_FRAGMENT } from '../../common/graphql/fragment'
 
-export const CREATE_ONE_GROUP = gql`
-  mutation CreateOneGroup($name: String, $memberIds: String[]) {
-    createOneGroup(name: $name, memberIds: $memberIds) {
-      id
-      name
-    }
-  }
-`
+// export const CREATE_ONE_GROUP = gql`
+//   mutation CreateOneGroup($name: String, $memberIds: String[]) {
+//     createOneGroup(name: $name, memberIds: $memberIds) {
+//       id
+//       name
+//     }
+//   }
+// `
 
 export const MY_GROUPS = gql`
   query MyGroups {

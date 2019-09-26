@@ -1,7 +1,9 @@
 import React from 'react'
 
+import { Box } from '../../common/styled'
+
 export const NotFoundPage = () => (
-  <div>
+  <Box>
     <h1>NotFoundPage</h1>
-  </div>
+  </Box>
 )

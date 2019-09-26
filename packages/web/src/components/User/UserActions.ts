@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import { USER_FRAGMENT } from '../../common/fragment'
+import { USER_FRAGMENT } from '../../common/graphql/fragment'
 
 export const ALL_USERS = gql`
   query AllUsers {

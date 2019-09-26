@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
 
+import idx from 'idx'
+import { navigate } from 'hookrouter'
+
+import { Box } from '../../../common/styled'
+
 import { useMutation } from '@apollo/react-hooks'
 import { LOGIN, SIGNUP } from '../AccountActions'
 
@@ -13,15 +18,12 @@ export const Login: React.FC = () => {
   const [signup, { error: signupError }] = useMutation(SIGNUP)
 
   const handleSubmit = async () => {
-    const {
-      data: {
-        login: { token },
-      },
-    } = isSignup
+    const { data } = isSignup
       ? await signup({ variables: { name, email, password } })
       : await login({ variables: { email, password } })
+    const token = idx(data, (_) => _[isSignup ? 'signup' : 'login'].token)
     localStorage.setItem('token', token)
-    console.log({ token: localStorage.getItem('token') })
+    navigate('/home')
   }
 
   const handleSignupToggle = (e: React.MouseEvent<HTMLAnchorElement>): void => {
@@ -47,25 +49,25 @@ export const Login: React.FC = () => {
     )
 
   return (
-    <div className="login-container">
+    <Box className="login-container">
       {renderHeader()}
-      {signupError && <p>Oh no! {signupError.message}</p>}
-      {loginError && <p>Oh no! {loginError.message}</p>}
+      {signupError && <p>Oh no! {`${signupError.message}`}</p>}
+      {loginError && <p>Oh no! {`${loginError.message}`}</p>}
       {isSignup && (
-        <div className="name-container">
+        <Box className="name-container">
           <label>name</label>
           <input value={name} onChange={({ target: { value } }) => setName(value)} />
-        </div>
+        </Box>
       )}
-      <div className="email-container">
+      <Box className="email-container">
         <label>email</label>
         <input value={email} onChange={({ target: { value } }) => setEmail(value)} />
-      </div>
-      <div className="password-container">
+      </Box>
+      <Box className="password-container">
         <label>password</label>
         <input value={password} onChange={({ target: { value } }) => setPassword(value)} type="password" />
-      </div>
+      </Box>
       <button onClick={() => handleSubmit()}>{isSignup ? 'Signup' : 'Login'}</button>
-    </div>
+    </Box>
   )
 }

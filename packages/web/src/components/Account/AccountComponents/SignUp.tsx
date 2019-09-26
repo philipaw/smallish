@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 
 import { useMutation } from '@apollo/react-hooks'
 import { A } from 'hookrouter'
+
+import { Box } from '../../../common/styled'
 import { SIGNUP } from '../AccountActions'
 
 export const Signup: React.FC = () => {
@@ -12,27 +14,27 @@ export const Signup: React.FC = () => {
   const [signup, { error }] = useMutation(SIGNUP)
 
   return (
-    <div className="signup-container">
+    <Box className="signup-container">
       <header>
         <p>Signup or </p>
         <A href="/login">Login</A>
       </header>
       {error && <p>Oh no! {error.message}</p>}
-      <div className="name-container">
+      <Box className="name-container">
         <label>name</label>
         <input value={name} onChange={({ target: { value } }) => setName(value)} />
-      </div>
-      <div className="email-container">
+      </Box>
+      <Box className="email-container">
         <label>email</label>
         <input value={email} onChange={({ target: { value } }) => setEmail(value)} />
-      </div>
-      <div className="password-container">
+      </Box>
+      <Box className="password-container">
         <label>password</label>
         <input value={password} onChange={({ target: { value } }) => setPassword(value)} type="password" />
-      </div>
+      </Box>
       <button onClick={() => name && email && password && signup({ variables: { name, email, password } })}>
         Signup
       </button>
-    </div>
+    </Box>
   )
 }

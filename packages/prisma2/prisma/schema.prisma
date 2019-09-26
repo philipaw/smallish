@@ -8,7 +8,7 @@ generator nexus_prisma {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://postgres@localhost:32769/smallish?schema=smallish-prisma2"
+  url      = "postgresql://postgres@localhost:32768/smallish?schema=smallish-prisma2"
 }
 
 model Post {
@@ -22,25 +22,25 @@ model Post {
 }
 
 model User {
-  id              String  @default(cuid()) @id
-  email           String  @unique
-  password        String
-  name            String?
-  posts           Post[]
-  groupsAdminFor  Group[] @relation(name:"UserGroupAdmin")
-  groups          Group[] @relation(name:"UserGroupMember")
+  id             String  @default(cuid()) @id
+  email          String  @unique
+  password       String
+  name           String?
+  posts          Post[]
+  groupsAdminFor Group[] @relation(name: "UserGroupAdmin")
+  groups         Group[] @relation(name: "UserGroupMember")
 }
 
 model Group {
   id      String @default(cuid()) @id
   name    String
-  admins  User[] @relation(name:"UserGroupAdmin")
-  members User[] @relation(name:"UserGroupMember")
+  admins  User[] @relation(name: "UserGroupAdmin")
+  members User[] @relation(name: "UserGroupMember")
   chats   Chat[]
 }
 
 model Chat {
-  id        String @default(cuid()) @id
+  id        String   @default(cuid()) @id
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   content   String

@@ -13,6 +13,7 @@ import { useQuery } from 'react-apollo'
 
 const routes = {
   '/': () => <Landing />,
+  '/home': () => <Landing />,
   '/account': () => <Account />,
   '/chat': () => <Chats />,
   '/posts': () => <Posts />,

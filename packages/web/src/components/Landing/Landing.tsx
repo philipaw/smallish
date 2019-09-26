@@ -1,15 +1,17 @@
 import React from 'react'
 import { A } from 'hookrouter'
 
+import { Box } from '../../common/styled'
+
 export const Landing: React.FC = () => {
   return (
-    <div className="Landing">
-      <header>Hi</header>
-      <div>
+    <Box className="Landing">
+      <header>Welcome</header>
+      <Box>
         <header>
           <A href="/chat">Chat</A>
         </header>
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }

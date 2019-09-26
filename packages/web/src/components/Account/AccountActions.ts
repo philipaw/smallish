@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
 
-import { USER_FRAGMENT } from '../../common/fragment'
+import { USER_FRAGMENT } from '../../common/graphql/fragment'
 
 export const GETME = gql`
   query GetMe {
