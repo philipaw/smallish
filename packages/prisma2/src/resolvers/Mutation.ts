@@ -5,6 +5,13 @@ import { APP_SECRET, getUserId } from '../utils'
 
 export const Mutation = mutationType({
   definition(t) {
+    t.crud.createOneGroup()
+    t.crud.updateOneGroup()
+    t.crud.createOnePost()
+    t.crud.updateOnePost()
+    t.crud.createOneChat()
+    t.crud.updateOneChat()
+
     t.field('signup', {
       type: 'AuthPayload',
       args: {
@@ -35,9 +42,6 @@ export const Mutation = mutationType({
         password: stringArg(),
       },
       resolve: async (_parent, { email, password }, context) => {
-        console.log('=====================================')
-        console.log({ email, password })
-        console.log('=====================================')
         const user = await context.photon.users.findOne({
           where: {
             email,
@@ -98,6 +102,61 @@ export const Mutation = mutationType({
           where: { id },
           data: { published: true },
         })
+      },
+    })
+
+    t.field('setGroupAdmins', {
+      type: 'Group',
+      args: {
+        id: idArg(),
+        adminIds: idArg({ list: true }),
+      },
+      resolve: async (_parent, { id, adminIds }, ctx) => {
+        const { admins, members } = await ctx.photon.groups.findOne({
+          where: { id },
+          include: { admins: true, members: true },
+        })
+        const memberIds = members.map((member) => member.id)
+        const existingAdminIds = admins.map(({ id }) => {
+          if (memberIds.includes(id)) {
+            return id
+          } else {
+            throw new Error('User must be part of group to be an admin')
+          }
+        })
+        const currentUserId = getUserId(ctx)
+        if (existingAdminIds.includes(currentUserId)) {
+          return ctx.photon.groups.update({
+            where: { id },
+            data: { members: { connect: [...adminIds.map((aid: string) => ({ id: aid }))] } },
+          })
+        } else {
+          throw new Error('User must be an admin of group to add other users as admin')
+        }
+      },
+    })
+
+    t.field('setGroupMembers', {
+      type: 'Group',
+      args: {
+        id: idArg(),
+        memberIds: idArg({ list: true }),
+      },
+      resolve: async (_parent, { id, memberIds }, ctx) => {
+        const { admins } = await ctx.photon.groups.findOne({
+          where: { id },
+          include: { admins: true },
+        })
+        const adminIds = admins.map((a) => a.id)
+        const currentUserId = getUserId(ctx)
+        if (adminIds.includes(currentUserId)) {
+          return ctx.photon.groups.update({
+            where: { id },
+            data: { members: { connect: [...memberIds.map((mid: string) => ({ id: mid }))] } },
+          })
+        } else {
+          throw new Error('User must be an admin of group to add other users')
+        }
       },
     })
   },

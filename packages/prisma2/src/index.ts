@@ -52,6 +52,7 @@ server.start(() =>
 )
 
 async function main() {
+  console.log({ photon })
   const allUsers = await photon.users()
   console.log(allUsers)
 }

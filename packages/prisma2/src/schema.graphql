@@ -7,15 +7,346 @@ type AuthPayload {
   user: User!
 }
 
+input BooleanFilter {
+  equals: Boolean
+  not: Boolean
+}
+
+type Chat {
+  content: String!
+  group: Group!
+  id: ID!
+  sender: User!
+}
+
+input ChatCreateInput {
+  content: String!
+  createdAt: DateTime
+  group: GroupCreateOneWithoutGroupInput!
+  id: ID
+  sender: UserCreateOneWithoutSenderInput!
+  updatedAt: DateTime
+}
+
+input ChatCreateOneWithoutChatInput {
+  connect: ChatWhereUniqueInput
+  create: ChatCreateWithoutSenderInput
+}
+
+input ChatCreateWithoutGroupInput {
+  content: String!
+  createdAt: DateTime
+  id: ID
+  sender: UserCreateOneWithoutSenderInput!
+  updatedAt: DateTime
+}
+
+input ChatCreateWithoutSenderInput {
+  content: String!
+  createdAt: DateTime
+  group: GroupCreateOneWithoutGroupInput!
+  id: ID
+  updatedAt: DateTime
+}
+
+input ChatUpdateInput {
+  content: String
+  createdAt: DateTime
+  group: GroupUpdateOneRequiredWithoutChatInput
+  id: ID
+  sender: UserUpdateOneRequiredWithoutChatInput
+  updatedAt: DateTime
+}
+
+input ChatUpdateOneWithoutGroupInput {
+  connect: ChatWhereUniqueInput
+  create: ChatCreateWithoutGroupInput
+  delete: Boolean
+  disconnect: Boolean
+  update: ChatUpdateWithoutGroupDataInput
+  upsert: ChatUpsertWithoutGroupInput
+}
+
+input ChatUpdateOneWithoutSenderInput {
+  connect: ChatWhereUniqueInput
+  create: ChatCreateWithoutSenderInput
+  delete: Boolean
+  disconnect: Boolean
+  update: ChatUpdateWithoutSenderDataInput
+  upsert: ChatUpsertWithoutSenderInput
+}
+
+input ChatUpdateWithoutGroupDataInput {
+  content: String
+  createdAt: DateTime
+  id: ID
+  sender: UserUpdateOneRequiredWithoutChatInput
+  updatedAt: DateTime
+}
+
+input ChatUpdateWithoutSenderDataInput {
+  content: String
+  createdAt: DateTime
+  group: GroupUpdateOneRequiredWithoutChatInput
+  id: ID
+  updatedAt: DateTime
+}
+
+input ChatUpsertWithoutGroupInput {
+  create: ChatCreateWithoutGroupInput!
+  update: ChatUpdateWithoutGroupDataInput!
+}
+
+input ChatUpsertWithoutSenderInput {
+  create: ChatCreateWithoutSenderInput!
+  update: ChatUpdateWithoutSenderDataInput!
+}
+
+input ChatWhereUniqueInput {
+  id: ID
+}
+
 """DateTime"""
 scalar DateTime
 
+type Group {
+  admins(after: String, before: String, first: Int, last: Int, skip: Int): [User!]
+  id: ID!
+  members(after: String, before: String, first: Int, last: Int, skip: Int): [User!]
+  name: String!
+}
+
+input GroupCreateInput {
+  admins: UserCreateManyWithoutAdminsInput
+  chat: ChatCreateOneWithoutChatInput
+  id: ID
+  members: UserCreateManyWithoutMembersInput
+  name: String!
+}
+
+input GroupCreateManyWithoutGroupsAdminForInput {
+  connect: [GroupWhereUniqueInput!]
+  create: [GroupCreateWithoutAdminsInput!]
+}
+
+input GroupCreateManyWithoutGroupsInput {
+  connect: [GroupWhereUniqueInput!]
+  create: [GroupCreateWithoutMembersInput!]
+}
+
+input GroupCreateOneWithoutGroupInput {
+  connect: GroupWhereUniqueInput
+  create: GroupCreateWithoutChatInput
+}
+
+input GroupCreateWithoutAdminsInput {
+  chat: ChatCreateOneWithoutChatInput
+  id: ID
+  members: UserCreateManyWithoutMembersInput
+  name: String!
+}
+
+input GroupCreateWithoutChatInput {
+  admins: UserCreateManyWithoutAdminsInput
+  id: ID
+  members: UserCreateManyWithoutMembersInput
+  name: String!
+}
+
+input GroupCreateWithoutMembersInput {
+  admins: UserCreateManyWithoutAdminsInput
+  chat: ChatCreateOneWithoutChatInput
+  id: ID
+  name: String!
+}
+
+input GroupUpdateInput {
+  admins: UserUpdateManyWithoutGroupsAdminForInput
+  chat: ChatUpdateOneWithoutGroupInput
+  id: ID
+  members: UserUpdateManyWithoutGroupsInput
+  name: String
+}
+
+input GroupUpdateManyDataInput {
+  id: ID
+  name: String
+}
+
+input GroupUpdateManyWithoutAdminsInput {
+  connect: [GroupWhereUniqueInput!]
+  create: [GroupCreateWithoutAdminsInput!]
+  delete: [GroupWhereUniqueInput!]
+  deleteMany: [MutationUpdateOnePostWhereInput!]
+  disconnect: [GroupWhereUniqueInput!]
+  set: [GroupWhereUniqueInput!]
+  update: [GroupUpdateWithWhereUniqueWithoutAdminsInput!]
+  updateMany: [GroupUpdateManyWithWhereNestedInput!]
+  upsert: [GroupUpsertWithWhereUniqueWithoutAdminsInput!]
+}
+
+input GroupUpdateManyWithoutMembersInput {
+  connect: [GroupWhereUniqueInput!]
+  create: [GroupCreateWithoutMembersInput!]
+  delete: [GroupWhereUniqueInput!]
+  deleteMany: [MutationUpdateOnePostWhereInput!]
+  disconnect: [GroupWhereUniqueInput!]
+  set: [GroupWhereUniqueInput!]
+  update: [GroupUpdateWithWhereUniqueWithoutMembersInput!]
+  updateMany: [GroupUpdateManyWithWhereNestedInput!]
+  upsert: [GroupUpsertWithWhereUniqueWithoutMembersInput!]
+}
+
+input GroupUpdateManyWithWhereNestedInput {
+  data: GroupUpdateManyDataInput!
+  where: MutationUpdateOnePostWhereInput!
+}
+
+input GroupUpdateOneRequiredWithoutChatInput {
+  connect: GroupWhereUniqueInput
+  create: GroupCreateWithoutChatInput
+  update: GroupUpdateWithoutChatDataInput
+  upsert: GroupUpsertWithoutChatInput
+}
+
+input GroupUpdateWithoutAdminsDataInput {
+  chat: ChatUpdateOneWithoutGroupInput
+  id: ID
+  members: UserUpdateManyWithoutGroupsInput
+  name: String
+}
+
+input GroupUpdateWithoutChatDataInput {
+  admins: UserUpdateManyWithoutGroupsAdminForInput
+  id: ID
+  members: UserUpdateManyWithoutGroupsInput
+  name: String
+}
+
+input GroupUpdateWithoutMembersDataInput {
+  admins: UserUpdateManyWithoutGroupsAdminForInput
+  chat: ChatUpdateOneWithoutGroupInput
+  id: ID
+  name: String
+}
+
+input GroupUpdateWithWhereUniqueWithoutAdminsInput {
+  data: GroupUpdateWithoutAdminsDataInput!
+  where: GroupWhereUniqueInput!
+}
+
+input GroupUpdateWithWhereUniqueWithoutMembersInput {
+  data: GroupUpdateWithoutMembersDataInput!
+  where: GroupWhereUniqueInput!
+}
+
+input GroupUpsertWithoutChatInput {
+  create: GroupCreateWithoutChatInput!
+  update: GroupUpdateWithoutChatDataInput!
+}
+
+input GroupUpsertWithWhereUniqueWithoutAdminsInput {
+  create: GroupCreateWithoutAdminsInput!
+  update: GroupUpdateWithoutAdminsDataInput!
+  where: GroupWhereUniqueInput!
+}
+
+input GroupUpsertWithWhereUniqueWithoutMembersInput {
+  create: GroupCreateWithoutMembersInput!
+  update: GroupUpdateWithoutMembersDataInput!
+  where: GroupWhereUniqueInput!
+}
+
+input GroupWhereUniqueInput {
+  id: ID
+}
+
 type Mutation {
   createDraft(content: String, title: String): Post!
+  createOneChat(data: ChatCreateInput!): Chat!
+  createOneGroup(data: GroupCreateInput!): Group!
+  createOnePost(data: PostCreateInput!): Post!
   deletePost(id: ID): Post
   login(email: String, password: String): AuthPayload!
   publish(id: ID): Post
+  setGroupAdmins(adminIds: [ID!], id: ID): Group!
+  setGroupMembers(id: ID, memberIds: [ID!]): Group!
   signup(email: String, name: String, password: String): AuthPayload!
+  updateOneChat(data: ChatUpdateInput!, where: ChatWhereUniqueInput!): Chat
+  updateOneGroup(data: GroupUpdateInput!, where: GroupWhereUniqueInput!): Group
+  updateOnePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
+}
+
+input MutationUpdateOneChatFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: DateTime
+  notIn: [DateTime!]
+}
+
+input MutationUpdateOneChatWhereInput {
+  AND: [MutationUpdateOneChatWhereInput!]
+  content: NullableStringFilter
+  createdAt: MutationUpdateOneChatFilter
+  id: StringFilter
+  NOT: [MutationUpdateOneChatWhereInput!]
+  OR: [MutationUpdateOneChatWhereInput!]
+  published: BooleanFilter
+  title: StringFilter
+  updatedAt: MutationUpdateOneChatFilter
+}
+
+input MutationUpdateOneGroupFilter {
+  every: MutationUpdateOneGroupWhereInput
+  none: MutationUpdateOneGroupWhereInput
+  some: MutationUpdateOneGroupWhereInput
+}
+
+input MutationUpdateOneGroupWhereInput {
+  AND: [MutationUpdateOneGroupWhereInput!]
+  email: StringFilter
+  groups: MutationUpdateOneGroupFilter
+  groupsAdminFor: MutationUpdateOneGroupFilter
+  id: StringFilter
+  name: NullableStringFilter
+  NOT: [MutationUpdateOneGroupWhereInput!]
+  OR: [MutationUpdateOneGroupWhereInput!]
+  password: StringFilter
+  posts: MutationUpdateOneGroupFilter
+}
+
+input MutationUpdateOnePostFilter {
+  every: MutationUpdateOnePostWhereInput
+  none: MutationUpdateOnePostWhereInput
+  some: MutationUpdateOnePostWhereInput
+}
+
+input MutationUpdateOnePostWhereInput {
+  admins: MutationUpdateOnePostFilter
+  AND: [MutationUpdateOnePostWhereInput!]
+  id: StringFilter
+  members: MutationUpdateOnePostFilter
+  name: StringFilter
+  NOT: [MutationUpdateOnePostWhereInput!]
+  OR: [MutationUpdateOnePostWhereInput!]
+}
+
+input NullableStringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: String
+  notIn: [String!]
+  startsWith: String
 }
 
 type Post {
@@ -26,6 +357,90 @@ type Post {
   title: String!
 }
 
+input PostCreateInput {
+  author: UserCreateOneWithoutAuthorInput!
+  content: String
+  createdAt: DateTime
+  id: ID
+  published: Boolean
+  title: String!
+  updatedAt: DateTime
+}
+
+input PostCreateManyWithoutPostsInput {
+  connect: [PostWhereUniqueInput!]
+  create: [PostCreateWithoutAuthorInput!]
+}
+
+input PostCreateWithoutAuthorInput {
+  content: String
+  createdAt: DateTime
+  id: ID
+  published: Boolean
+  title: String!
+  updatedAt: DateTime
+}
+
+input PostUpdateInput {
+  author: UserUpdateOneRequiredWithoutPostsInput
+  content: String
+  createdAt: DateTime
+  id: ID
+  published: Boolean
+  title: String
+  updatedAt: DateTime
+}
+
+input PostUpdateManyDataInput {
+  content: String
+  createdAt: DateTime
+  id: ID
+  published: Boolean
+  title: String
+  updatedAt: DateTime
+}
+
+input PostUpdateManyWithoutAuthorInput {
+  connect: [PostWhereUniqueInput!]
+  create: [PostCreateWithoutAuthorInput!]
+  delete: [PostWhereUniqueInput!]
+  deleteMany: [MutationUpdateOneChatWhereInput!]
+  disconnect: [PostWhereUniqueInput!]
+  set: [PostWhereUniqueInput!]
+  update: [PostUpdateWithWhereUniqueWithoutAuthorInput!]
+  updateMany: [PostUpdateManyWithWhereNestedInput!]
+  upsert: [PostUpsertWithWhereUniqueWithoutAuthorInput!]
+}
+
+input PostUpdateManyWithWhereNestedInput {
+  data: PostUpdateManyDataInput!
+  where: MutationUpdateOneChatWhereInput!
+}
+
+input PostUpdateWithoutAuthorDataInput {
+  content: String
+  createdAt: DateTime
+  id: ID
+  published: Boolean
+  title: String
+  updatedAt: DateTime
+}
+
+input PostUpdateWithWhereUniqueWithoutAuthorInput {
+  data: PostUpdateWithoutAuthorDataInput!
+  where: PostWhereUniqueInput!
+}
+
+input PostUpsertWithWhereUniqueWithoutAuthorInput {
+  create: PostCreateWithoutAuthorInput!
+  update: PostUpdateWithoutAuthorDataInput!
+  where: PostWhereUniqueInput!
+}
+
+input PostWhereUniqueInput {
+  id: ID
+}
+
 type Query {
   feed: [Post!]!
   filterPosts(searchString: String): [Post!]!
@@ -33,9 +448,210 @@ type Query {
   post(id: ID): Post
 }
 
+input StringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
 type User {
   email: String!
   id: ID!
   name: String
   posts(after: String, before: String, first: Int, last: Int, skip: Int): [Post!]
+}
+
+input UserCreateManyWithoutAdminsInput {
+  connect: [UserWhereUniqueInput!]
+  create: [UserCreateWithoutGroupsAdminForInput!]
+}
+
+input UserCreateManyWithoutMembersInput {
+  connect: [UserWhereUniqueInput!]
+  create: [UserCreateWithoutGroupsInput!]
+}
+
+input UserCreateOneWithoutAuthorInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutPostsInput
+}
+
+input UserCreateOneWithoutSenderInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutChatInput
+}
+
+input UserCreateWithoutChatInput {
+  email: String!
+  groups: GroupCreateManyWithoutGroupsInput
+  groupsAdminFor: GroupCreateManyWithoutGroupsAdminForInput
+  id: ID
+  name: String
+  password: String!
+  posts: PostCreateManyWithoutPostsInput
+}
+
+input UserCreateWithoutGroupsAdminForInput {
+  chat: ChatCreateOneWithoutChatInput
+  email: String!
+  groups: GroupCreateManyWithoutGroupsInput
+  id: ID
+  name: String
+  password: String!
+  posts: PostCreateManyWithoutPostsInput
+}
+
+input UserCreateWithoutGroupsInput {
+  chat: ChatCreateOneWithoutChatInput
+  email: String!
+  groupsAdminFor: GroupCreateManyWithoutGroupsAdminForInput
+  id: ID
+  name: String
+  password: String!
+  posts: PostCreateManyWithoutPostsInput
+}
+
+input UserCreateWithoutPostsInput {
+  chat: ChatCreateOneWithoutChatInput
+  email: String!
+  groups: GroupCreateManyWithoutGroupsInput
+  groupsAdminFor: GroupCreateManyWithoutGroupsAdminForInput
+  id: ID
+  name: String
+  password: String!
+}
+
+input UserUpdateManyDataInput {
+  email: String
+  id: ID
+  name: String
+  password: String
+}
+
+input UserUpdateManyWithoutGroupsAdminForInput {
+  connect: [UserWhereUniqueInput!]
+  create: [UserCreateWithoutGroupsAdminForInput!]
+  delete: [UserWhereUniqueInput!]
+  deleteMany: [MutationUpdateOneGroupWhereInput!]
+  disconnect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+  update: [UserUpdateWithWhereUniqueWithoutGroupsAdminForInput!]
+  updateMany: [UserUpdateManyWithWhereNestedInput!]
+  upsert: [UserUpsertWithWhereUniqueWithoutGroupsAdminForInput!]
+}
+
+input UserUpdateManyWithoutGroupsInput {
+  connect: [UserWhereUniqueInput!]
+  create: [UserCreateWithoutGroupsInput!]
+  delete: [UserWhereUniqueInput!]
+  deleteMany: [MutationUpdateOneGroupWhereInput!]
+  disconnect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+  update: [UserUpdateWithWhereUniqueWithoutGroupsInput!]
+  updateMany: [UserUpdateManyWithWhereNestedInput!]
+  upsert: [UserUpsertWithWhereUniqueWithoutGroupsInput!]
+}
+
+input UserUpdateManyWithWhereNestedInput {
+  data: UserUpdateManyDataInput!
+  where: MutationUpdateOneGroupWhereInput!
+}
+
+input UserUpdateOneRequiredWithoutChatInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutChatInput
+  update: UserUpdateWithoutChatDataInput
+  upsert: UserUpsertWithoutChatInput
+}
+
+input UserUpdateOneRequiredWithoutPostsInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutPostsInput
+  update: UserUpdateWithoutPostsDataInput
+  upsert: UserUpsertWithoutPostsInput
+}
+
+input UserUpdateWithoutChatDataInput {
+  email: String
+  groups: GroupUpdateManyWithoutMembersInput
+  groupsAdminFor: GroupUpdateManyWithoutAdminsInput
+  id: ID
+  name: String
+  password: String
+  posts: PostUpdateManyWithoutAuthorInput
+}
+
+input UserUpdateWithoutGroupsAdminForDataInput {
+  chat: ChatUpdateOneWithoutSenderInput
+  email: String
+  groups: GroupUpdateManyWithoutMembersInput
+  id: ID
+  name: String
+  password: String
+  posts: PostUpdateManyWithoutAuthorInput
+}
+
+input UserUpdateWithoutGroupsDataInput {
+  chat: ChatUpdateOneWithoutSenderInput
+  email: String
+  groupsAdminFor: GroupUpdateManyWithoutAdminsInput
+  id: ID
+  name: String
+  password: String
+  posts: PostUpdateManyWithoutAuthorInput
+}
+
+input UserUpdateWithoutPostsDataInput {
+  chat: ChatUpdateOneWithoutSenderInput
+  email: String
+  groups: GroupUpdateManyWithoutMembersInput
+  groupsAdminFor: GroupUpdateManyWithoutAdminsInput
+  id: ID
+  name: String
+  password: String
+}
+
+input UserUpdateWithWhereUniqueWithoutGroupsAdminForInput {
+  data: UserUpdateWithoutGroupsAdminForDataInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserUpdateWithWhereUniqueWithoutGroupsInput {
+  data: UserUpdateWithoutGroupsDataInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserUpsertWithoutChatInput {
+  create: UserCreateWithoutChatInput!
+  update: UserUpdateWithoutChatDataInput!
+}
+
+input UserUpsertWithoutPostsInput {
+  create: UserCreateWithoutPostsInput!
+  update: UserUpdateWithoutPostsDataInput!
+}
+
+input UserUpsertWithWhereUniqueWithoutGroupsAdminForInput {
+  create: UserCreateWithoutGroupsAdminForInput!
+  update: UserUpdateWithoutGroupsAdminForDataInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserUpsertWithWhereUniqueWithoutGroupsInput {
+  create: UserCreateWithoutGroupsInput!
+  update: UserUpdateWithoutGroupsDataInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserWhereUniqueInput {
+  email: String
+  id: ID
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import ApolloClient, { InMemoryCache, HttpLink } from 'apollo-boost'
+import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
 
 import './index.css'
@@ -10,13 +10,7 @@ import * as serviceWorker from './serviceWorker'
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000',
-  request: (operation) => {
-    operation.setContext({
-      headers: {
-        authorization: Date.now(),
-      },
-    })
-  },
+  credentials: 'include',
 })
 
 const ApolloApp = (AppComponent: any) => (

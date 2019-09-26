@@ -5,7 +5,7 @@ import { useRoutes } from 'hookrouter'
 import './App.css'
 
 import { Account, Login, GETME, Signup } from './components/Account'
-import { Chat } from './components/Chat'
+import { Chats } from './components/Chat'
 import { Landing } from './components/Landing'
 import { NotFoundPage } from './components/NotFountPage'
 import { Posts } from './components/Post/PostComponents'
@@ -14,7 +14,7 @@ import { useQuery } from 'react-apollo'
 const routes = {
   '/': () => <Landing />,
   '/account': () => <Account />,
-  '/chat': () => <Chat />,
+  '/chat': () => <Chats />,
   '/posts': () => <Posts />,
   '/signup': () => <Signup />,
   // '/chat': ({ id }) => <ProductDetails id={id} />,
