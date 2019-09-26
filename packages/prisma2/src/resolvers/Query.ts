@@ -38,7 +38,7 @@ export const Query = queryType({
       type: 'Group',
       resolve: async (_parent, _args, ctx) => {
         const userId = getUserId(ctx)
-        const groups = await ctx.photon.users.findOne({ where: { id: userId } }).groups()
+        const groups = await ctx.photon.groups.findMany()
         console.log({ groups })
         console.log('done')
         return groups
