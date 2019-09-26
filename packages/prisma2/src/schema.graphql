@@ -442,11 +442,17 @@ input PostWhereUniqueInput {
 }
 
 type Query {
+  chat(where: ChatWhereUniqueInput!): Chat
+  chats(after: String, before: String, first: Int, last: Int, skip: Int): [Chat!]
   feed: [Post!]!
   filterPosts(searchString: String): [Post!]!
+  group(where: GroupWhereUniqueInput!): Group
+  groups(after: String, before: String, first: Int, last: Int, skip: Int): [Group!]
   me: User!
-  otherUsers: User!
+  otherUsers: User
   post(id: ID): Post
+  user(where: UserWhereUniqueInput!): User
+  users(after: String, before: String, first: Int, last: Int, skip: Int): [User!]
 }
 
 input StringFilter {

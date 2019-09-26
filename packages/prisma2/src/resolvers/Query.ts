@@ -1,8 +1,16 @@
 import { idArg, queryType, stringArg } from 'nexus'
 import { getUserId } from '../utils'
+import { User } from '@generated/photon'
 
 export const Query = queryType({
   definition(t) {
+    t.crud.user()
+    t.crud.users()
+    t.crud.chat()
+    t.crud.chats()
+    t.crud.group()
+    t.crud.groups()
+
     t.field('me', {
       type: 'User',
       resolve: (_parent, _args, ctx) => {
@@ -17,11 +25,11 @@ export const Query = queryType({
 
     t.field('otherUsers', {
       type: 'User',
+      nullable: true,
       resolve: async (_parent, _args, ctx) => {
         const userId = getUserId(ctx)
-        const allUsers = await ctx.photon.users()
-        const otherUsers = allUsers.filter(({ id }) => id !== userId)
-        console.log({ otherUsers })
+        const allUsers: User[] = await ctx.photon.users()
+        const otherUsers: User[] = allUsers.filter(({ id }) => id !== userId)
         return otherUsers
       },
     })
