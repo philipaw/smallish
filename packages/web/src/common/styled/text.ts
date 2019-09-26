@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from './theme'
 import { color, fontSize, fontWeight, lineHeight, space } from 'styled-system'
 
 export const Text = styled.div`

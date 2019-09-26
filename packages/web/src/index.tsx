@@ -5,7 +5,7 @@ import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
 
 import { ThemeProvider } from 'styled-components'
-import { Root, Style, theme } from './common/styled'
+import { Box, Root, Style, theme } from './common/styled'
 
 import App from './App'
 import * as serviceWorker from './serviceWorker'
@@ -27,7 +27,9 @@ const WrapApp = (AppComponent: any) => (
     <ThemeProvider theme={theme}>
       <Root>
         <Style />
-        <AppComponent />
+        <Box>
+          <AppComponent />
+        </Box>
       </Root>
     </ThemeProvider>
   </ApolloProvider>
