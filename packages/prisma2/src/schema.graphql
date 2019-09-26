@@ -445,6 +445,7 @@ type Query {
   feed: [Post!]!
   filterPosts(searchString: String): [Post!]!
   me: User!
+  otherUsers: User!
   post(id: ID): Post
 }
 

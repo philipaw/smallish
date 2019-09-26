@@ -15,6 +15,15 @@ export const Query = queryType({
       },
     })
 
+    t.field('otherUsers', {
+      type: 'User',
+      resolve: async (_parent, _args, ctx) => {
+        const userId = getUserId(ctx)
+        const allUsers = await ctx.photon.users()
+        return allUsers.filter(({ id }) => id !== userId)
+      },
+    })
+
     t.list.field('feed', {
       type: 'Post',
       resolve: (_parent, _args, ctx) => {
